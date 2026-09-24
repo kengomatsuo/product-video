@@ -71,8 +71,12 @@ A brand the detector could not read (it says so in `notes`) gets `overrides` in
 `bun tools/stills.ts`, open every still; `bun tools/render.ts --draft`; then the final
 master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.264 at
 -14 LUFS; `--appstore` for Apple's limits) and `bun tools/check.ts <file>`. `references/qa.md` lists what to look at by eye and the
-loudness target. Send the MP4 with SendUserFile, say what was checked and what was not
-(you cannot hear the audio).
+loudness target. Send a phone-sized copy with SendUserFile, say what was checked and what was not
+(you cannot hear the audio), and tell the owner to unmute. See "Handing over" in qa.md.
+
+For the App Store, make separate cuts (`src/AppStorePreview.tsx`: iPhone 886 x 1920, iPad
+1200 x 1600, recordings only, no zoom, no device frame), render with `--appstore`, and
+upload with `scripts/asc-upload-preview.rb`. See `references/formats.md`.
 
 ## Formats
 

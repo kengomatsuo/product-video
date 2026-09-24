@@ -56,6 +56,24 @@ Find the remaining hitches with the packet-time scan in the Cutling session: gap
 Record one take per story in the order the film tells it (Cutling: name, text, colour,
 save), so the result the viewer waits for, the new card, is in the same take.
 
+## More traps (2026-09-24)
+
+- In a `while read` loop, ffmpeg reads the loop's stdin and eats the next line: pass
+  `-nostdin`. A zsh glob with no match aborts the command: run capture under bash.
+- Tool latency stretches a flow: a 30 s take ended a moment before the save. Record
+  the flow's own length plus 50%, and check the last frame shows the result.
+- `simctl recordVideo` can stop writing frames mid-take (a 48 s take held 10 s). Check the
+  take's duration and last frame before cutting; retake when it is short.
+- iPad Simulator tool taps are in points: the 13-inch screenshot is 1.4535 px per point.
+  A sheet moves up when the keyboard shows; screenshot again before the next tap, or a
+  tap outside the sheet dismisses it.
+- Opening a Settings pane for a keyboard: Settings > General > Keyboard > Keyboards >
+  Add New Keyboard, then the app's row > Allow Full Access > Allow.
+- Before judging demo data, check the facts: an IBAN is the number a person receives
+  payments at, so a "Bank Account / IBAN" snippet is receiving data, not a card number.
+- Never launch a Debug build of a Mac app that shares the shipping bundle id: a Mac
+  preview needs a separate macOS user or a build with its own bundle id.
+
 ## Showing sync without faking it
 
 A sync scene shows the item arriving on the second device through the app's own code
