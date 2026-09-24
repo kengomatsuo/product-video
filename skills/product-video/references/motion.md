@@ -103,6 +103,11 @@ text at 4-5% of the frame. The Cutling example pans with `pan(tap, pose)` 70 fra
 before each tap and pulls back mid-spin with `arc` so the turn still reads. Whole
 devices are for the line-up only.
 
+**The camera moves after an action settles and before the next one starts.** Leaving
+the moment typing ends reads as mechanical (owner, v7): hold at least 0.8 s after the
+last character or the last animation, then move, and arrive 0.3 s or more before the next
+tap. After a save, follow the result: pan to the new item and hold 1.5 s or more.
+
 A shadow plane never rotates with its device: a turning plane shows edge-on as a grey
 strip (v6 at 0:15). `LibraryDevice` keeps it in an unrotated parent.
 

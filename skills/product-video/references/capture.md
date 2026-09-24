@@ -42,6 +42,20 @@ Playwright's own `recordVideo` writes compressed WebM (its types say it scales t
 - Tool latency makes waits long (a menu open for 4 s). Cut them out with segments and
   `rate`, on beats, instead of re-recording faster.
 
+## Warm up, then record (owner, 2026-09-24)
+
+The first time a view appears in a process (menus, sheets, the colour picker, Liquid
+Glass) iOS hitches, and `simctl recordVideo` shows it as frames held 200-360 ms. Run the
+whole flow once before recording, reset the data inside the same process (delete the
+test item through the app's own UI, reopen the app from the Home Screen so no back link
+shows), then record. The Cutling warm take had 16 hitches over 40 ms, against 36 cold.
+The warm-up also surfaces one-off prompts (a review request appeared) off camera.
+Find the remaining hitches with the packet-time scan in the Cutling session: gaps of
+45-600 ms right after a 16 ms interval are hitches; cut around them or leave them static.
+
+Record one take per story in the order the film tells it (Cutling: name, text, colour,
+save), so the result the viewer waits for, the new card, is in the same take.
+
 ## Repeatable flows
 
 goldie (`kacperkapusciak/goldie`, MIT) with argent (`software-mansion/argent`,

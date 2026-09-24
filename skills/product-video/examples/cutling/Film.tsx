@@ -8,9 +8,9 @@ import { StudioLight, type ScreenTap, type Segment } from './Phone3D';
 import { LibraryDevice, MacBook } from './Devices';
 
 /*
- * Cutling, 23 bars (45.2 s) at 60 fps, cut to "Revival" by Diamond_Tunes (Pixabay Content
+ * Cutling, 25 bars (49.2 s) at 60 fps, cut to "Revival" by Diamond_Tunes (Pixabay Content
  * License) from 24.10 s in: 122 BPM, a bar every 1.967 s. Its lift at 33.94 s lands on the
- * paste (bar 5); the section change at 65.41 s on "On the App Store" (bar 21).
+ * paste (bar 5); the icon lands at bar 22.
  *
  * One phone for the whole film: it slides in from below the frame, spins between
  * scenes while it travels (the recording swaps while its back faces the camera),
@@ -25,7 +25,7 @@ const FPS = 60;
 const BAR = (60 / 122) * 4 * FPS;
 const B = (n: number) => Math.round(n * BAR);
 const BEAT = BAR / 4;
-export const FILM_FRAMES = B(23);
+export const FILM_FRAMES = B(25);
 
 const palette = { base: '#F2F6F4', tints: ['#CDEFE1', '#E5F4EE', '#F4ECD8'], accent: '#17BB8A' };
 const INK = '#0F1512';
@@ -84,7 +84,7 @@ const Caption: React.FC<{ end: number; side: 'left' | 'right' | 'top'; width: nu
 
 /* ---------- the scene plan (film frames) ---------- */
 const STAGE0 = B(2) - 36; // the phone starts rising while the hook dissolves
-const SCENE = { paste: B(2), save: B(8), sort: B(14), sync: B(17), end: B(20) };
+const SCENE = { paste: B(2), save: B(8), sort: B(14), sync: B(19), end: B(22) };
 const DROP = B(5);
 const toStage = (f: number) => f - STAGE0; // film frame -> stage frame
 
@@ -93,35 +93,42 @@ const still = (src: string, from: number, frames: number, sec: number): Segment 
 const seg = (src: string, from: number, frames: number, start: number, rate = 1): Segment => ({ src, from: toStage(from), frames, start, rate });
 const tapAt = (s: Segment, sec: number) => s.from + ((sec - s.start) / (s.rate ?? 1)) * FPS; // stage frame
 
-/* paste take onsets: globe menu 4.58, Cutling picked 10.60, Home Address inserted 14.30 */
-const PASTE = 'rec/take-paste3.mp4';
-const p1 = seg(PASTE, SCENE.paste + 48, 126, 3.9);
-const p2 = seg(PASTE, SCENE.paste + 174, DROP - SCENE.paste - 174, 10.35, 1.3);
-const p3 = seg(PASTE, DROP, 100, 14.3);
-/* add take taps: + 3.45, Text Cutling 5.35, name 6.75, text field 12.6, Save 19.4.
-   7.4-19.0 is the keyboard waiting on the tool, so it plays at 3.2x */
-const ADD = 'rec/take-add.mp4';
-const a1 = seg(ADD, SCENE.save + 50, 252, 3.2);
-const a2 = seg(ADD, SCENE.save + 302, 218, 7.4, 3.2);
-const a3 = seg(ADD, SCENE.save + 520, 186, 19.0);
-const ICON = 'rec/take-icon.mp4';
-const i1 = seg(ICON, SCENE.sort + 50, 108, 3.2);
-const i2 = seg(ICON, SCENE.sort + 158, SCENE.sync + 12 - SCENE.sort - 158, 11.0);
+/*
+ * Takes recorded after a full warm-up run, so first-use hitches happen off camera
+ * (2026-09-24). Every action plays at speed; only the tool's dead waits between
+ * actions are cut, where the screen is identical on both sides of the cut.
+ */
+/* paste take: keyboard list 4.8, Cutling keyboard 9.0, Home Address inserted 13.0 */
+const PASTE = 'rec/take-paste4.mp4';
+const p1 = seg(PASTE, SCENE.paste + 42, 132, 3.8);
+const p2 = seg(PASTE, SCENE.paste + 174, 120, 8.2);
+const p3 = seg(PASTE, SCENE.paste + 294, DROP - SCENE.paste - 294, 12.0); // insert lands on the drop
+const p4 = seg(PASTE, DROP, 180, 13.0);
+/* save take: + 4.6, Text Cutling 8.4, name typed 14.0, text typed 20.0, colour 24.0,
+   orange 27.2, picker closed 30.6, saved 34.2 (grid with the new orange card) */
+const SAVE = 'rec/take-save.mp4';
+const a1 = seg(SAVE, SCENE.save + 50, 96, 4.2);
+const a2 = seg(SAVE, SCENE.save + 146, 120, 7.6);
+const a3 = seg(SAVE, SCENE.save + 266, 186, 11.8);
+const a4 = seg(SAVE, SCENE.save + 452, SCENE.sort - SCENE.save - 452, 16.8);
+const a5 = seg(SAVE, SCENE.sort, 156, 22.9);
+const a6 = seg(SAVE, SCENE.sort + 156, 108, 26.5);
+const a7 = seg(SAVE, SCENE.sort + 264, 96, 30.0);
+const a8 = seg(SAVE, SCENE.sort + 360, 90, 33.6);
 
 const phoneSegs: Segment[] = [
-  still(PASTE, STAGE0, SCENE.paste + 48 - STAGE0, 3.9), p1, p2, p3,
-  still(PASTE, DROP + 100, SCENE.save - DROP - 100, 15.95),
-  still(ADD, SCENE.save, 50, 3.2), a1, a2, a3,
-  still(ADD, SCENE.save + 706, SCENE.sort - SCENE.save - 706, 22.1),
-  still(ICON, SCENE.sort, 50, 3.2), i1, i2,
-  still(ADD, SCENE.sync + 12, B(23), 22.1), // the library, swapped mid-spin into the line-up
+  still(PASTE, STAGE0, SCENE.paste + 42 - STAGE0, 3.8), p1, p2, p3, p4,
+  still(PASTE, DROP + 180, SCENE.save - DROP - 180, 15.9),
+  still(SAVE, SCENE.save, 50, 4.2), a1, a2, a3, a4, a5, a6, a7, a8,
+  still(SAVE, SCENE.sort + 450, B(25), 35.1), // the grid with the new card, into the line-up
 ];
 const phoneTaps: ScreenTap[] = [
-  [tapAt(p1, 4.05), 0.098, 0.956], [tapAt(p2, 10.55), 0.136, 0.82], [tapAt(p2, 14.26), 0.25, 0.718],
-  [tapAt(a1, 3.45), 0.636, 0.088], [tapAt(a1, 5.35), 0.636, 0.097], [tapAt(a1, 6.75), 0.5, 0.211], [tapAt(a2, 12.6), 0.5, 0.565], [tapAt(a3, 19.4), 0.902, 0.109],
-  [tapAt(i1, 3.45), 0.409, 0.779], [tapAt(i2, 11.45), 0.614, 0.687], [tapAt(i2, 13.4), 0.889, 0.404],
+  [tapAt(p1, 4.35), 0.098, 0.956], [tapAt(p2, 8.95), 0.136, 0.82], [tapAt(p3, 12.97), 0.25, 0.718],
+  [tapAt(a1, 4.57), 0.636, 0.088], [tapAt(a2, 8.37), 0.636, 0.097], [tapAt(a3, 12.55), 0.5, 0.211], [tapAt(a4, 17.55), 0.5, 0.565],
+  [tapAt(a5, 23.95), 0.877, 0.399], [tapAt(a6, 27.15), 0.609, 0.687], [tapAt(a7, 30.55), 0.889, 0.404], [tapAt(a8, 34.15), 0.902, 0.109],
 ].map(([f, u, v]) => ({ at: f / FPS, u, v }));
-const typing = [tapAt(a2, 10.4), tapAt(a2, 14.7), tapAt(a2, 17.2)];
+const typing = [tapAt(a3, 13.95), tapAt(a4, 19.95)];
+const SAVED = STAGE0 + tapAt(a8, 34.2); // film frame the new card appears
 
 /* ---------- the phone's path ---------- */
 type Pose = { x: number; y: number; z: number; rx: number; ry: number; rz: number; s: number };
@@ -157,16 +164,19 @@ const pan = (tap: number, to: Pose, lead = 70): Move => ({ a: STAGE0 + tap - lea
 const T = (i: number) => phoneTaps[i].at * FPS; // stage frame of tap i
 
 const LINEUP_POSE = P(108, -18, 40, 0.05, -0.3, 0.02, 0.6);
+/* the camera moves only after an action settles (>= 0.8 s), and arrives before the next tap */
+const settle = (i: number, to: Pose, after = 50, dur = 60): Move => ({ a: STAGE0 + T(i) + after, b: STAGE0 + T(i) + after + dur, to });
 const phonePath = path(P(36, -300, CLOSE_Z, 0.25, -0.4, 0.04), [
   { a: STAGE0, b: SCENE.paste + 60, to: R(0.8), ease: outC }, // rises from below onto the keyboard
-  pan(T(1), R(0.74)), // the Cutling keyboard's list
-  { a: DROP + 12, b: DROP + 110, to: R(0.56, { rx: -0.04 }) }, // pan onto the pasted address; a push would cover the caption
+  { a: DROP + 50, b: DROP + 120, to: R(0.6) }, // after the insert settles: field and list
   { a: SCENE.save - 54, b: SCENE.save + 54, to: L(0.16), spin: 1, arc: 170 },
-  pan(T(6), L(0.5)), // the text field
-  pan(T(7), L(0.16)), // Save
-  { a: STAGE0 + T(7) + 40, b: STAGE0 + T(7) + 110, to: L(0.3) }, // the new card in the grid
-  { a: SCENE.sort - 54, b: SCENE.sort + 54, to: R(0.74), spin: -1, arc: 170 },
-  pan(T(10), R(0.45)), // close the picker
+  settle(5, L(0.3)), // after the name is typed, drift down toward the text field
+  { a: STAGE0 + T(6) - 66, b: STAGE0 + T(6) - 20, to: L(0.47) }, // onto the text field
+  { a: STAGE0 + tapAt(a4, 21.0), b: STAGE0 + T(7) - 20, to: L(0.42) }, // typing done a second ago: to the colour row
+  settle(7, L(0.62), 30, 60), // the picker has opened: its grid
+  settle(8, L(0.4), 60, 50), // orange chosen: back up to the close button
+  settle(9, L(0.18), 40, 50), // picker closed: up to Save
+  { a: SAVED + 20, b: SAVED + 80, to: L(0.8, { z: CLOSE_Z - 20 }) }, // follow the save down to the new card, and hold
   { a: SCENE.sync - 36, b: SCENE.sync + 60, to: LINEUP_POSE, spin: 1 },
   { a: SCENE.end - 24, b: SCENE.end + 30, to: { ...LINEUP_POSE, y: -230 }, ease: inC },
 ]);
@@ -224,14 +234,15 @@ const Captions: React.FC = () => (
       </Caption>
     </Sequence>
     <Sequence from={SCENE.save} durationInFrames={SCENE.sort - SCENE.save} layout="none">
-      <Caption end={SCENE.sort - SCENE.save - 60} side="right" width={640}>
+      <Caption end={SCENE.sort - SCENE.save - 6} side="right" width={640}>
         <Words text="Save it once" start={60} size={108} align="left" />
         <Sub text="Name it and it stays in the keyboard" at={130} />
       </Caption>
     </Sequence>
     <Sequence from={SCENE.sort} durationInFrames={SCENE.sync - SCENE.sort} layout="none">
-      <Caption end={SCENE.sync - SCENE.sort - 44} side="left" width={620}>
-        <Words text="Find it by colour" start={60} size={108} align="left" />
+      <Caption end={SCENE.sync - SCENE.sort - 44} side="right" width={640}>
+        <Words text="Find it by colour" start={24} size={108} align="left" />
+        <Sub text="Pick a colour for each one" at={24 + 90} />
       </Caption>
     </Sequence>
     <Sequence from={SCENE.sync} durationInFrames={SCENE.end - SCENE.sync} layout="none">
@@ -248,7 +259,7 @@ const End: React.FC = () => {
   const f = useCurrentFrame();
   const land = r(f, 0, 36, Easing.bezier(0.3, 0, 0.7, 1));
   const squash = f < 36 ? 1 : 1 - 0.08 * Math.exp(-(f - 36) / 8) * Math.cos((f - 36) / 4.5);
-  const ctaAt = B(21) - SCENE.end;
+  const ctaAt = B(23) - SCENE.end;
   const cta = r(f, ctaAt, ctaAt + 30);
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 34 }}>
@@ -281,7 +292,8 @@ export const Film: React.FC = () => (
     <Audio src={staticFile('music/pixabay-revival-234210.mp3')} trimBefore={Math.round(24.1 * FPS)}
       volume={(fr) => 0.85 * interpolate(fr, [0, 36, FILM_FRAMES - 90, FILM_FRAMES], [0, 1, 1, 0], clamp)} />
     {/* whooshes peak mid-spin (0.70 s into 1490), a swipe under each device slide */}
-    {[SCENE.save, SCENE.sort].map((s, i) => <Sfx key={i} src="sfx-1490" at={s - 42} vol={0.26} />)}
+    <Sfx src="sfx-1490" at={SCENE.save - 42} vol={0.26} />
+    <Sfx src="sfx-1490" at={SCENE.sync + 12 - 42} vol={0.22} />
     <Sfx src="sfx-2627" at={SCENE.paste - 15} vol={0.2} />
     {[SCENE.sync + 20, SCENE.sync + 40].map((s, i) => <Sfx key={`d${i}`} src="sfx-2627" at={s - 15} vol={0.18} />)}
     {phoneTaps.map((t, i) => <Sfx key={`t${i}`} src="sfx-1109" at={STAGE0 + t.at * FPS - 2} vol={0.28} dur={40} />)}
@@ -291,6 +303,6 @@ export const Film: React.FC = () => (
     <Sfx src="sfx-2357" at={DROP} vol={0.55} dur={30} />
     {/* the icon lands on the second drop, the CTA a bar later */}
     <Sfx src="sfx-2902" at={SCENE.end + 36 - 1.3 * FPS} vol={0.4} dur={4 * FPS} />
-    <Sfx src="sfx-2357" at={B(21)} vol={0.3} dur={30} />
+    <Sfx src="sfx-2357" at={B(23)} vol={0.3} dur={30} />
   </AbsoluteFill>
 );
