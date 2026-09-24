@@ -52,20 +52,17 @@ const taps = [
   [tapTime(3, 4.57), 0.636, 0.088], [tapTime(4, 8.37), 0.636, 0.097], [tapTime(5, 12.55), 0.5, 0.211], [tapTime(6, 17.55), 0.5, 0.565],
   [tapTime(7, 23.95), 0.877, 0.399], [tapTime(8, 27.15), 0.609, 0.687], [tapTime(9, 30.55), 0.889, 0.404], [tapTime(10, 34.15), 0.902, 0.109],
 ];
-const SAVED = tapTime(10, 34.2);
 
 const Recording: React.FC = () => {
   const f = useCurrentFrame();
   const t = f / FPS;
   /* dissolve where the take changes (paste -> save) */
   const xf = r(f, s(8.2), s(8.2 + DISSOLVE), Easing.linear);
-  /* after the save, a slow push onto the new card at the bottom of the grid */
-  const push = r(f, s(SAVED + 0.6), s(SAVED + 2.2), inOut);
-  const k = 1 + push * 0.35, oy = push * 0.8;
   return (
     <div style={{ position: 'absolute', left: SX, top: SY, width: SW, height: SH, borderRadius: 54, overflow: 'hidden',
       boxShadow: '0 30px 80px rgba(15,21,18,.18), 0 0 0 1px rgba(15,21,18,.06)', background: '#fff' }}>
-      <div style={{ position: 'absolute', inset: 0, transform: `scale(${k})`, transformOrigin: `${50 - push * 26}% ${oy * 100}%` /* the new card sits in the left column */ }}>
+      {/* no zoom: the whole screen stays in view, the new card is visible at the bottom */}
+      <div style={{ position: 'absolute', inset: 0 }}>
         {cuts.map((c, i) => {
           const len = s(c.to - c.from) + (i === 2 ? s(DISSOLVE) : 0);
           return (

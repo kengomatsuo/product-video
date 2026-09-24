@@ -47,5 +47,7 @@ as its own composition, designed for portrait: `template/src/AppStorePreview.tsx
 360 px caption band on the moving background and the recording below in a rounded screen
 at the capture's own aspect (700 x 1521 inside 886 x 1920), so it never reads as a crop of
 the landscape film. Render with `bash tools/master.sh AppStorePreview v1 --appstore`.
+No zoom into the recording (it crops the app) and no device frame: Apple's App Preview
+page says previews "must show only content within the app itself" (checked 2026-09-24).
 A still hold is its own segment with a constant `playbackRate`: changing the rate inside
 a segment re-times all of it and showed the segment's first frame.
