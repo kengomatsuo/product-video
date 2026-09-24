@@ -71,5 +71,5 @@ Use (`LibraryDevice` in `src/Devices.tsx`): scene units are metres after the nod
 iPhone screen material `ZVpJkazCvASOIpG`, faces -z (turned pi on y), texture `flipY` on.
 iPad screen material `jcIAFNBmpIebNBE`; the file sets the iPad on a Magic Keyboard at 31
 degrees, so only the slab is kept (world box x -0.193..-0.075, y 0.005..0.205) and a basis
-stands it upright in portrait; texture `flipY` on. The iPad's shadow plane showed through its
-screen, so it renders with `shadow={0}`. Not affiliated with or endorsed by Apple Inc.
+stands it upright in portrait; texture `flipY` on. Each device's shadow is placed 40 mm behind
+its measured back: a fixed depth put it in front of the iPad's screen. Not affiliated with or endorsed by Apple Inc.

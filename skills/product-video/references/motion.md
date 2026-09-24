@@ -95,6 +95,18 @@ did not. Record takes at a person's pace, and cut the tool's dead waits with seg
 
 ## Camera
 
+**A scene that shows UI frames the screen at 1.6-2x the frame height, cropped, with the
+next tap's row at frame centre.** A whole phone in a 1080p frame puts UI text at ~1% of
+the frame and nobody can read it; the owner rejected v6 for it (2026-09-24). The Things
+and Linear phone shots (`inspo/.../launch-videos/things-84-*`, `linear-47-*`) put body
+text at 4-5% of the frame. The Cutling example pans with `pan(tap, pose)` 70 frames
+before each tap and pulls back mid-spin with `arc` so the turn still reads. Whole
+devices are for the line-up only.
+
+A shadow plane never rotates with its device: a turning plane shows edge-on as a grey
+strip (v6 at 0:15). `LibraryDevice` keeps it in an unrotated parent.
+
+
 | Rule | Value | Source |
 |---|---|---|
 | Push | one slow-fast-slow move onto the subject, then hold | HF (nudge curve) |

@@ -86,11 +86,11 @@ const Caption: React.FC<{ end: number; side: 'left' | 'right' | 'top'; width: nu
 const STAGE0 = B(2) - 36; // the phone starts rising while the hook dissolves
 const SCENE = { paste: B(2), save: B(8), sort: B(14), sync: B(17), end: B(20) };
 const DROP = B(5);
-const L = (f: number) => f - STAGE0; // film frame -> stage frame
+const toStage = (f: number) => f - STAGE0; // film frame -> stage frame
 
 /* ---------- screen content, on the stage timeline ---------- */
-const still = (src: string, from: number, frames: number, sec: number): Segment => ({ src, from: L(from), frames, start: sec, rate: 0.01 });
-const seg = (src: string, from: number, frames: number, start: number, rate = 1): Segment => ({ src, from: L(from), frames, start, rate });
+const still = (src: string, from: number, frames: number, sec: number): Segment => ({ src, from: toStage(from), frames, start: sec, rate: 0.01 });
+const seg = (src: string, from: number, frames: number, start: number, rate = 1): Segment => ({ src, from: toStage(from), frames, start, rate });
 const tapAt = (s: Segment, sec: number) => s.from + ((sec - s.start) / (s.rate ?? 1)) * FPS; // stage frame
 
 /* paste take onsets: globe menu 4.58, Cutling picked 10.60, Home Address inserted 14.30 */
@@ -125,10 +125,11 @@ const typing = [tapAt(a2, 10.4), tapAt(a2, 14.7), tapAt(a2, 17.2)];
 
 /* ---------- the phone's path ---------- */
 type Pose = { x: number; y: number; z: number; rx: number; ry: number; rz: number; s: number };
-type Move = { a: number; b: number; to: Pose; spin?: number; ease?: (t: number) => number };
+type Move = { a: number; b: number; to: Pose; spin?: number; arc?: number; ease?: (t: number) => number };
 const P = (x: number, y: number, z: number, rx: number, ry: number, rz = 0, s = 1): Pose => ({ x, y, z, rx, ry, rz, s });
 const lerpPose = (p: Pose, q: Pose, t: number): Pose => ({ x: mix(t, p.x, q.x), y: mix(t, p.y, q.y), z: mix(t, p.z, q.z), rx: mix(t, p.rx, q.rx), ry: mix(t, p.ry, q.ry), rz: mix(t, p.rz, q.rz), s: mix(t, p.s, q.s) });
-/* play the moves in order; between moves the pose holds and only drifts */
+/* play the moves in order; between moves the pose holds and only drifts.
+   `arc` pulls the device back mid-move so a spin reads at close range */
 const path = (start: Pose, moves: Move[]) => (f: number): Pose => {
   let cur = start;
   for (const m of moves) {
@@ -136,23 +137,36 @@ const path = (start: Pose, moves: Move[]) => (f: number): Pose => {
     if (f <= m.a) break;
     const t = (m.ease ?? inOut)((f - m.a) / (m.b - m.a));
     const p = lerpPose(cur, m.to, t);
-    return { ...p, ry: p.ry + (m.spin ?? 0) * 2 * Math.PI * t };
+    return { ...p, z: p.z - (m.arc ?? 0) * Math.sin(Math.PI * t), ry: p.ry + (m.spin ?? 0) * 2 * Math.PI * t };
   }
   return cur;
 };
-const drift = (f: number) => ({ y: Math.sin((f / FPS) * (2 * Math.PI / 9)) * 1.6, ry: Math.sin((f / FPS) * (2 * Math.PI / 11)) * 0.035 });
+const drift = (f: number) => ({ y: Math.sin((f / FPS) * (2 * Math.PI / 9)) * 1.2, ry: Math.sin((f / FPS) * (2 * Math.PI / 11)) * 0.025 });
 
-/* phone right with the caption left, then left, then right; spins land each swap on a downbeat */
-const PASTE_POSE = P(70, -4, 10, 0.03, -0.24, 0.015);
-const PUSH_POSE = P(36, 14, 115, -0.12, -0.14, 0.01);
-const SAVE_POSE = P(-70, -2, 0, 0.04, 0.26, -0.012);
-const SORT_POSE = P(70, -4, 0, 0.04, -0.22, 0.01);
+/*
+ * Close-up framing, from the Things and Linear phone shots (inspo/.../launch-videos): the
+ * screen is 1.75x the frame height and cropped, so UI text reads at ~3% of the frame.
+ * The camera is fixed; the phone moves so the next tap's row sits at frame centre.
+ */
+const SCREEN_H = 140.8; // the library iPhone's screen, mm
+const CLOSE_Z = 209; // visible height 0.4987 * (370 - z) = 80 mm = SCREEN_H / 1.75
+const at_v = (v: number) => -(0.5 - v) * SCREEN_H; // phone y that centres screen row v
+const R = (v: number, extra: Partial<Pose> = {}) => ({ ...P(36, at_v(v), CLOSE_Z, 0.02, -0.14, 0.01), ...extra });
+const L = (v: number, extra: Partial<Pose> = {}) => ({ ...P(-36, at_v(v), CLOSE_Z, 0.02, 0.14, -0.01), ...extra });
+const pan = (tap: number, to: Pose, lead = 70): Move => ({ a: STAGE0 + tap - lead, b: STAGE0 + tap - 8, to });
+const T = (i: number) => phoneTaps[i].at * FPS; // stage frame of tap i
+
 const LINEUP_POSE = P(108, -18, 40, 0.05, -0.3, 0.02, 0.6);
-const phonePath = path(P(70, -215, 10, 0.35, -0.5, 0.04), [
-  { a: STAGE0, b: SCENE.paste + 60, to: PASTE_POSE, ease: outC },
-  { a: DROP + 12, b: DROP + 120, to: PUSH_POSE },
-  { a: SCENE.save - 54, b: SCENE.save + 54, to: SAVE_POSE, spin: 1 },
-  { a: SCENE.sort - 54, b: SCENE.sort + 54, to: SORT_POSE, spin: -1 },
+const phonePath = path(P(36, -300, CLOSE_Z, 0.25, -0.4, 0.04), [
+  { a: STAGE0, b: SCENE.paste + 60, to: R(0.8), ease: outC }, // rises from below onto the keyboard
+  pan(T(1), R(0.74)), // the Cutling keyboard's list
+  { a: DROP + 12, b: DROP + 110, to: R(0.56, { x: 16, z: 240, rx: -0.05, ry: -0.1 }) }, // push onto the pasted address
+  { a: SCENE.save - 54, b: SCENE.save + 54, to: L(0.16), spin: 1, arc: 170 },
+  pan(T(6), L(0.5)), // the text field
+  pan(T(7), L(0.16)), // Save
+  { a: STAGE0 + T(7) + 40, b: STAGE0 + T(7) + 110, to: L(0.3) }, // the new card in the grid
+  { a: SCENE.sort - 54, b: SCENE.sort + 54, to: R(0.74), spin: -1, arc: 170 },
+  pan(T(10), R(0.45)), // close the picker
   { a: SCENE.sync - 36, b: SCENE.sync + 60, to: LINEUP_POSE, spin: 1 },
   { a: SCENE.end - 24, b: SCENE.end + 30, to: { ...LINEUP_POSE, y: -230 }, ease: inC },
 ]);
@@ -180,7 +194,7 @@ const Stage: React.FC = () => {
       {f >= SCENE.sync - 10 && (
         <>
           <MacBook screen="captures/mac-welcome.png" open={lid} position={[mac.x, mac.y + d.y, mac.z]} rotation={[mac.rx, mac.ry, mac.rz]} scale={mac.s} />
-          <LibraryDevice kind="ipad" screen={{ image: 'captures/02-iPad_Air_13-inch_M4_-02_MainGrid.png' }} shadow={0}
+          <LibraryDevice kind="ipad" screen={{ image: 'captures/02-iPad_Air_13-inch_M4_-02_MainGrid.png' }} shadow={0.25}
             position={[ip.x, ip.y + d.y, ip.z]} rotation={[ip.rx, ip.ry + d.ry, ip.rz]} scale={ip.s} />
         </>
       )}

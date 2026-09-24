@@ -131,10 +131,17 @@ export const LibraryDevice: React.FC<{
     const holder = new THREE.Group();
     holder.add(wrap);
     wrap.position.sub(new THREE.Vector3(c.x, c.y, sb.max.z)); // screen surface at z = 0
-    return { holder, sw: size.x, sh: size.y, front: 0 };
+    /* the shadow sits a fixed gap behind the measured back, whatever the model's depth */
+    holder.updateMatrixWorld(true);
+    const body = new THREE.Box3();
+    holder.traverse((o) => { if ((o as THREE.Mesh).isMesh && o.visible) body.expandByObject(o); });
+    return { holder, sw: size.x, sh: size.y, front: 0, back: body.min.z };
   }, [gltf, tex]);
   return (
-    <group position={position} rotation={rotation} scale={scale}>
+    /* the shadow follows the device but never turns with it: a plane that turns shows edge-on */
+    <group position={position} scale={scale}>
+    {built && shadow > 0 && <ShadowPlane w={built.sw} h={built.sh} z={built.back - 40} opacity={shadow} />}
+    <group rotation={rotation}>
       {screen.segments?.map((s, i) => (
         <Sequence key={i} from={s.from} durationInFrames={s.frames} layout="none">
           <Video src={staticFile(s.src)} onVideoFrame={video.onFrame} muted headless trimBefore={Math.round(s.start * vfps)} playbackRate={s.rate ?? 1} />
@@ -142,12 +149,12 @@ export const LibraryDevice: React.FC<{
       ))}
       {built && <primitive object={built.holder} />}
       {built && taps.map((tp, i) => <TapDot key={i} tap={tp} frame={frame} fps={fps} x={(tp.u - 0.5) * built.sw} y={(0.5 - tp.v) * built.sh} z={built.front + 0.1} size={built.sw} />)}
-      {built && shadow > 0 && <ShadowPlane w={built.sw} h={built.sh} opacity={shadow} />}
+    </group>
     </group>
   );
 };
 
-const ShadowPlane: React.FC<{ w: number; h: number; opacity: number }> = ({ w, h, opacity }) => {
+const ShadowPlane: React.FC<{ w: number; h: number; z: number; opacity: number }> = ({ w, h, z, opacity }) => {
   const t = useMemo(() => {
     const c = document.createElement('canvas'); c.width = 512; c.height = 512;
     const x = c.getContext('2d')!;
@@ -157,7 +164,7 @@ const ShadowPlane: React.FC<{ w: number; h: number; opacity: number }> = ({ w, h
     return new THREE.CanvasTexture(c);
   }, []);
   return (
-    <mesh position={[w * 0.08, -h * 0.09, -46]} scale={[1.25, 1.1, 1]}>
+    <mesh position={[w * 0.08, -h * 0.09, z]} scale={[1.25, 1.1, 1]}>
       <planeGeometry args={[w * 1.6, h * 1.35]} />
       <meshBasicMaterial map={t} transparent opacity={opacity} depthWrite={false} />
     </mesh>

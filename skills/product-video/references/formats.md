@@ -35,3 +35,12 @@ bit-rate rule.
 | Draft | `--draft`: half scale, CRF 24, no motion blur |
 
 Every render is a new file: rename the last one before rendering over it.
+
+## The promo film is not an App Store preview
+
+Checked against Apple on 2026-09-24 (developer.apple.com app preview specifications and
+App Review Guideline 2.3.4): a preview is 15-30 s, at most 30 fps, 886 x 1920 or 1920 x 886
+for the 6.9-inch iPhone, H.264 10-12 Mbps with 256 kbps stereo AAC, and "may only use
+video screen captures of the app itself", with narration and text overlays allowed. A 3D
+device, other devices and a 45 s 60 fps landscape cut all fail it. Make the App Store cut
+as its own composition: full-bleed recordings, captions over them, dissolves.
