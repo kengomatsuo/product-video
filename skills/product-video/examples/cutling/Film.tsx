@@ -160,7 +160,7 @@ const LINEUP_POSE = P(108, -18, 40, 0.05, -0.3, 0.02, 0.6);
 const phonePath = path(P(36, -300, CLOSE_Z, 0.25, -0.4, 0.04), [
   { a: STAGE0, b: SCENE.paste + 60, to: R(0.8), ease: outC }, // rises from below onto the keyboard
   pan(T(1), R(0.74)), // the Cutling keyboard's list
-  { a: DROP + 12, b: DROP + 110, to: R(0.56, { x: 16, z: 240, rx: -0.05, ry: -0.1 }) }, // push onto the pasted address
+  { a: DROP + 12, b: DROP + 110, to: R(0.56, { rx: -0.04 }) }, // pan onto the pasted address; a push would cover the caption
   { a: SCENE.save - 54, b: SCENE.save + 54, to: L(0.16), spin: 1, arc: 170 },
   pan(T(6), L(0.5)), // the text field
   pan(T(7), L(0.16)), // Save
