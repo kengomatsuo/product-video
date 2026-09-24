@@ -5,6 +5,22 @@ a storyboard written first gets cut against the music and never lands.
 
 ## 1. Pick and measure the track
 
+The owner's verdicts on 2026-09-24, from three reels of 49 stock tracks:
+
+| Kind | Verdict | Examples |
+|---|---|---|
+| Minimal techno, tech house | rejected: the kick and bass read as clanky on a phone speaker | Mixkit "Hazy After Hours" |
+| Cheerful stock pop, ukulele, "happy corporate", upbeat drops in the style of NCS (the free EDM label) | rejected as DIY | Mixkit "Smile", "Pop 05" |
+| Solo or felt piano | wrong for promos; fits a tutorial | Pixabay "Minimal Piano", "Soft Felt Piano" |
+| Warm pads with a lift, no hard drop | chosen | Pixabay "Revival" (Diamond_Tunes) |
+| A patient atmospheric build, or a confident build to a late payoff | acceptable | Pixabay "Chase the Sparks", "Confident Background" |
+
+Start from `~/Shared/inspo/product-video-promo/music-for-promos/README.md` (what Apple,
+Samsung and app launch films use, and the traits). Reject a track whose band below 90 Hz
+sits within 5 dB of its full-band level: that is the bass-heavy sound the owner rejected.
+The owner listens on a phone, so always send a sample reel with a spoken number before
+each track, and never pick the music alone.
+
 Library: `~/Shared/inspo/product-video-promo/audio/LIBRARY.md` (34 tracks, 119 effects,
 each with its licence and the exact attribution line when one is required).
 
@@ -21,8 +37,8 @@ novelty kernel (Foote 2000). On the four Mixkit tracks it tested, every tempo ca
 within 1.5 BPM of an independent librosa run.
 
 Choose a start point on a downbeat so the track's drop lands on the film's payoff.
-Cutling: "Hazy After Hours" from 5.46 s puts its 15.38 s drop 9.90 s into the film, on
-the frame where the pasted address appears.
+Cutling: "Revival" from 24.10 s puts its 33.94 s lift on bar 5, the frame where the pasted
+address appears, and its 65.41 s section change on "On the App Store" at bar 21.
 
 ## 2. Build the timeline on bars
 

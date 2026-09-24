@@ -87,7 +87,7 @@ export function useImageTexture(src: string) {
 }
 
 /* video capture: @remotion/media decodes each exact frame, we copy it into a canvas texture */
-function useVideoCanvas(w: number, h: number) {
+export function useVideoCanvas(w: number, h: number) {
   const { advance, invalidate } = useThree();
   const { isRendering } = useRemotionEnvironment();
   const [c] = useState(() => {
@@ -212,7 +212,7 @@ export type ScreenTap = { at: number; u: number; v: number };
 
 const ease = (x: number) => Math.min(1, Math.max(0, x));
 /* press 1:2 (compress 0.1 s, release 0.22 s), ring spreads and fades over 0.5 s */
-const TapDot: React.FC<{ tap: ScreenTap; frame: number; fps: number; x: number; y: number; z: number; size: number }> = ({ tap, frame, fps, x, y, z, size }) => {
+export const TapDot: React.FC<{ tap: ScreenTap; frame: number; fps: number; x: number; y: number; z: number; size: number }> = ({ tap, frame, fps, x, y, z, size }) => {
   const t = frame / fps - tap.at;
   if (t < -0.12 || t > 0.6) return null;
   const press = t < 0 ? 1 - Math.pow(ease((t + 0.1) / 0.1), 2) * 0.16 : 0.84 + (1 - Math.pow(1 - ease(t / 0.22), 3)) * 0.16;

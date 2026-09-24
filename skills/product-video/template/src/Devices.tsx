@@ -2,8 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { continueRender, delayRender, staticFile } from 'remotion';
-import { useRedraw } from './Phone3D';
+import { Sequence, continueRender, delayRender, staticFile, useVideoConfig } from 'remotion';
+import { Video } from '@remotion/media';
+import { TapDot, useImageTexture, useRedraw, useVideoCanvas, type ScreenSrc, type ScreenTap } from './Phone3D';
 
 /*
  * MacBook Pro 16-inch (2024) by jackbaeten, CC-BY 4.0, rigged by William Laverty
@@ -14,7 +15,7 @@ import { useRedraw } from './Phone3D';
 const LID_CLOSED = 1.94;
 const SCREEN_ASPECT = 3456 / 2234; // the 16-inch panel
 
-function useGltf(src: string) {
+export function useGltf(src: string) {
   const redraw = useRedraw();
   const [scene, setScene] = useState<THREE.Group | null>(null);
   const [handle] = useState(() => delayRender(`model ${src}`));
@@ -73,5 +74,92 @@ export const MacBook: React.FC<{ screen: string; open: number; position: [number
     <group position={position} rotation={rotation} scale={scale * 10}>
       <primitive object={model} />
     </group>
+  );
+};
+
+/* ---------- library iPhone and iPad (polyman Studio, CC-BY 4.0) ---------- */
+
+type Kind = 'iphone' | 'ipad';
+/* orient: model -> upright, screen facing +z, portrait. unit: scene units (metres) -> mm */
+const LIB: Record<Kind, { src: string; screenMat: string; unit: number; flipY: boolean; orient: () => THREE.Matrix4; keep?: (b: THREE.Box3) => boolean }> = {
+  iphone: { src: 'models/iphone.glb', screenMat: 'ZVpJkazCvASOIpG', unit: 1000, flipY: true, orient: () => new THREE.Matrix4().makeRotationY(Math.PI) },
+  ipad: {
+    src: 'models/ipad.glb', screenMat: 'jcIAFNBmpIebNBE', unit: 1000, flipY: true,
+    /* the file sits the iPad on a Magic Keyboard, tilted 31 degrees: keep the slab, stand it up */
+    keep: (b) => b.min.x > -0.193 && b.max.x < -0.075 && b.min.y > 0.005 && b.max.y < 0.205,
+    orient: () => {
+      const u = new THREE.Vector3(-0.114, 0.19, 0).normalize(), l = new THREE.Vector3(0, 0, 1), n = new THREE.Vector3().crossVectors(u, l);
+      return new THREE.Matrix4().makeBasis(u, l, n).invert();
+    },
+  },
+};
+
+export const LibraryDevice: React.FC<{
+  kind: Kind; screen: ScreenSrc; position?: [number, number, number]; rotation?: [number, number, number]; scale?: number;
+  taps?: ScreenTap[]; frame?: number; fps?: number; shadow?: number;
+}> = ({ kind, screen, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1, taps = [], frame = 0, fps = 60, shadow = 0.3 }) => {
+  const spec = LIB[kind];
+  const gltf = useGltf(spec.src);
+  const { fps: vfps } = useVideoConfig();
+  const [w, h] = screen.size ?? [1320, 2868];
+  const video = useVideoCanvas(w, h);
+  const image = useImageTexture(screen.image ?? 'icon.png');
+  const tex = screen.segments ? video.texture : image;
+  const built = useMemo(() => {
+    if (!gltf || !tex) return null;
+    tex.flipY = spec.flipY; tex.needsUpdate = true;
+    const m = gltf.clone(true);
+    m.updateMatrixWorld(true);
+    let screenMesh: THREE.Mesh | null = null;
+    m.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      if (spec.keep && !spec.keep(new THREE.Box3().setFromObject(mesh))) mesh.visible = false;
+      if ((mesh.material as THREE.Material).name === spec.screenMat) {
+        mesh.material = new THREE.MeshBasicMaterial({ map: tex, toneMapped: false });
+        screenMesh = mesh;
+      }
+    });
+    const wrap = new THREE.Group();
+    wrap.add(m);
+    wrap.applyMatrix4(spec.orient());
+    wrap.scale.multiplyScalar(spec.unit);
+    wrap.updateMatrixWorld(true);
+    /* centre on the screen so taps and rigs work in screen coordinates */
+    const sb = new THREE.Box3().setFromObject(screenMesh!);
+    const c = sb.getCenter(new THREE.Vector3()), size = sb.getSize(new THREE.Vector3());
+    const holder = new THREE.Group();
+    holder.add(wrap);
+    wrap.position.sub(new THREE.Vector3(c.x, c.y, sb.max.z)); // screen surface at z = 0
+    return { holder, sw: size.x, sh: size.y, front: 0 };
+  }, [gltf, tex]);
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {screen.segments?.map((s, i) => (
+        <Sequence key={i} from={s.from} durationInFrames={s.frames} layout="none">
+          <Video src={staticFile(s.src)} onVideoFrame={video.onFrame} muted headless trimBefore={Math.round(s.start * vfps)} playbackRate={s.rate ?? 1} />
+        </Sequence>
+      ))}
+      {built && <primitive object={built.holder} />}
+      {built && taps.map((tp, i) => <TapDot key={i} tap={tp} frame={frame} fps={fps} x={(tp.u - 0.5) * built.sw} y={(0.5 - tp.v) * built.sh} z={built.front + 0.1} size={built.sw} />)}
+      {built && shadow > 0 && <ShadowPlane w={built.sw} h={built.sh} opacity={shadow} />}
+    </group>
+  );
+};
+
+const ShadowPlane: React.FC<{ w: number; h: number; opacity: number }> = ({ w, h, opacity }) => {
+  const t = useMemo(() => {
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d')!;
+    const g = x.createRadialGradient(256, 256, 0, 256, 256, 250);
+    g.addColorStop(0, 'rgba(0,0,0,0.9)'); g.addColorStop(0.45, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    return new THREE.CanvasTexture(c);
+  }, []);
+  return (
+    <mesh position={[w * 0.08, -h * 0.09, -46]} scale={[1.25, 1.1, 1]}>
+      <planeGeometry args={[w * 1.6, h * 1.35]} />
+      <meshBasicMaterial map={t} transparent opacity={opacity} depthWrite={false} />
+    </mesh>
   );
 };

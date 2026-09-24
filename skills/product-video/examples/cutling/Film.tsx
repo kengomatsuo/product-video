@@ -4,13 +4,13 @@ import { Audio } from '@remotion/media';
 import { ThreeCanvas } from '@remotion/three';
 import { syllable } from 'syllable';
 import { Background } from './backgrounds';
-import { IPAD, Phone3D, StudioLight, type ScreenTap, type Segment } from './Phone3D';
-import { MacBook } from './Devices';
+import { StudioLight, type ScreenTap, type Segment } from './Phone3D';
+import { LibraryDevice, MacBook } from './Devices';
 
 /*
- * Cutling, 23 bars (45.6 s) at 60 fps, cut to "Hazy After Hours" (Mixkit) from 5.46 s in:
- * 121.5 BPM, a bar every 1.9807 s. The paste lands on the first drop (bar 5), the
- * icon on the second (bar 20).
+ * Cutling, 23 bars (45.2 s) at 60 fps, cut to "Revival" by Diamond_Tunes (Pixabay Content
+ * License) from 24.10 s in: 122 BPM, a bar every 1.967 s. Its lift at 33.94 s lands on the
+ * paste (bar 5); the section change at 65.41 s on "On the App Store" (bar 21).
  *
  * One phone for the whole film: it slides in from below the frame, spins between
  * scenes while it travels (the recording swaps while its back faces the camera),
@@ -22,7 +22,7 @@ import { MacBook } from './Devices';
  *   camera moves 1.2-2 s, eased cubic, drifting holds between them
  */
 const FPS = 60;
-const BAR = 1.9807 * FPS;
+const BAR = (60 / 122) * 4 * FPS;
 const B = (n: number) => Math.round(n * BAR);
 const BEAT = BAR / 4;
 export const FILM_FRAMES = B(23);
@@ -180,11 +180,11 @@ const Stage: React.FC = () => {
       {f >= SCENE.sync - 10 && (
         <>
           <MacBook screen="captures/mac-welcome.png" open={lid} position={[mac.x, mac.y + d.y, mac.z]} rotation={[mac.rx, mac.ry, mac.rz]} scale={mac.s} />
-          <Phone3D body={IPAD} tablet screen={{ image: 'captures/02-iPad_Air_13-inch_M4_-02_MainGrid.png' }} aspect={2048 / 2732} color="#c9ccd0" shadow={0.25}
+          <LibraryDevice kind="ipad" screen={{ image: 'captures/02-iPad_Air_13-inch_M4_-02_MainGrid.png' }} shadow={0}
             position={[ip.x, ip.y + d.y, ip.z]} rotation={[ip.rx, ip.ry + d.ry, ip.rz]} scale={ip.s} />
         </>
       )}
-      <Phone3D screen={{ segments: phoneSegs }} aspect={1320 / 2868} position={[ph.x, ph.y + d.y, ph.z]} rotation={[ph.rx, ph.ry + d.ry, ph.rz]} scale={ph.s}
+      <LibraryDevice kind="iphone" screen={{ segments: phoneSegs }} position={[ph.x, ph.y + d.y, ph.z]} rotation={[ph.rx, ph.ry + d.ry, ph.rz]} scale={ph.s}
         taps={phoneTaps} frame={g} fps={FPS} />
     </ThreeCanvas>
   );
@@ -263,9 +263,9 @@ export const Film: React.FC = () => (
     <Captions />
     <Sequence from={SCENE.end} durationInFrames={FILM_FRAMES - SCENE.end}><End /></Sequence>
 
-    {/* music from its 5.46 s downbeat; out over the last 1.5 s */}
-    <Audio src={staticFile('music/music-132.mp3')} trimBefore={Math.round(5.46 * FPS)}
-      volume={(fr) => 0.85 * interpolate(fr, [0, 8, FILM_FRAMES - 90, FILM_FRAMES], [0, 1, 1, 0], clamp)} />
+    {/* music from its 24.10 s downbeat, in over 0.6 s (it starts mid-phrase), out over 1.5 s */}
+    <Audio src={staticFile('music/pixabay-revival-234210.mp3')} trimBefore={Math.round(24.1 * FPS)}
+      volume={(fr) => 0.85 * interpolate(fr, [0, 36, FILM_FRAMES - 90, FILM_FRAMES], [0, 1, 1, 0], clamp)} />
     {/* whooshes peak mid-spin (0.70 s into 1490), a swipe under each device slide */}
     {[SCENE.save, SCENE.sort].map((s, i) => <Sfx key={i} src="sfx-1490" at={s - 42} vol={0.26} />)}
     <Sfx src="sfx-2627" at={SCENE.paste - 15} vol={0.2} />
