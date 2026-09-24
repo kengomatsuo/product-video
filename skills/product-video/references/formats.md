@@ -51,3 +51,12 @@ No zoom into the recording (it crops the app) and no device frame: Apple's App P
 page says previews "must show only content within the app itself" (checked 2026-09-24).
 A still hold is its own segment with a constant `playbackRate`: changing the rate inside
 a segment re-times all of it and showed the segment's first frame.
+
+## Uploading previews
+
+`scripts/asc-upload-preview.rb <video> <PREVIEW_TYPE>` (run from the app's `fastlane/`, which
+holds `asc_api_key.json`) opens the next version if none is editable, then uploads into the
+primary locale: `IPHONE_67` (886 x 1920) and `IPAD_PRO_3GEN_129` (1200 x 1600, the same 3:4
+as an iPad Pro 13-inch capture, so the recording fits whole). Previews only attach to an
+editable version, and a new version stays unsubmitted until the owner submits it.
+iPad Simulator taps are in points: screenshot pixels / 1.4535 on the 13-inch.
