@@ -11,9 +11,12 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
  * Front: black glass with clearcoat; screen: the capture at its own aspect, unlit so
  * UI colours stay exact; Dynamic Island on top. Lit by a room environment built in code.
  */
-const BODY = { w: 71.5, h: 149.6, d: 8.25, r: 11.5 };
+export type Body = { w: number; h: number; d: number; r: number };
+export const IPHONE: Body = { w: 71.5, h: 149.6, d: 8.25, r: 11.5 };
+/* iPad Air 13-inch (M4), apple.com/ipad-air/specs: 214.9 x 280.6 x 6.1 */
+export const IPAD: Body = { w: 214.9, h: 280.6, d: 6.1, r: 18 };
 
-function roundedRect(w: number, h: number, r: number) {
+export function roundedRect(w: number, h: number, r: number) {
   const s = new THREE.Shape(), x = -w / 2, y = -h / 2;
   s.moveTo(x + r, y);
   s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r);
@@ -24,7 +27,7 @@ function roundedRect(w: number, h: number, r: number) {
 }
 
 /* ShapeGeometry UVs are in shape units; map them to 0..1 so a texture fills the shape */
-function shapeGeo(w: number, h: number, r: number) {
+export function shapeGeo(w: number, h: number, r: number) {
   const g = new THREE.ShapeGeometry(roundedRect(w, h, r), 24);
   const pos = g.attributes.position, uv = g.attributes.uv;
   for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) / w + 0.5, pos.getY(i) / h + 0.5);
@@ -32,7 +35,7 @@ function shapeGeo(w: number, h: number, r: number) {
 }
 
 /* ThreeCanvas draws on frame change; anything that arrives later must ask for a redraw */
-function useRedraw() {
+export function useRedraw() {
   const { advance, invalidate } = useThree();
   const { isRendering } = useRemotionEnvironment();
   return () => (isRendering ? advance(performance.now()) : invalidate());
@@ -62,7 +65,7 @@ export const StudioLight: React.FC = () => {
 };
 
 /* image capture as a texture; the render waits for it */
-function useImageTexture(src: string) {
+export function useImageTexture(src: string) {
   const redraw = useRedraw();
   const [tex, setTex] = useState<THREE.Texture | null>(null);
   useEffect(() => { if (tex) redraw(); }, [tex]);
@@ -137,22 +140,25 @@ const VideoScreen: React.FC<{ src: ScreenSrc }> = ({ src }) => {
 export const Phone3D: React.FC<{
   screen: ScreenSrc; aspect: number; position?: [number, number, number]; rotation?: [number, number, number];
   scale?: number; color?: string; shadow?: number; taps?: ScreenTap[]; frame?: number; fps?: number; children?: React.ReactNode;
-}> = ({ screen, aspect, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1, color = '#8f9296', shadow = 0.35, taps = [], frame = 0, fps = 60, children }) => {
-  const bevel = 1.1;
+  body?: Body; tablet?: boolean;
+}> = ({ screen, aspect, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1, color = '#8f9296', shadow = 0.35, taps = [], frame = 0, fps = 60, children, body: BODY = IPHONE, tablet = false }) => {
+  const bevel = Math.min(1.1, BODY.d * 0.15);
   const body = useMemo(() => {
     const g = new THREE.ExtrudeGeometry(roundedRect(BODY.w - bevel * 2, BODY.h - bevel * 2, BODY.r - bevel), {
       depth: BODY.d - bevel * 2, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 8, curveSegments: 32,
     });
     g.translate(0, 0, -(BODY.d - bevel * 2) / 2);
     return g;
-  }, []);
+  }, [BODY]);
   /* the screen keeps the capture's aspect: nothing of the UI is cropped */
-  const sh = BODY.h - 4.4, sw = Math.min(sh * aspect, BODY.w - 4.2);
+  const inset = tablet ? 15 : 4.3;
+  const sh = BODY.h - inset, sw = Math.min(sh * aspect, BODY.w - inset);
   const screenH = sw / aspect;
-  const glass = useMemo(() => shapeGeo(BODY.w - 1.2, BODY.h - 1.2, BODY.r - 0.6), []);
-  const disp = useMemo(() => shapeGeo(sw, screenH, BODY.r - 2.4), [sw, screenH]);
+  /* the front is black glass to the very edge: the metal band shows only at an angle */
+  const glass = useMemo(() => shapeGeo(BODY.w - 0.3, BODY.h - 0.3, BODY.r - 0.15), [BODY]);
+  const disp = useMemo(() => shapeGeo(sw, screenH, tablet ? 12 : BODY.r - 2.4), [sw, screenH]);
   const island = useMemo(() => shapeGeo(sw * 0.31, sw * 0.092, sw * 0.046), [sw]);
-  const back = useMemo(() => shapeGeo(BODY.w - 1.6, BODY.h - 1.6, BODY.r - 0.8), []);
+  const back = useMemo(() => shapeGeo(BODY.w - 1.6, BODY.h - 1.6, BODY.r - 0.8), [BODY]);
   const front = BODY.d / 2;
   const shadowTex = useMemo(() => {
     const c = document.createElement('canvas'); c.width = 512; c.height = 512;
@@ -163,6 +169,11 @@ export const Phone3D: React.FC<{
     return new THREE.CanvasTexture(c);
   }, []);
   const titanium = <meshPhysicalMaterial color={color} metalness={1} roughness={0.32} clearcoat={0.4} clearcoatRoughness={0.2} />;
+  /* extrude groups: 0 = the flat caps (black like the glass), 1 = the sides and bevel (metal) */
+  const bodyMats = useMemo(() => [
+    new THREE.MeshStandardMaterial({ color: '#050505', roughness: 0.4, metalness: 0, envMapIntensity: 0.2 }),
+    new THREE.MeshPhysicalMaterial({ color, metalness: 1, roughness: 0.32, clearcoat: 0.4, clearcoatRoughness: 0.2 }),
+  ], [color]);
   return (
     <group position={position} rotation={rotation} scale={scale}>
       {/* soft shadow thrown on an unseen wall behind the phone */}
@@ -172,9 +183,9 @@ export const Phone3D: React.FC<{
           <meshBasicMaterial map={shadowTex} transparent opacity={shadow} depthWrite={false} />
         </mesh>
       )}
-      <mesh geometry={body}>{titanium}</mesh>
+      <mesh geometry={body} material={bodyMats} />
       {/* side buttons: action + volume on the left, power on the right */}
-      {[[-1, 38, 7], [-1, 22, 11], [-1, 8, 11], [1, 24, 16]].map(([side, y, len], i) => (
+      {!tablet && [[-1, 38, 7], [-1, 22, 11], [-1, 8, 11], [1, 24, 16]].map(([side, y, len], i) => (
         <mesh key={i} position={[side * (BODY.w / 2 + 0.35), y, 0]}>
           <boxGeometry args={[0.9, len, 3.2]} />{titanium}
         </mesh>
@@ -183,17 +194,14 @@ export const Phone3D: React.FC<{
         <meshPhysicalMaterial color="#5c5f62" roughness={0.55} metalness={0.2} clearcoat={0.6} />
       </mesh>
       <mesh geometry={glass} position={[0, 0, front + 0.02]}>
-        <meshPhysicalMaterial color="#030303" roughness={0.08} metalness={0} clearcoat={1} clearcoatRoughness={0.05} />
+        {/* glass reflects the room faintly; at full strength it read as a silver frame */}
+        <meshPhysicalMaterial color="#020202" roughness={0.18} metalness={0} clearcoat={0.5} clearcoatRoughness={0.15} envMapIntensity={0.18} />
       </mesh>
       <mesh geometry={disp} position={[0, 0, front + 0.05]}><ScreenMaterial src={screen} /></mesh>
-      <mesh geometry={island} position={[0, screenH / 2 - sw * 0.092 / 2 - screenH * 0.012, front + 0.07]}>
+      {!tablet && <mesh geometry={island} position={[0, screenH / 2 - sw * 0.092 / 2 - screenH * 0.012, front + 0.07]}>
         <meshBasicMaterial color="#000" />
-      </mesh>
+      </mesh>}
       {taps.map((tp, i) => <TapDot key={i} tap={tp} frame={frame} fps={fps} x={(tp.u - 0.5) * sw} y={(0.5 - tp.v) * screenH} z={front + 0.08} size={sw} />)}
-      {/* glass reflection: a faint sheen that slides as the phone turns */}
-      <mesh geometry={glass} position={[0, 0, front + 0.09]}>
-        <meshPhysicalMaterial transparent opacity={0.06} color="#ffffff" roughness={0} metalness={0} transmission={0} />
-      </mesh>
       {children}
     </group>
   );

@@ -31,6 +31,21 @@ second half starts the next scene; a pull back that reveals more devices. One ph
 continuous, carrying the eye across cuts; the screen cuts between recording segments
 while the body keeps moving.
 
+## Library models first (`src/Devices.tsx`)
+
+Use a licensed model before building one: `public/models/macbook.glb` is a CC-BY 4.0
+MacBook Pro 16-inch with its screen as its own mesh (`Screen`) and a hinged lid
+(`LidPivot`, local X, 1.94 rad closed), loaded with `GLTFLoader` + `MeshoptDecoder`.
+Credits in `public/models/LICENSES.md` go in the video description. Good CC-BY iPhone
+15 Pro and iPad Pro M4 models by polyman Studio are on Sketchfab, and downloading them
+needs a logged-in account, which the owner does themselves. Until then `Phone3D` draws
+the iPhone and, with `body={IPAD} tablet`, the iPad.
+
+The front of a phone or tablet is black glass to the edge; the metal band shows only at
+an angle. A clearcoat glass at full environment strength read as a silver frame in v3,
+so the glass reflects at 0.18. A camera `near` of 1 made the 0.03 mm layers of a scaled
+iPad z-fight; use 60.
+
 ## Backgrounds (`src/backgrounds.tsx`)
 
 | Style | What moves |

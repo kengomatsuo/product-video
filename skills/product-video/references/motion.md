@@ -20,6 +20,15 @@ Full research: `~/Shared/inspo/product-video-promo/easing/README.md`.
 
 ## Continuity between beats
 
+**Nothing appears out of nowhere, and nothing scales up to the lens and teleports.**
+Cutling v3 did both and the owner rejected it (2026-09-24). One device carries the
+whole film on one path (`path()` in the Cutling example): it enters from outside the
+frame, and between scenes it spins while it travels to the next position, with the
+recording swapped while its back faces the camera. Other devices slide in from an edge
+(iPad from the left, the phone from the right, the Mac rising from below) and never
+fade in on the spot.
+
+
 | Rule | Value | Source |
 |---|---|---|
 | Default boundary | cut the curve: exit accelerates, cut lands mid-motion, entry continues the same way and decelerates | HF |
@@ -56,7 +65,8 @@ and practitioner guides (`timing/README.md`, 20 sources):
 |---|---|---|
 | Caption on screen | max(1.6 s, characters / 8); real promo captions read at a median 7.25 chars/s | pacing (7 captions OCR-timed) |
 | Hold after the last word lands | at least 1.5 s before any exit starts | BBC 0.3 s/word floor, "read it twice" rule |
-| Word entry | 0.4 s each, next word 0.25-0.5 s later; the whole line in under ~1.5 s | kinetic type (timing §2) |
+| Word onsets | at speaking pace: each word starts after the previous one's syllables at 6.19 syllables/s (`speechOnsets`, `syllable` package, MIT); +0.2 s after punctuation. The owner: the entry must not be slowed, only paced like talk | Pellegrino, Coupé & Marsico 2011, English rate |
+| Word rise | 0.27 s each, eased cubic out | Cutling v4 |
 | Caption exit | 0.3 s dissolve, always faster than the entry | NN/g asymmetric entry/exit |
 | Gap between captions | 0.3-0.5 s | Netflix 2-frame minimum, widened for promo |
 | Camera move | 1.2-2 s, eased cubic; a settle of 0.6-1.2 s | pacing (measured), Blender/C4D tutorials |
