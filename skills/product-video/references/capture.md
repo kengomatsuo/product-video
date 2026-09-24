@@ -17,6 +17,26 @@ is never usable: the first Cutling test had one and the frame wrapped a second p
 Playwright's own `recordVideo` writes compressed WebM (its types say it scales to fit
 800 x 800 by default), which is too soft for a promo. Record the real window instead.
 
+## Traps from the Cutling session (2026-09-24)
+
+- With more than one Simulator booted, `booted` records whichever it picks: the first
+  Cutling take recorded an idle iPad. Pass the UDID as the third argument.
+- `simctl recordVideo` writes variable frame rate, only when pixels change. Convert
+  before editing: `ffmpeg -i take.mov -vf fps=60,format=yuv420p -c:v libx264 -crf 12 take.mp4`.
+- Start each take from the home screen: launching one app from another leaves a
+  "◀ Settings" back link in the status bar.
+- Seed demo data the way the app's own UI tests do (Cutling: launch argument
+  `-SNAPSHOT_MODE`, which also resets data on every launch).
+- A keyboard extension has to be added in Settings > General > Keyboard > Keyboards
+  first. Leave "Allow Full Access" to the owner: it is a security setting.
+- Never launch a Debug build of a Mac app that shares the shipping bundle id with seed
+  data: it writes into the owner's real library.
+- Taps land when the UI reacts, not when the tool call returns. Find each onset with
+  `bun tools/onsets.ts take.mp4` (frames where motion starts after 0.3 s of stillness)
+  and place the touch dot 2-3 frames before it.
+- Tool latency makes waits long (a menu open for 4 s). Cut them out with segments and
+  `rate`, on beats, instead of re-recording faster.
+
 ## Repeatable flows
 
 goldie (`kacperkapusciak/goldie`, MIT) with argent (`software-mansion/argent`,

@@ -8,7 +8,7 @@ import type { CursorKey, Device, Tap } from './timing';
 const isVideo = (src: string) => /\.(mp4|mov|webm|m4v)$/i.test(src);
 const url = (src: string) => (/^https?:/.test(src) ? src : staticFile(src));
 
-/* Two grounds and one accent [product-launch-motion law 8]. Static: idle drift reads as waiting [HF]. */
+/* Two grounds and one accent [product-launch-motion law 8] */
 export const Backdrop: React.FC = () => {
   const { width, height } = useVideoConfig();
   return (

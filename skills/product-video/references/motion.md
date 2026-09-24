@@ -36,8 +36,7 @@ Full research: `~/Shared/inspo/product-video-promo/easing/README.md`.
 
 | Rule | Value | Source |
 |---|---|---|
-| Idle motion | banned: no drift, breathe, float or slow Ken Burns to fill time | HF |
-| What fills a beat instead | staged reveals, a camera move with intent, the UI doing something, an animated sequence, a cursor-led action | HF |
+| What fills a beat | staged reveals, a camera move with intent, the UI doing something, an animated sequence, a cursor-led action | HF |
 | Single entry | at most 800 ms; a longer build is a stagger | HF |
 | Exit | about 75% of its entry | HF |
 | Total stagger | at most 500 ms | HF |

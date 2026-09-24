@@ -29,6 +29,19 @@ this skill decides what to make and how it should move.
    Screenshots are only for a screen that genuinely holds still.
 5. **Copy.** Write each caption through `human-prose`, 2 to 5 words, verb and object, a
    fact the screen proves. See `references/copy.md`. Never ship a placeholder.
+6. **Music.** Pick the track, run `scripts/beats.ts`, and choose the start point that puts
+   its drop on the payoff. Scenes are then laid out in bars. See `references/audio.md`.
+
+## The film, not the slideshow
+
+A storyboard of stills in a frame is a slideshow. A film has: real recordings playing on
+a 3D device that keeps moving across cuts; touches you can see; words arriving on beats;
+seams that carry motion through (cut the curve, zoom-through, a spin); a background that
+drifts; music whose drop lands on the payoff; an effect on every action; and a master
+with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: seven
+scenes on a 121.5 BPM bar grid. Build new films on its pieces (`Phone3D`, `Background`,
+`BeatWords`, the rig functions) rather than on the simpler `Promo` beats.
+See `references/devices-and-backgrounds.md`.
 
 ## Build
 
@@ -48,7 +61,7 @@ Store), `music`, `musicVolume`, `motionBlur`.
 The template already implements the motion rules in `references/motion.md`. Read that
 file before changing any timing, and change `src/motion.ts` rather than writing a
 one-off curve in a component. Beyond the four beat types, write new components against
-the same tokens: one current, no idle motion, the click causes the next thing.
+the same tokens: one current, the click causes the next thing.
 
 A brand the detector could not read (it says so in `notes`) gets `overrides` in
 `src/brand.json`: `accent`, `background`, `foreground`, `font`, `dark`.
@@ -56,7 +69,8 @@ A brand the detector could not read (it says so in `notes`) gets `overrides` in
 ## Check, then hand over
 
 `bun tools/stills.ts`, open every still; `bun tools/render.ts --draft`; then the final
-render and `bun tools/check.ts`. `references/qa.md` lists what to look at by eye and the
+master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.264 at
+-14 LUFS; `--appstore` for Apple's limits) and `bun tools/check.ts <file>`. `references/qa.md` lists what to look at by eye and the
 loudness target. Send the MP4 with SendUserFile, say what was checked and what was not
 (you cannot hear the audio).
 
