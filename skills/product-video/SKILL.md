@@ -38,8 +38,8 @@ A storyboard of stills in a frame is a slideshow. A film has: real recordings pl
 a 3D device that keeps moving across cuts; touches you can see; words arriving on beats;
 seams that carry motion through (cut the curve, zoom-through, a spin); a background that
 drifts; music whose drop lands on the payoff; an effect on every action; and a master
-with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: seven
-scenes on a 121.5 BPM bar grid. Build new films on its pieces (`Phone3D`, `Background`,
+with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: six
+scenes on a 121.5 BPM bar grid, timed to the pacing table in `references/motion.md`. Build new films on its pieces (`Phone3D`, `Background`,
 `BeatWords`, the rig functions) rather than on the simpler `Promo` beats.
 See `references/devices-and-backgrounds.md`.
 

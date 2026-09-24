@@ -211,15 +211,16 @@ const TapDot: React.FC<{ tap: ScreenTap; frame: number; fps: number; x: number; 
   const ring = ease(t / 0.5), fade = 1 - Math.pow(ring, 1.4);
   const r = size * 0.1; // about a fingertip on a real phone
   return (
-    <group position={[x, y, z]}>
-      <mesh scale={press}>
+    /* drawn over the screen, never depth-tested against it: 0.03 mm apart they z-fight */
+    <group position={[x, y, z + 0.4]} renderOrder={10}>
+      <mesh scale={press} renderOrder={10}>
         <circleGeometry args={[r, 48]} />
-        <meshBasicMaterial color="#3a3a3c" transparent opacity={0.34 * (t < 0.3 ? 1 : fade)} depthWrite={false} toneMapped={false} />
+        <meshBasicMaterial color="#3a3a3c" transparent opacity={0.34 * (t < 0.3 ? 1 : fade)} depthWrite={false} depthTest={false} toneMapped={false} />
       </mesh>
       {t >= 0 && (
-        <mesh scale={0.6 + ring * 1.1}>
+        <mesh scale={0.6 + ring * 1.1} renderOrder={11}>
           <ringGeometry args={[r * 1.05, r * 1.22, 64]} />
-          <meshBasicMaterial color="#3a3a3c" transparent opacity={0.55 * fade} depthWrite={false} toneMapped={false} />
+          <meshBasicMaterial color="#3a3a3c" transparent opacity={0.55 * fade} depthWrite={false} depthTest={false} toneMapped={false} />
         </mesh>
       )}
     </group>

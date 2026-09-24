@@ -22,6 +22,8 @@ Traps found while building it, all fixed in the file:
 - A second WebGL2 context fails in headless Chrome: one shared canvas for painting.
 - `Config.setChromiumOpenGlRenderer('angle')` or WebGL2 is missing entirely.
 - Touch dots in white vanish on a white UI; the grey of iOS "show touches" reads.
+- A dot 0.03 mm over the glass z-fights with it: draw it with `depthTest={false}` and a
+  higher `renderOrder`.
 
 Moves that read as expensive (from the references): enter mid-flight at a steep angle and
 swing to face camera; a slow-fast-slow push onto the element that matters; a spin whose

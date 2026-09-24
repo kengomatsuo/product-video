@@ -28,7 +28,12 @@ Playwright's own `recordVideo` writes compressed WebM (its types say it scales t
 - Seed demo data the way the app's own UI tests do (Cutling: launch argument
   `-SNAPSHOT_MODE`, which also resets data on every launch).
 - A keyboard extension has to be added in Settings > General > Keyboard > Keyboards
-  first. Leave "Allow Full Access" to the owner: it is a security setting.
+  first. Turn on "Allow Full Access" in the Simulator yourself, or the keyboard shows a
+  Full Access banner in every frame.
+- Start the recorder under bash, never zsh: a zsh glob with no match aborts the `&&`
+  chain and the take records nothing.
+- Keep other tool calls out of a take: an agent launched mid-take delayed the last tap
+  past the end of the recording.
 - Never launch a Debug build of a Mac app that shares the shipping bundle id with seed
   data: it writes into the owner's real library.
 - Taps land when the UI reacts, not when the tool call returns. Find each onset with

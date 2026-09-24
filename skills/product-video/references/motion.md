@@ -45,17 +45,42 @@ Full research: `~/Shared/inspo/product-video-promo/easing/README.md`.
 | Overshoot | spring bounce up to 0.3; Apple warns above 0.4 feels exaggerated | AP |
 | Similar elements | one curve and duration for all of them | HF |
 
+## Pacing: how long things stay on screen
+
+The Cutling v2 film failed here: 25 s, captions leaving before their last word landed,
+camera moves of 0.3-0.5 s. The owner could not read it or see the easing. Measured from
+15 real promo films (`inspo/product-video-promo/pacing/README.md`, frame-timed with OCR)
+and practitioner guides (`timing/README.md`, 20 sources):
+
+| Element | Value | Source |
+|---|---|---|
+| Caption on screen | max(1.6 s, characters / 8); real promo captions read at a median 7.25 chars/s | pacing (7 captions OCR-timed) |
+| Hold after the last word lands | at least 1.5 s before any exit starts | BBC 0.3 s/word floor, "read it twice" rule |
+| Word entry | 0.4 s each, next word 0.25-0.5 s later; the whole line in under ~1.5 s | kinetic type (timing §2) |
+| Caption exit | 0.3 s dissolve, always faster than the entry | NN/g asymmetric entry/exit |
+| Gap between captions | 0.3-0.5 s | Netflix 2-frame minimum, widened for promo |
+| Camera move | 1.2-2 s, eased cubic; a settle of 0.6-1.2 s | pacing (measured), Blender/C4D tutorials |
+| Hold between moves | 1 s or more of near-stillness (a slow drift, never a dead stop) | Williams moving hold, Murch |
+| Uncut app footage | at least one 6-19 s stretch per film | pacing (every screen-recording promo measured) |
+| Scene per feature | 5-10 s in an App Store preview, 8-15 s in a promo | Apple specs, agency pacing |
+| Transition | 0.8-1 s for a camera move across the seam; a hard cut when the action has finished | Murch, trailer editing |
+| End card | 1.5 s minimum, ~4 s with the call to action | "read it twice" rule |
+| Cuts | 16-24 per 30 s at most; slower for a calm product | pacing |
+
+Length follows the content: a 43 s film with six scenes read well where 25 s with seven
+did not. Record takes at a person's pace, and cut the tool's dead waits with segments.
+
 ## Text
 
 | Rule | Value | Source |
 |---|---|---|
 | Entry | waterfall: words rise from below, each starts before the previous settles | HF |
-| Opacity | binary at the word's start; a fade fights the snap | HF |
+| Opacity | a short fade (60% of the rise) at a calm pace; binary only when words snap on beats | HF, Cutling v3 |
 | Per-word lift and time | anchor 70 px / 180 ms, normal 45 px / 145 ms, light words 36 px / 115 ms (at ~90 px type) | HF |
 | Gap | starts at 50 ms, shrinks x0.84 per word | HF |
 | Curve | power4.out | HF |
 | Subline | arrives after the headline settles | YT |
-| Reading time | subtitles hold at least 5/6 s and at most 7 s; reading speed up to 20 characters per second | Netflix timed-text guide |
+| Reading time | see Pacing: promo captions read at ~7 chars/s, a third of the subtitle ceiling | pacing |
 | Headline length | 2 to 5 words, median 3, in the trusted store copy | `copy/README.md` |
 
 ## Camera
