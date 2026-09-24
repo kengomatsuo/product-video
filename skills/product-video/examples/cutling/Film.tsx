@@ -129,6 +129,16 @@ const phoneTaps: ScreenTap[] = [
 ].map(([f, u, v]) => ({ at: f / FPS, u, v }));
 const typing = [tapAt(a3, 13.95), tapAt(a4, 19.95)];
 const SAVED = STAGE0 + tapAt(a8, 34.2); // film frame the new card appears
+/* iPad take: the grid, then the phone's new card arrives through Cutling's own reload
+   path (shared store + change notification, as keyboard edits and iCloud merges do); its
+   fade-in starts 4.26 s into the take */
+const IPAD_REC = 'rec/take-ipad-sync.mp4';
+const SYNC_AT = SCENE.sync + 110; // a second after the devices settle
+const ipadSegs: Segment[] = [
+  still(IPAD_REC, SCENE.sync - 10, SYNC_AT - (SCENE.sync - 10) - 16, 0.2),
+  seg(IPAD_REC, SYNC_AT - 16, 36, 4.0),
+  still(IPAD_REC, SYNC_AT + 20, B(25), 4.83),
+];
 
 /* ---------- the phone's path ---------- */
 type Pose = { x: number; y: number; z: number; rx: number; ry: number; rz: number; s: number };
@@ -204,7 +214,7 @@ const Stage: React.FC = () => {
       {f >= SCENE.sync - 10 && (
         <>
           <MacBook screen="captures/mac-welcome.png" open={lid} position={[mac.x, mac.y + d.y, mac.z]} rotation={[mac.rx, mac.ry, mac.rz]} scale={mac.s} />
-          <LibraryDevice kind="ipad" screen={{ image: 'captures/02-iPad_Air_13-inch_M4_-02_MainGrid.png' }} shadow={0.25}
+          <LibraryDevice kind="ipad" screen={{ segments: ipadSegs, size: [2064, 2752] }} shadow={0.25}
             position={[ip.x, ip.y + d.y, ip.z]} rotation={[ip.rx, ip.ry + d.ry, ip.rz]} scale={ip.s} />
         </>
       )}
@@ -295,6 +305,7 @@ export const Film: React.FC = () => (
     <Sfx src="sfx-1490" at={SCENE.save - 42} vol={0.26} />
     <Sfx src="sfx-1490" at={SCENE.sync + 12 - 42} vol={0.22} />
     <Sfx src="sfx-2627" at={SCENE.paste - 15} vol={0.2} />
+    <Sfx src="sfx-933" at={SYNC_AT} vol={0.3} dur={60} />
     {[SCENE.sync + 20, SCENE.sync + 40].map((s, i) => <Sfx key={`d${i}`} src="sfx-2627" at={s - 15} vol={0.18} />)}
     {phoneTaps.map((t, i) => <Sfx key={`t${i}`} src="sfx-1109" at={STAGE0 + t.at * FPS - 2} vol={0.28} dur={40} />)}
     {typing.map((t, i) => <Sfx key={`k${i}`} src="sfx-1386" at={STAGE0 + t} vol={0.16} dur={30} />)}

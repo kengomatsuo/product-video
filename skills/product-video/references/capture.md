@@ -56,6 +56,17 @@ Find the remaining hitches with the packet-time scan in the Cutling session: gap
 Record one take per story in the order the film tells it (Cutling: name, text, colour,
 save), so the result the viewer waits for, the new card, is in the same take.
 
+## Showing sync without faking it
+
+A sync scene shows the item arriving on the second device through the app's own code
+path, recorded, never painted onto a screenshot (owner, 2026-09-24). Cutling reloads its
+grid when its shared store changes and the Darwin notification
+`com.matsuokengo.Cutling.cutlingsChanged` fires, the path keyboard edits and iCloud merges
+take. On the iPad Simulator: read the new item from the iPhone Simulator's app-group plist,
+append it with `simctl spawn <iPad> defaults write <group plist> savedCutlings -data <hex>`,
+post the notification with `simctl spawn <iPad> notifyutil -p <name>`, and record the grid
+as the card fades in. Simulator demo data only; snapshot mode re-seeds it on launch.
+
 ## Repeatable flows
 
 goldie (`kacperkapusciak/goldie`, MIT) with argent (`software-mansion/argent`,
