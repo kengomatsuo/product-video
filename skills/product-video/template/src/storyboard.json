@@ -1,0 +1,9 @@
+{
+  "slug": "product",
+  "preset": "landscape",
+  "motionBlur": false,
+  "beats": [
+    { "type": "title", "seconds": 2.4, "text": "Product", "sub": "SUBLINE: write through human-prose" },
+    { "type": "end", "seconds": 3, "line": "Product", "cta": "CTA: where to get it" }
+  ]
+}

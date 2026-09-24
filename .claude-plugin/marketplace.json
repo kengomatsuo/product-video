@@ -1,0 +1,19 @@
+{
+  "name": "product-video",
+  "owner": { "name": "kengomatsuo", "url": "https://github.com/kengomatsuo" },
+  "metadata": { "description": "Promo videos and App Store previews of your own apps, from real recordings, in the product's own brand.", "version": "0.1.0" },
+  "plugins": [
+    {
+      "name": "product-video",
+      "description": "Promo videos and App Store previews of your own apps: brand detection, Simulator and window capture, Remotion with a cited motion system, and render checks.",
+      "source": "./",
+      "strict": false,
+      "version": "0.1.0",
+      "author": { "name": "kengomatsuo" },
+      "homepage": "https://github.com/kengomatsuo/product-video",
+      "repository": "https://github.com/kengomatsuo/product-video",
+      "keywords": ["video", "remotion", "app-store-preview", "promo", "motion"],
+      "skills": ["./skills/product-video"]
+    }
+  ]
+}
