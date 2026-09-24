@@ -27,26 +27,27 @@ export const Dither: React.FC<{ opacity?: number }> = ({ opacity = 0.025 }) => {
   return <canvas ref={ref} width={480} height={270} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity, mixBlendMode: 'overlay', imageRendering: 'pixelated' }} />;
 };
 
-/* soft colour fields on slow independent orbits (Lissajous paths, periods 14-31 s) */
+/* soft colour fields on independent orbits (periods 7-12 s, a quarter of the frame wide),
+   each also breathing in size, so the light visibly travels during any 3 seconds */
 const Mesh: React.FC<{ p: Palette; speed: number }> = ({ p, speed }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = (frame / fps) * speed;
   const fields = [
-    { c: p.tints[0], r: 0.62, x: 0.22, y: 0.18, ax: 0.1, ay: 0.08, px: 17, py: 23 },
-    { c: p.tints[1], r: 0.55, x: 0.84, y: 0.8, ax: 0.08, ay: 0.1, px: 21, py: 14 },
-    { c: p.tints[2] ?? p.tints[0], r: 0.4, x: 0.75, y: 0.12, ax: 0.12, ay: 0.06, px: 31, py: 19 },
-    { c: p.accent, r: 0.3, x: 0.3, y: 0.88, ax: 0.1, ay: 0.05, px: 26, py: 29 },
+    { c: p.tints[0], r: 0.6, x: 0.25, y: 0.25, ax: 0.22, ay: 0.18, px: 9, py: 11 },
+    { c: p.tints[1], r: 0.55, x: 0.78, y: 0.75, ax: 0.2, ay: 0.2, px: 11, py: 8 },
+    { c: p.tints[2] ?? p.tints[0], r: 0.42, x: 0.7, y: 0.2, ax: 0.25, ay: 0.14, px: 12, py: 9.5 },
+    { c: p.accent, r: 0.34, x: 0.3, y: 0.82, ax: 0.24, ay: 0.12, px: 7.5, py: 10 },
   ];
   const d = Math.max(width, height);
   return (
     <AbsoluteFill style={{ background: p.base, overflow: 'hidden' }}>
       {fields.map((f, i) => {
-        const x = (f.x + f.ax * Math.sin((2 * Math.PI * t) / f.px + i)) * width;
+        const x = (f.x + f.ax * Math.sin((2 * Math.PI * t) / f.px + i * 1.3)) * width;
         const y = (f.y + f.ay * Math.cos((2 * Math.PI * t) / f.py + i * 1.7)) * height;
-        const r = f.r * d;
+        const r = f.r * d * (1 + 0.15 * Math.sin((2 * Math.PI * t) / (f.px * 0.8) + i));
         return <div key={i} style={{ position: 'absolute', left: x - r, top: y - r, width: r * 2, height: r * 2, borderRadius: '50%',
-          background: `radial-gradient(closest-side, ${f.c}, transparent)`, opacity: i === 3 ? 0.35 : 0.9, filter: `blur(${d * 0.02}px)` }} />;
+          background: `radial-gradient(closest-side, ${f.c}, transparent)`, opacity: i === 3 ? 0.42 : 0.95, filter: `blur(${d * 0.02}px)` }} />;
       })}
     </AbsoluteFill>
   );

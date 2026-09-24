@@ -33,7 +33,7 @@ while the body keeps moving.
 
 | Style | What moves |
 |---|---|
-| `mesh` | four soft colour fields on independent slow orbits (periods 14-31 s) |
+| `mesh` | four soft colour fields orbiting a quarter of the frame wide (periods 7-12 s) and breathing in size; slower reads as static in a 25 s film |
 | `watercolor` | two p5.brush plates painted once, drifting at different speeds |
 | `shapes` | triangles, rings and pills at different depths, drifting and turning |
 | `solid` | the accent, for caption cards |
