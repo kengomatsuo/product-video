@@ -70,7 +70,7 @@ const Recording: React.FC = () => {
           const len = s(c.to - c.from) + (i === 2 ? s(DISSOLVE) : 0);
           return (
             <Sequence key={i} from={s(c.at)} durationInFrames={len} layout="none">
-              <div style={{ position: 'absolute', inset: 0, opacity: c.src === PASTE ? 1 - xf : 1 }}>
+              <div style={{ position: 'absolute', inset: 0, opacity: c.src === PASTE ? 1 : xf /* the incoming take sits on top, so it fades in */ }}>
                 <Video src={staticFile(c.src)} trimBefore={s(c.from)} muted style={{ width: '100%', height: '100%', display: 'block' }} />
               </div>
             </Sequence>
