@@ -5,8 +5,7 @@
     "url": "https://github.com/kengomatsuo"
   },
   "metadata": {
-    "description": "Promo videos and App Store previews of your own apps, from real recordings, in the product's own brand.",
-    "version": "0.4.1"
+    "description": "Promo videos and App Store previews of your own apps, from real recordings, in the product's own brand."
   },
   "plugins": [
     {
@@ -14,7 +13,6 @@
       "description": "Promo videos and App Store previews of your own apps: gather and study references, propose a storyboard, wireframe it, then build from real recordings in Remotion with a cited motion system and render checks.",
       "source": "./skills/product-video",
       "strict": false,
-      "version": "0.4.1",
       "author": {
         "name": "kengomatsuo"
       },

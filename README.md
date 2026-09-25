@@ -26,7 +26,25 @@ claude plugin marketplace add https://github.com/kengomatsuo/product-video.git &
 ```
 
 The full HTTPS URL matters: the `kengomatsuo/product-video` shorthand clones over SSH and
-fails without a GitHub SSH key. Update later with `claude plugin marketplace update product-video`.
+fails without a GitHub SSH key. It is also listed in the `kengomatsuo-skills` marketplace
+(https://github.com/kengomatsuo/agent-skills) as `product-video@kengomatsuo-skills`.
+
+Claude Code only auto-updates Anthropic's own marketplaces unless told otherwise, so turn
+it on once: `/plugin`, then **Marketplaces**, pick `product-video`, then **Enable auto-update**. Or
+add the marketplace to `~/.claude/settings.json` with auto-update already on:
+
+```json
+"extraKnownMarketplaces": {
+  "product-video": {
+    "source": { "source": "git", "url": "https://github.com/kengomatsuo/product-video.git" },
+    "autoUpdate": true
+  }
+}
+```
+
+With it on, every push reaches you in a session or two. By hand:
+`claude plugin marketplace update product-video && claude plugin update <skill>@product-video`.
+
 
 To rebuild the ZIP after a change: `bash scripts/package.sh`, then attach
 `dist/product-video.zip` to a new GitHub release.
