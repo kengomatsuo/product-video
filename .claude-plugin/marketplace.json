@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "product-video",
-      "description": "Promo videos and App Store previews of your own apps: brand detection, Simulator and window capture, Remotion with a cited motion system, and render checks.",
+      "description": "Promo videos and App Store previews of your own apps: gather and study references, propose a storyboard, wireframe it, then build from real recordings in Remotion with a cited motion system and render checks.",
       "source": "./skills/product-video",
       "strict": false,
       "version": "0.4.1",
