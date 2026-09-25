@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Refuse a commit whose added lines match the maintainer's private-terms list
+# (client names, personal paths). Without the list, nothing is checked.
+terms="${PRIVATE_TERMS:-$HOME/.claude/private-terms.txt}"
+[ -f "$terms" ] || exit 0
+pattern=$(grep -v -e '^#' -e '^$' "$terms" | paste -sd'|' -)
+[ -n "$pattern" ] || exit 0
+hits=$(git diff --cached -U0 --no-color | grep -E '^\+' | grep -v -E '^\+\+\+' | grep -i -n -E "$pattern")
+if [ -n "$hits" ]; then
+  echo "pre-commit: private terms in staged lines:" >&2
+  echo "$hits" | cut -c1-160 >&2
+  exit 1
+fi
