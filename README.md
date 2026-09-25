@@ -22,12 +22,11 @@ App Store upload only work in Claude Code on a Mac.
 ### Claude Code
 
 ```bash
-claude plugin marketplace add kengomatsuo/product-video
+claude plugin marketplace add https://github.com/kengomatsuo/product-video.git && claude plugin install product-video@product-video
 ```
 
-```bash
-claude plugin install product-video@product-video
-```
+The full HTTPS URL matters: the `kengomatsuo/product-video` shorthand clones over SSH and
+fails without a GitHub SSH key. Update later with `claude plugin marketplace update product-video`.
 
 To rebuild the ZIP after a change: `bash scripts/package.sh`, then attach
 `dist/product-video.zip` to a new GitHub release.
