@@ -61,3 +61,4 @@ export const blobPts = (cx: number, cy: number, rx: number, ry: number, rnd: () 
     const a = (i / n) * Math.PI * 2, k = 0.82 + rnd() * 0.3;
     return [cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k] as [number, number];
   });
+

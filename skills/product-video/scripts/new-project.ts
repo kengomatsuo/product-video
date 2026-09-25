@@ -2,20 +2,20 @@
 /**
  * Scaffold a promo project for a product, wired to that product's own brand.
  *
- *   bun new-project.ts <product-dir> <out-dir> [--painted] [--no-install]
+ *   bun new-project.ts <product-dir> <out-dir> [--no-install]
  *
  * Copies the Remotion template, runs detect-brand.ts, copies the icon, brand fonts,
  * screenshots and clips into public/, and writes a starter storyboard from them.
- * --painted also scaffolds a watercolor scene in painted/ with the installed clawd-video skill.
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, extname, join, resolve } from 'node:path';
 
 const SKILL = resolve(import.meta.dir, '..');
 const args = process.argv.slice(2);
+const install = !args.includes('--no-install');
 const [productArg, outArg] = args.filter((a) => !a.startsWith('--'));
 if (!productArg || !outArg) {
-  console.error('usage: bun new-project.ts <product-dir> <out-dir> [--painted] [--no-install]');
+  console.error('usage: bun new-project.ts <product-dir> <out-dir> [--no-install]');
   process.exit(2);
 }
 const product = resolve(productArg), out = resolve(outArg);
@@ -74,13 +74,7 @@ const storyboard = {
 };
 writeFileSync(join(out, 'src/storyboard.json'), JSON.stringify(storyboard, null, 2) + '\n');
 
-/* painted scenes come from the installed clawd-video skill; its code is not ours to ship */
-if (args.includes('--painted')) {
-  const clawd = join(process.env.HOME!, '.claude/skills/clawd-video/scripts/new_project.sh');
-  if (!existsSync(clawd)) console.error('--painted needs clawd-video installed: claude plugin install clawd-video@clawd-video');
-  else Bun.spawnSync(['bash', clawd, join(out, 'painted')], { stdout: 'inherit', stderr: 'inherit' });
-}
-if (!args.includes('--no-install')) Bun.spawnSync(['bun', 'install'], { cwd: out, stdout: 'inherit', stderr: 'inherit' });
+if (install) Bun.spawnSync(['bun', 'install'], { cwd: out, stdout: 'inherit', stderr: 'inherit' });
 
 console.log(`\n${out}
 brand: accent ${brand.colors.accent?.hex ?? 'none'}, font ${family?.family ?? 'system'}, ${copied.length} captures, icon ${brand.iconFile ?? 'none'}

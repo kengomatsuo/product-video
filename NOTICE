@@ -1,14 +1,10 @@
 product-video
 Copyright (c) 2026 Kenneth Johannes Fang
 
-This repository contains no code copied from other projects. Its motion rules restate,
-with credit, ideas from:
+This repository contains no code copied from other projects. Its motion rules restate, with credit, ideas from:
 
 - HyperFrames skills (motion-doctrine, cut-the-curve, oversized-cursor, seam-craft),
   https://github.com/heygen-com/hyperframes, Apache License 2.0.
 - product-launch-motion, https://github.com/AbubakrChan/product-launch-motion, MIT.
 - Design-token values published by Material Design 3, IBM Carbon (Apache-2.0) and
   Microsoft Fluent UI (MIT), and Apple's SwiftUI Spring documentation.
-
-Painted scenes are produced by clawd-video (https://github.com/aadil6971/clawd-video),
-installed separately by the user and invoked from its own location.

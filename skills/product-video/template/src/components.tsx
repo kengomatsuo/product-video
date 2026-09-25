@@ -71,6 +71,12 @@ const FRAMES: Record<Exclude<Device, 'none'>, { aspect: number; radius: number; 
 
 export const Screen: React.FC<{ src: string; trimBefore?: number; fit?: 'fill' | 'contain' }> = ({ src, trimBefore, fit = 'fill' }) => {
   const style: React.CSSProperties = { width: '100%', height: '100%', display: 'block' };
+  /* wireframe: "wire:<what the shot shows>" until the capture exists */
+  if (src.startsWith('wire:')) return (
+    <div style={{ ...style, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '8%', boxSizing: 'border-box',
+      backgroundColor: theme.background, backgroundImage: `repeating-linear-gradient(45deg, ${alpha(theme.foreground, 0.05)} 0 12px, ${alpha(theme.foreground, 0.09)} 12px 24px)`,
+      color: alpha(theme.foreground, 0.7), fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 'min(4vw, 28px)' }}>{src.slice(5)}</div>
+  );
   return isVideo(src)
     ? <Video src={url(src)} muted objectFit={fit} trimBefore={trimBefore} style={style} />
     : <Img src={url(src)} style={{ ...style, objectFit: fit }} />;

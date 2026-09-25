@@ -1,6 +1,6 @@
 ---
 name: product-video
-description: Make promo videos and App Store previews for your own software products, built from real recordings of the app and styled from the product's own brand files. Remotion renders them; a detector reads each project's accent colour, fonts, icon, screenshots and clips; capture scripts record the iOS Simulator or a Mac/browser window; a motion system with cited easing, cut-the-curve transitions, waterfall text and an oversized cursor drives every beat; checks verify size, frame rate, App Store rules and frame-to-frame pops. Use for launch videos, social cuts, site hero loops, App Store and Mac App Store previews, and feature announcements. Not for cartoons (clawd-video) or explainer lectures.
+description: Make promo videos and App Store previews for your own software products, from real recordings of the app in the product's own brand. Runs a gated pipeline: gather 250+ references on the topic and in general (launch films, store previews, code, guidelines, on-screen copy, music), study them, plan and propose a storyboard, wireframe it as an animatic, then build in Remotion with a cited motion system and checks for size, frame rate, App Store rules and frame pops. Use for launch videos, social cuts, site hero loops, App Store and Mac App Store previews, and feature announcements. Not for explainer lectures.
 when_to_use: "Trigger phrases: promo video, launch video, app preview, App Store preview video, product video, demo reel, feature video, video for the site, Reels, Shorts, TikTok for the app, make a video of the app."
 user-invocable: true
 ---
@@ -12,25 +12,30 @@ camera, transitions) is a layer on top, in the product's own brand. Remotion API
 live in Remotion's official skill (`remotion-dev/skills`, `remotion-best-practices`);
 this skill decides what to make and how it should move.
 
-## RESEARCH AND CAPTURE BEFORE ANY SCENE IS WRITTEN
+## THE PIPELINE, IN ORDER. NO PHASE IS SKIPPED
 
-1. **Brief.** One paragraph: the product, who watches, where it runs (preset), length, the
-   one thing the viewer should remember. Write the approved facts and numbers, each with
-   where it came from (README, code, store listing). Nothing else may appear on screen.
-2. **Directions.** Write three directions in a sentence each, pick one, and name its
-   signature move (PLM law 10). Look at `~/Shared/inspo/product-video-promo/` when it
-   exists: 550+ frames of real promos, posters, App Store previews and tutorials, with
-   notes on what to take from each.
-3. **Scaffold.** `bun <skill>/scripts/new-project.ts <product-dir> <out-dir>`. It reads
-   the brand (`detect-brand.ts`), copies the icon, fonts, screenshots and clips into
-   `public/`, and writes a draft storyboard whose captions are placeholders.
-4. **Capture.** Record every shot where the product does something:
-   `capture-ios.sh`, `capture-mac.sh`, or goldie/argent flows. See `references/capture.md`.
-   Screenshots are only for a screen that genuinely holds still.
-5. **Copy.** Write each caption through `human-prose`, 2 to 5 words, verb and object, a
-   fact the screen proves. See `references/copy.md`. Never ship a placeholder.
-6. **Music.** Pick the track, run `scripts/beats.ts`, and choose the start point that puts
-   its drop on the payoff. Scenes are then laid out in bars. See `references/audio.md`.
+A film made without the first four phases is a slideshow; the owner rejected exactly
+that on 2026-09-24. Each gate waits for the owner's approval.
+
+| # | Phase | Output | Read |
+|---|---|---|---|
+| 1 | **Gather** references on the topic (competitors, category) and general ones (best launch films, code, guidelines, prose, music for the mood); 250+ items, saved with sources | `<refs>/*/notes.md` | `references/research.md` |
+| 2 | **Study** them: a note per item, the copy read and tiered, the films' cut times measured | notes filled in, `copy/lines.json` | `references/research.md`, `research/` |
+| 3 | **Plan** the storyboard: brief, three directions from the references, the music picked from a sample reel, the beat table in bars | `storyboard.md` | `references/storyboard.md` |
+| 4 | **Propose** the storyboard to the owner. GATE | the page or file sent | `references/storyboard.md` |
+| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. GATE | contact sheet, animatic | `references/storyboard.md` |
+| 6 | **Build**: capture the shot list, replace each box with its take, build scene by scene | the film | the sections below |
+| 7 | **Check and hand over** | master, check report | `references/qa.md` |
+
+`bun <skill>/scripts/new-project.ts <product-dir> <out-dir>` sets up the project before
+phase 5: it reads the brand (`detect-brand.ts`), copies the icon, fonts, screenshots and
+clips into `public/`. Its starter storyboard is a
+placeholder; the phase 3 table replaces it.
+
+Captions are written in phase 3 from the trusted examples (`research/headlines.json`,
+the product's own `copy/lines.json`), 2 to 5 words, verb and object, a fact the screen
+proves, through `human-prose`. See `references/copy.md`. Capture rules are in
+`references/capture.md`; screenshots are only for a screen that genuinely holds still.
 
 ## The film, not the slideshow
 
@@ -86,9 +91,3 @@ upload with `scripts/asc-upload-preview.rb`. See `references/formats.md`.
 
 `references/formats.md`: six presets, the App Store rules (15-30 s, 30 fps, full-bleed
 app content, dissolves, stereo AAC) and the encoder settings per target.
-
-## Painted scenes
-
-For a cartoon moment (a mascot, a storybook opener), `new-project.ts --painted` scaffolds
-a watercolor scene with the installed `clawd-video` skill in `painted/`. Render it there
-and drop the MP4 in as a `shot` with `device: "none"`. Its code stays in that skill.

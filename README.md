@@ -52,8 +52,7 @@ The motion rules and their sources are in `skills/product-video/references/motio
 
 The motion rules adapt ideas from HeyGen's HyperFrames skills (Apache-2.0) and
 `product-launch-motion` by AbubakrChan (MIT). App Store numbers come from Apple's
-app-preview specifications. Painted scenes run through `clawd-video` by aadil6971, which
-is installed separately; none of its code is in this repository. See NOTICE.
+app-preview specifications. See NOTICE.
 
 ## Licence
 
