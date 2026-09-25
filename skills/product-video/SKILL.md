@@ -39,8 +39,10 @@ a 3D device that keeps moving across cuts; touches you can see; words arriving o
 seams that carry motion through (cut the curve, zoom-through, a spin); a background that
 drifts; music whose drop lands on the payoff; an effect on every action; and a master
 with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: six
-scenes on a 121.5 BPM bar grid, timed to the pacing table in `references/motion.md`. Build new films on its pieces (`Phone3D`, `Background`,
-`BeatWords`, the rig functions) rather than on the simpler `Promo` beats.
+scenes on a 121.5 BPM bar grid, timed to the pacing table in `references/motion.md`. Copy it
+into `src/`, register it in `src/Root.tsx`, and build the new film on its pieces (`Phone3D`,
+`Background`, `Words`, the `path`/`pan`/`settle` rig) rather than on the simpler `Promo`
+beats. Its timings and `rec/` takes are Cutling's: replace them all.
 See `references/devices-and-backgrounds.md`.
 
 ## Build
@@ -74,8 +76,10 @@ master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.
 loudness target. Send a phone-sized copy with SendUserFile, say what was checked and what was not
 (you cannot hear the audio), and tell the owner to unmute. See "Handing over" in qa.md.
 
-For the App Store, make separate cuts (`src/AppStorePreview.tsx`: iPhone 886 x 1920, iPad
-1200 x 1600, recordings only, no zoom, no device frame), render with `--appstore`, and
+For the App Store, make separate cuts (`AppStorePreview` and `AppStorePreviewIPad`: iPhone
+886 x 1920, iPad 1200 x 1600, recordings only, no zoom, no device frame). Fill the takes,
+taps, captions and music in `src/appstore.json` (`examples/cutling/AppStorePreview.tsx` is a
+finished one), render with `--appstore`, and
 upload with `scripts/asc-upload-preview.rb`. See `references/formats.md`.
 
 ## Formats

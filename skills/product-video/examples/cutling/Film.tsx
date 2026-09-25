@@ -2,8 +2,8 @@ import React from 'react';
 import { AbsoluteFill, Easing, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 import { Audio } from '@remotion/media';
 import { ThreeCanvas } from '@remotion/three';
-import { syllable } from 'syllable';
 import { Background } from './backgrounds';
+import { speechOnsets } from './words';
 import { StudioLight, type ScreenTap, type Segment } from './Phone3D';
 import { LibraryDevice, MacBook } from './Devices';
 
@@ -38,23 +38,12 @@ const r = (f: number, a: number, b: number, e = outC) => interpolate(f, [a, b], 
 const mix = (t: number, a: number, b: number) => a + (b - a) * t;
 
 /* ---------- words at speaking pace ---------- */
-const SYLLABLES_PER_S = 6.19;
 const WORD_IN = 16; // each word rises over 0.27 s
 const TEXT_OUT = 18; // 0.3 s dissolve
 
-/* frame offsets at which each word starts, as if the line were spoken */
-export const speechOnsets = (text: string) => {
-  let t = 0;
-  return text.split(' ').map((w) => {
-    const at = t;
-    t += syllable(w) / SYLLABLES_PER_S + (/[,.;:]$/.test(w) ? 0.2 : 0);
-    return Math.round(at * FPS);
-  });
-};
-
 const Words: React.FC<{ text: string; start: number; size: number; color?: string; align?: 'left' | 'center' }> = ({ text, start, size, color = INK, align = 'center' }) => {
   const f = useCurrentFrame();
-  const onsets = speechOnsets(text);
+  const onsets = speechOnsets(text, FPS);
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: `0 ${size * 0.25}px`, justifyContent: align === 'left' ? 'flex-start' : 'center', fontFamily: FONT, fontWeight: 700, fontSize: size, letterSpacing: '-0.035em', lineHeight: 1.04, color }}>
       {text.split(' ').map((w, i) => {

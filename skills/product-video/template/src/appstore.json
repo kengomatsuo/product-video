@@ -1,0 +1,12 @@
+{
+  "lines": [
+    { "text": "HOOK: write through human-prose", "from": 0, "to": 3.3 },
+    { "text": "CAPTION: the first thing it does", "sub": "SUB: one fact the screen proves", "from": 3.5, "to": 14.6 },
+    { "text": "CAPTION: the second thing", "from": 14.9, "to": 26.6 },
+    { "text": "NAME", "sub": "SUB: the promise, in five words", "from": 26.8, "to": 29.5 }
+  ],
+  "music": null,
+  "tapSound": null,
+  "iphone": { "capture": [1320, 2868], "swap": 0, "drop": 5.2, "cuts": [], "taps": [] },
+  "ipad": { "capture": [2064, 2752], "swap": 0, "drop": 5.2, "cuts": [], "taps": [] }
+}

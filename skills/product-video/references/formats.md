@@ -43,7 +43,8 @@ App Review Guideline 2.3.4): a preview is 15-30 s, at most 30 fps, 886 x 1920 or
 for the 6.9-inch iPhone, H.264 10-12 Mbps with 256 kbps stereo AAC, and "may only use
 video screen captures of the app itself", with narration and text overlays allowed. A 3D
 device, other devices and a 45 s 60 fps landscape cut all fail it. Make the App Store cut
-as its own composition, designed for portrait: `template/src/AppStorePreview.tsx` puts a
+as its own composition, designed for portrait: `template/src/AppStorePreview.tsx`, fed by
+`src/appstore.json`, puts a
 360 px caption band on the moving background and the recording below in a rounded screen
 at the capture's own aspect (700 x 1521 inside 886 x 1920), so it never reads as a crop of
 the landscape film. Render with `bash tools/master.sh AppStorePreview v1 --appstore`.
