@@ -20,6 +20,11 @@ before calling it a false alarm.
 - Any frame where a capture meets its frame: nothing of the UI cropped, no halo.
 - The first and last frame of every beat: nothing still arriving when it cuts (PLM law 7).
 - Caption timing against the reading-speed rule in `copy.md`.
+- Every screen shows its planned content: no browser error page, blank panel or
+  development address (`localhost`, `.test`, a port). OCR each second for them, and
+  after a recapture compare every scene against the last approved cut. Undirect's
+  recapture on a live domain made the stolen tap land on "Safari can't open the page",
+  and a scan for `localhost` alone passed it (2026-10-02).
 
 ## Sound
 
