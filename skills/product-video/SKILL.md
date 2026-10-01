@@ -85,7 +85,10 @@ A brand the detector could not read (it says so in `notes`) gets `overrides` in
 **Every render the owner sees, animatic included, is checked frame by frame first**: a
 contact sheet at 4 frames a second or more over every device entrance, seam, spin and
 exit, looked at in full. A handful of sampled moments missed a MacBook whose lid popped
-in after its keyboard and whose screen floated off the display (2026-10-01).
+in after its keyboard and whose screen floated off the display (2026-10-01). Sheets
+cannot show motion: also plot each device's on-screen size and position over time (or
+difference consecutive frames) and check every move has a target and a visible size; a 3%
+repeating zoom passed the sheets the same day.
 
 `bun tools/stills.ts`, open every still; `bun tools/render.ts --draft`; then the final
 master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.264 at
