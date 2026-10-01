@@ -30,7 +30,7 @@ four phases under that instruction and came back as screenshots on Cutling's mus
 | 2 | **Study** them: a note per item, the copy read and tiered, the films' cut times measured | notes filled in, `copy/lines.json` | `references/research.md`, `research/` |
 | 3 | **Plan** the storyboard: brief, three directions from the references, the music picked from a sample reel, the beat table in bars | `storyboard.md` | `references/storyboard.md` |
 | 4 | **Propose** the storyboard to the owner. GATE | the page or file sent | `references/storyboard.md` |
-| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. GATE | contact sheet, animatic | `references/storyboard.md` |
+| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. The wire box is the SCREEN of the real 3D device (`template/public/models/iphone.glb`, `ipad.glb`, `macbook.glb` through `Phone3D`), moving on the planned path with its spins and seams; a flat box hides the motion the owner is approving (Undirect, 2026-10-01). GATE | contact sheet, animatic | `references/storyboard.md` |
 | 6 | **Build**: capture the shot list, replace each box with its take, build scene by scene | the film | the sections below |
 | 7 | **Check and hand over** | master, check report | `references/qa.md` |
 
