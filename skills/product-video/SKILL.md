@@ -17,6 +17,13 @@ this skill decides what to make and how it should move.
 A film made without the first four phases is a slideshow; the owner rejected exactly
 that on 2026-09-24. Each gate waits for the owner's approval.
 
+**"Don't ask questions" never removes a gate.** The storyboard and the animatic are
+deliverables sent to the owner, not questions. A coordinator delegating this skill passes
+the gates through to the subagent and never writes "decide and finish"; a subagent told
+to skip them stops at phase 4 and hands the storyboard back. Undirect's film skipped all
+four phases under that instruction and came back as screenshots on Cutling's music
+(2026-10-01).
+
 | # | Phase | Output | Read |
 |---|---|---|---|
 | 1 | **Gather** references on the topic (competitors, category) and general ones (best launch films, code, guidelines, prose, music for the mood); 250+ items, saved with sources | `<refs>/*/notes.md` | `references/research.md` |
