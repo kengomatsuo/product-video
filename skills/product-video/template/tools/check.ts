@@ -25,6 +25,7 @@ if (v.width !== p.width || v.height !== p.height) problems.push(`size ${v.width}
 if (Math.abs(fps - p.fps) > 0.01) problems.push(`fps ${fps}, preset wants ${p.fps}`);
 if (frames && frames !== totalFrames(s, p.fps)) problems.push(`${frames} frames, storyboard adds up to ${totalFrames(s, p.fps)}`);
 if (v.pix_fmt !== 'yuv420p') problems.push(`pixel format ${v.pix_fmt}; players want yuv420p`);
+if (v.color_range === 'pc') problems.push('full colour range; master to limited (tv) range');
 if (s.preset.startsWith('appstore')) {
   if (secs < 15 || secs > 30) problems.push(`App Store previews run 15-30 s; this is ${secs.toFixed(1)} s`);
   if (fps > 30) problems.push('App Store previews max 30 fps');

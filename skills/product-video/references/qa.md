@@ -20,6 +20,9 @@ before calling it a false alarm.
 - Any frame where a capture meets its frame: nothing of the UI cropped, no halo.
 - The first and last frame of every beat: nothing still arriving when it cuts (PLM law 7).
 - Caption timing against the reading-speed rule in `copy.md`.
+- Every delivered file comes out of `tools/master.sh` and passes `tools/check.ts`. A
+  hand-written master passed Remotion's full-range `yuvj420p` through, and App Store
+  Connect failed 77 of 100 iOS previews with a bare `ASSET_FAILED` (Undirect, 2026-10-02).
 - Every screen shows its planned content: no browser error page, blank panel or
   development address (`localhost`, `.test`, a port). OCR each second for them, and
   after a recapture compare every scene against the last approved cut. Undirect's
