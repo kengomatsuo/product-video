@@ -94,7 +94,9 @@ Drive with RocketSim when it is installed: `rocketsim do --step "interact tap --
 'Undirect' --screen latest" --step "wait element --label 'Allowed' --timeout 2"`. A
 step names the control by its accessibility label, so one flow runs on iPhone and iPad
 and survives a layout change; hand-measured coordinates put Undirect's menu row
-off-frame once (2026-10-01). Record without RocketSim's `--touches` and draw the brand's
+off-frame once (2026-10-01). Native UI resolves by name (Safari's Page Menu and an extension's row in it, tested
+2026-10-02); a web page's own links do not appear in RocketSim's elements, so taps inside
+a page use raw points with `--screen <hash>`. Record without RocketSim's `--touches` and draw the brand's
 own dots from the flow's tap times. Without RocketSim, use the flows below.
 
 goldie (`kacperkapusciak/goldie`, MIT) with argent (`software-mansion/argent`,
