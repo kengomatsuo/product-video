@@ -5,13 +5,16 @@ product doing something is a recording of the product doing it.
 
 | Platform | How | Script |
 |---|---|---|
-| iOS / iPadOS | Record the booted Simulator's screen, then drive the app: goldie/argent flows (repeatable), the iOS Simulator tool, or by hand | `scripts/capture-ios.sh <out.mov> <seconds>` |
+| iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | `scripts/capture-ios.sh <out.mp4> <seconds> [udid]` |
 | macOS app | Record the app's own window at Retina size | `scripts/capture-mac.sh "<App Name>" <out.mov> <seconds>` |
 | Web app (solute) | Open the app in a browser window at 1440 x 900, record that window | `capture-mac.sh "Google Chrome" ...` |
 
 `capture-ios.sh` sets the status bar to 9:41, full Wi-Fi and battery before recording and
-clears it after. It records with `simctl io recordVideo`, which captures the device
-display only. A recording of the Simulator WINDOW (toolbar, "Press esc to stop capture")
+clears it after. It records the device display only, through RocketSim's `video record`
+when `rocketsim status` answers, and through `simctl io recordVideo` otherwise, with
+`CAPTURE_BACKEND=simctl`, or when RocketSim fails (a `quota_exceeded` envelope leaves no
+file). RocketSim writes a variable frame rate, so the script conforms it to constant 60
+in limited-range `yuv420p`; `simctl` only writes frames when the screen changes. A recording of the Simulator WINDOW (toolbar, "Press esc to stop capture")
 is never usable: the first Cutling test had one and the frame wrapped a second phone.
 
 Playwright's own `recordVideo` writes compressed WebM (its types say it scales to fit
@@ -86,6 +89,13 @@ post the notification with `simctl spawn <iPad> notifyutil -p <name>`, and recor
 as the card fades in. Simulator demo data only; snapshot mode re-seeds it on launch.
 
 ## Repeatable flows
+
+Drive with RocketSim when it is installed: `rocketsim do --step "interact tap --label
+'Undirect' --screen latest" --step "wait element --label 'Allowed' --timeout 2"`. A
+step names the control by its accessibility label, so one flow runs on iPhone and iPad
+and survives a layout change; hand-measured coordinates put Undirect's menu row
+off-frame once (2026-10-01). Record without RocketSim's `--touches` and draw the brand's
+own dots from the flow's tap times. Without RocketSim, use the flows below.
 
 goldie (`kacperkapusciak/goldie`, MIT) with argent (`software-mansion/argent`,
 Apache-2.0) replays a written flow on the Simulator: the same taps every run, so a
