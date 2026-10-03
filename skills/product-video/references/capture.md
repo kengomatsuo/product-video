@@ -88,6 +88,13 @@ append it with `simctl spawn <iPad> defaults write <group plist> savedCutlings -
 post the notification with `simctl spawn <iPad> notifyutil -p <name>`, and record the grid
 as the card fades in. Simulator demo data only; snapshot mode re-seeds it on launch.
 
+## Build from HEAD, every take
+
+Rebuild and reinstall the app from the repository's current commit immediately before
+recording any take that shows its UI, and put the short hash in the take's file name.
+Undirect's Film-v7 popup take came from a commit two changes old and showed a look the
+owner had already rejected (2026-10-03).
+
 ## Repeatable flows
 
 Drive with RocketSim when it is installed: `rocketsim do --step "interact tap --label
