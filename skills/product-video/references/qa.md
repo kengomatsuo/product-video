@@ -23,6 +23,10 @@ before calling it a false alarm.
 - Every delivered file comes out of `tools/master.sh` and passes `tools/check.ts`. A
   hand-written master passed Remotion's full-range `yuvj420p` through, and App Store
   Connect failed 77 of 100 iOS previews with a bare `ASSET_FAILED` (Undirect, 2026-10-02).
+- Overlays (chips, captions, routes) keep a measured gap from every device's bounding
+  box in every frame; Undirect's destination chips ran into the phone (2026-10-03).
+- Captures match what viewers own: the current OS's default layout (Safari's bottom
+  bar on iOS 27) and a key, frontmost Mac window so selections show the accent colour.
 - Every screen shows its planned content: no browser error page, blank panel or
   development address (`localhost`, `.test`, a port). OCR each second for them, and
   after a recapture compare every scene against the last approved cut. Undirect's
