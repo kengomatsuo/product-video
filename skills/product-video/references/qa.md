@@ -27,6 +27,9 @@ before calling it a false alarm.
   box in every frame; Undirect's destination chips ran into the phone (2026-10-03).
 - Captures match what viewers own: the current OS's default layout (Safari's bottom
   bar on iOS 27) and a key, frontmost Mac window so selections show the accent colour.
+- A device's pose is proved in the film's own full frames at every state change (closed,
+  opening, open), never only in a separate side view: Undirect's MacBook passed a
+  side-view hinge proof while its lid sat folded under the base on camera (2026-10-03).
 - Every screen shows its planned content: no browser error page, blank panel or
   development address (`localhost`, `.test`, a port). OCR each second for them, and
   after a recapture compare every scene against the last approved cut. Undirect's
