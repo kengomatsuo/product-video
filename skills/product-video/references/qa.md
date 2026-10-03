@@ -25,8 +25,9 @@ before calling it a false alarm.
   Connect failed 77 of 100 iOS previews with a bare `ASSET_FAILED` (Undirect, 2026-10-02).
 - Overlays (chips, captions, routes) keep a measured gap from every device's bounding
   box in every frame; Undirect's destination chips ran into the phone (2026-10-03).
-- Captures match what viewers own: the current OS's default layout (Safari's bottom
-  bar on iOS 27) and a key, frontmost Mac window so selections show the accent colour.
+- Captures match what viewers see: the layout the owner names (Safari's Compact bottom
+  bar on iOS 27 for Undirect) and a key, frontmost Mac window so selections show the
+  accent colour.
 - A device's pose is proved in the film's own full frames at every state change (closed,
   opening, open), never only in a separate side view: Undirect's MacBook passed a
   side-view hinge proof while its lid sat folded under the base on camera (2026-10-03).
