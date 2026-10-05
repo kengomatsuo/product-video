@@ -9,6 +9,10 @@ Gates catch broken, not boring (PLM law 9). Run the tools, then look.
 | Final | `bun tools/render.ts [--preset x]` | the deliverable, motion blur on |
 | Check | `bun tools/check.ts [--preset x]` | size, fps, frame count, pixel format, App Store rules, a contact sheet, pops |
 
+Each row is a loop: run it, fix every problem it reports in the composition or the render
+settings, render the next version, run it again, and go on only when it passes. A final
+master is a new version every time (`master.sh` never overwrites).
+
 `check.ts` flags a pop when one frame differs from the previous far more than the clip's
 norm outside a beat boundary. Look at a dense contact sheet around each flagged frame
 before calling it a false alarm.

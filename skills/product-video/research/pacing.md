@@ -1,5 +1,13 @@
 # Pacing measurements from real app promo / launch films
 
+## Contents
+
+- Per-film table
+- Caption-by-caption measurements (App Store preview set, OCR-timed)
+- Guidance from named sources (fetched, not memory)
+- Recommended timing spec for a ~30–40 s product film
+- Files
+
 Measured 2026-09-24 with `ffmpeg` scene-cut detection (`select='gt(scene,0.10–0.28)'` +
 `metadata=print`, thresholded per clip since hard cuts and slow dissolves need
 different thresholds), 4 fps frame extraction, and the macOS Vision OCR tool at

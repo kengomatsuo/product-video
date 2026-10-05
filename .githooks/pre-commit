@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
-# Refuse a commit whose added lines match the maintainer's private-terms list
-# (client names, personal paths). Without the list, nothing is checked.
+# Refuse a commit whose skills break Anthropic's authoring rules
+# (scripts/skill-lint.ts in agent-skills), then one with private terms.
+lint="../agent-skills/scripts/skill-lint.ts"
+if command -v bun >/dev/null && [ -f "$lint" ]; then
+  bun "$lint" skills >&2 || { echo "pre-commit: skill-lint failed" >&2; exit 1; }
+fi
+
 terms="${PRIVATE_TERMS:-$HOME/.claude/private-terms.txt}"
 [ -f "$terms" ] || exit 0
 pattern=$(grep -v -e '^#' -e '^$' "$terms" | paste -sd'|' -)
 [ -n "$pattern" ] || exit 0
-hits=$(git diff --cached -U0 --no-color | grep -E '^\+' | grep -v -E '^\+\+\+' | grep -i -n -E "$pattern")
+hits=$(git diff --cached -U0 --no-color | grep -E '^\+' | grep -v -E '^\+\+\+' | grep -i -n -E "(^|[^[:alnum:]])($pattern)([^[:alnum:]]|$)")
 if [ -n "$hits" ]; then
   echo "pre-commit: private terms in staged lines:" >&2
   echo "$hits" | cut -c1-160 >&2

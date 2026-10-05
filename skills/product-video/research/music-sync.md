@@ -1,5 +1,12 @@
 # Music sync — putting cuts, text and taps on the beat
 
+## Contents
+
+1. The rules — where an event goes on the music
+2. Editing-to-music guides consulted (primary / named-author sources)
+3. Algorithms (primary sources) and what `beats.ts` implements
+4. `beats.ts` — usage and validation
+
 For Remotion promo videos cut to music. `beats.ts` (below) analyzes a track and hands
 back beats, downbeats, bars, phrases, sections and drops as frame-free seconds, so the
 storyboard can snap every scene cut, text reveal, tap and logo hit to the music instead

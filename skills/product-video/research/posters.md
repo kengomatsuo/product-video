@@ -1,5 +1,9 @@
 # Promo poster / launch-gallery reference sweep — 2026-09-24
 
+## Contents
+
+- Patterns
+
 153 images saved to `<refs>/posters/`. Sources: Product Hunt launch galleries, App Store screenshot panels (via the public iTunes lookup API, `itunes.apple.com/lookup?id=...`, which returns the same `is1-ssl.mzstatic.com` screenshot URLs the App Store page itself uses), and three competitor POS marketing sites (Qasir, Loyverse, Square — Toast’s `pos.toasttab.com` returned 403 and was skipped; Majoo’s marketing page had no usable hero image and was skipped, both noted here as gated/skipped, not fabricated).
 
 | # | page URL | image URL | file | what to take |

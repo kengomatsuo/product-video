@@ -1,5 +1,9 @@
 # Launch/promo video frame reference — notes
 
+## Contents
+
+- Cross-video patterns
+
 Extracted with `ffmpeg` from direct `.mp4` files served on the companies' own domains
 (no YouTube). 89 frames from 20 source videos across 5 companies.
 

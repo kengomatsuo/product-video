@@ -1,5 +1,16 @@
 # Motion: the rules the template follows
 
+## Contents
+
+- Where the rules come from
+- Continuity between beats
+- Inside a beat
+- Pacing: how long things stay on screen
+- Text
+- Camera
+- Cursor (Mac and web)
+- Durations and curves when nothing above covers it
+
 Every number here is implemented in `template/src/motion.ts`. Change the number there and
 here together.
 
@@ -14,9 +25,9 @@ here together.
 | FL | Microsoft Fluent 2 `packages/tokens/src/global` | spec |
 | AP | Apple `Spring` docs and WWDC23 session 10158 "Animate with springs" | spec |
 | AE | Adobe After Effects help: keyframe interpolation, speed | spec |
-| YT | After Effects tutorials, transcripts in `~/Shared/inspo/product-video-promo/youtube/` | craft |
+| YT | After Effects tutorials, transcripts in `<library>/youtube/` | craft |
 
-Full research: `~/Shared/inspo/product-video-promo/easing/README.md`.
+Full research: `<library>/easing/README.md`.
 
 ## Continuity between beats
 

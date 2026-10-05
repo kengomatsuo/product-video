@@ -12,20 +12,20 @@ you are on before gathering anything new:
 
 | File | What it answers |
 |---|---|
-| `launch-videos.md`, `youtube.md` | how real launch films open, move a device, and end |
-| `appstore-previews.md`, `posters.md` | what App Store previews and panels put on screen, headline by headline |
-| `copy.md`, `headlines.json` | how long human headlines are (median 3 words) and which words give AI copy away; 319 trusted headlines |
-| `pacing.md`, `timing.md`, `timing-sources/` | shot lengths, holds, reading time, with sources |
-| `easing.md` | curves and durations from Material, Carbon, Fluent, Apple |
-| `music-for-promos.md`, `music-sync.md`, `audio-library.md` | what launch films use for music, cutting to the bar, licensed tracks |
-| `dribbble-behance.md`, `github.md` | motion-design shots and open-source promo code; low trust for copy |
+| `research/launch-videos.md`, `research/youtube.md` | how real launch films open, move a device, and end |
+| `research/appstore-previews.md`, `research/posters.md` | what App Store previews and panels put on screen, headline by headline |
+| `research/copy.md`, `research/headlines.json` | how long human headlines are (median 3 words) and which words give AI copy away; 319 trusted headlines |
+| `research/pacing.md`, `research/timing.md`, `research/timing-sources/` | shot lengths, holds, reading time, with sources |
+| `research/easing.md` | curves and durations from Material, Carbon, Fluent, Apple |
+| `research/music-for-promos.md`, `research/music-sync.md`, `research/audio-library.md` | what launch films use for music, cutting to the bar, licensed tracks |
+| `research/dribbble-behance.md`, `research/github.md` | motion-design shots and open-source promo code; low trust for copy |
 
 ## 2. Gather, before studying anything
 
 Two sets, both saved before any study starts. **On the topic**: the product's competitors
 and its category. **General**: the best work in any category, for craft that no
-competitor shows. Keep them in `<refs>` = `~/Shared/inspo/<product>-promo/` (or any
-folder the owner names), one folder per kind, each with a `notes.md` table: source URL,
+competitor shows. Keep them in `<refs>`, a folder outside the repo (`<product>-promo/`
+beside the shared `<library>`, or any folder the owner names), one folder per kind, each with a `notes.md` table: source URL,
 file, topic or general, what to take. At least 250 items across the kinds below:
 
 | Kind | On the topic | General | How |

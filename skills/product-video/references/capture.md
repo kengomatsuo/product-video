@@ -1,5 +1,16 @@
 # Capture: real app motion, never stills where motion exists
 
+## Contents
+
+- Traps from the Cutling session (2026-09-24)
+- Warm up, then record (owner, 2026-09-24)
+- More traps (2026-09-24)
+- Showing sync without faking it
+- Build from HEAD, every take
+- Repeatable flows
+- Demo data
+- Measuring
+
 A screenshot inside a moving frame still reads as a slideshow. Every shot that shows the
 product doing something is a recording of the product doing it.
 
@@ -7,7 +18,7 @@ product doing something is a recording of the product doing it.
 |---|---|---|
 | iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | `scripts/capture-ios.sh <out.mp4> <seconds> [udid]` |
 | macOS app | Record the app's own window at Retina size | `scripts/capture-mac.sh "<App Name>" <out.mov> <seconds>` |
-| Web app (solute) | Open the app in a browser window at 1440 x 900, record that window | `capture-mac.sh "Google Chrome" ...` |
+| Web app | Open the app in a browser window at 1440 x 900, record that window | `capture-mac.sh "Google Chrome" ...` |
 
 `capture-ios.sh` sets the status bar to 9:41, full Wi-Fi and battery before recording and
 clears it after. It records the device display only, through RocketSim's `video record`

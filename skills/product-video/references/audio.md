@@ -15,13 +15,13 @@ The owner's verdicts on 2026-09-24, from three reels of 49 stock tracks:
 | Warm pads with a lift, no hard drop | chosen | Pixabay "Revival" (Diamond_Tunes) |
 | A patient atmospheric build, or a confident build to a late payoff | acceptable | Pixabay "Chase the Sparks", "Confident Background" |
 
-Start from `~/Shared/inspo/product-video-promo/music-for-promos/README.md` (what Apple,
+Start from `<library>/music-for-promos/README.md` (what Apple,
 Samsung and app launch films use, and the traits). Reject a track whose band below 90 Hz
 sits within 5 dB of its full-band level: that is the bass-heavy sound the owner rejected.
 The owner listens on a phone, so always send a sample reel with a spoken number before
 each track, and never pick the music alone.
 
-Library: `~/Shared/inspo/product-video-promo/audio/LIBRARY.md` (34 tracks, 119 effects,
+Library: `<library>/audio/LIBRARY.md` (34 tracks, 119 effects,
 each with its licence and the exact attribution line when one is required).
 
 ```bash

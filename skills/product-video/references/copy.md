@@ -6,7 +6,7 @@ copy is often AI-written too.
 
 ## What trusted human copy looks like
 
-`~/Shared/inspo/product-video-promo/copy/README.md` holds the text read (OCR) from about
+`<library>/copy/README.md` holds the text read (OCR) from about
 490 reference frames, tiered by how far each source can be trusted as human-written.
 
 | Measured on the trusted tier | Value |

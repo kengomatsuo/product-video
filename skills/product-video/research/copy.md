@@ -1,5 +1,12 @@
 # On-screen copy from the references (OCR, 2026-09-24)
 
+## Contents
+
+- What the trusted copy does
+- Trusted headlines (tiers A and B, large type, no tells)
+- Tier C headlines (no tells, verify before copying the style)
+- Flagged lines (do not imitate)
+
 Text read from every reference image with macOS Vision (`<skill>/scripts/refs-ocr.swift`). Tiers say how far a line can be trusted as HUMAN copy:
 
 | Tier | Sources | Trust |

@@ -55,7 +55,7 @@ a segment re-times all of it and showed the segment's first frame.
 
 ## Uploading previews
 
-`scripts/asc-upload-preview.rb <video> <PREVIEW_TYPE>` (run from the app's `fastlane/`, which
+`scripts/asc-upload-preview.rb <video> <PREVIEW_TYPE> <bundle-id> <version> [poster-frame]` (run from the app's `fastlane/`, which
 holds `asc_api_key.json`) opens the next version if none is editable, then uploads into the
 primary locale: `IPHONE_67` (886 x 1920) and `IPAD_PRO_3GEN_129` (1200 x 1600, the same 3:4
 as an iPad Pro 13-inch capture, so the recording fits whole). Previews only attach to an

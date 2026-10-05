@@ -1,5 +1,12 @@
 # Cutling promo audio — research and candidates
 
+## Contents
+
+1. Craft: what the primary sources actually say
+2. Sourcing: licence comparison (verified on each provider's own page, 2026-09-24)
+3. Candidates
+4. Recommendation
+
 25s App Store preview + promo for Cutling (iOS clipboard manager, custom keyboard). Research is
 read-only: nothing below has been downloaded yet. All page loads were verified live on
 2026-09-24.

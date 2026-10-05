@@ -1,5 +1,10 @@
 # App Store preview video / screenshot reference — notes
 
+## Contents
+
+- Table
+- Patterns observed across apps
+
 Source: official App Store product pages on apps.apple.com (US storefront), fetched
 2026-09-24. Video frames pulled with ffmpeg directly from the page's embedded HLS
 (`.m3u8`, hosted on apptrailers.itunes.apple.com) preview-video stream. Screenshot

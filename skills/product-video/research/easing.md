@@ -1,5 +1,14 @@
 # Easing & timing research for Remotion promo videos
 
+## Contents
+
+1. Named curves
+2. Duration tokens per system
+3. Springs
+4. Video craft rules
+5. Proposed Remotion token set
+- Screenshots in this folder
+
 Research date: 2026-09-24. All numbers below are quoted from primary sources (vendor docs,
 official GitHub source, or Apple's own WWDC transcript) — nothing is from memory. Screenshots
 of the source pages are in this folder (`01_...png` – `26_...png`).

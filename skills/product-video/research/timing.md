@@ -1,8 +1,19 @@
 # Timing doctrine for motion graphics, product promo video, and UI animation
 
+## Contents
+
+1. Classic animation timing
+2. Motion design practitioners
+3. Reading-time rules for on-screen text
+4. Film/trailer editing rhythm
+5. UI motion duration tokens and research
+6. Camera move timing for 3D product shots
+7. Promo/App Store preview pacing advice
+- Spec for product-video
+
 This is the written doctrine and the numbers practitioners publish — not measurements from real
 promo videos (that's `../pacing/README.md`, built by measuring actual shot/caption durations).
-Every claim here traces to a source note in `sources/`, fetched or searched this session
+Every claim here traces to a source note in `timing-sources/`, fetched or searched this session
 (2026-09-24). Where a source is genuinely load-bearing for a spec-table number, the note says so;
 where a figure is a community rule of thumb rather than a named authority's published number,
 the note flags it as lower-confidence.
@@ -13,15 +24,15 @@ the note flags it as lower-confidence.
   poses; spacing is how those in-between frames are distributed. A plain hold under ~4 frames
   (24fps, ~1/6 s) reads as a hitch, not a pose; anything held much longer needs to become a
   **moving hold** (a pose that keeps drifting slightly) so it doesn't look dead.
-  → `sources/williams-animators-survival-kit.md`
+  → `timing-sources/williams-animators-survival-kit.md`
 - **Harold Whitaker & John Halas, *Timing for Animation*** — the field's core reference, with
   chapters literally titled "How Long to Hold?", "Getting Into and Out of Holds," and "Ones or
   Twos?" (every frame vs. every other frame at the same nominal duration).
-  → `sources/halas-whitaker-timing-for-animation.md`
+  → `timing-sources/halas-whitaker-timing-for-animation.md`
 - **Disney's 12 Principles — Slow In/Slow Out & Timing** — more in-between frames cluster near
   the start/end of a move (easing), while the raw frame count (timing) decides whether an action
   reads as heavy or light.
-  → `sources/disney-12-principles-slow-in-slow-out.md`
+  → `timing-sources/disney-12-principles-slow-in-slow-out.md`
 
 ## 2. Motion design practitioners
 
@@ -29,29 +40,29 @@ the note flags it as lower-confidence.
   principles above into After Effects terms: hold keyframes, graph-editor easing, anticipation
   and overlapping action as the two most-drilled principles. No single numeric table found from
   these sources — they teach through demonstration, not published figures.
-  → `sources/motion-design-practitioners.md`
+  → `timing-sources/motion-design-practitioners.md`
 - **Kinetic typography** — hold a word ~0.3 s (1 s floor); a line ≈ (characters ÷ 12) + 0.5 s,
   rounded to the nearest 0.25 s; the reveal-in animation itself should resolve in well under
   800 ms so it doesn't eat into reading time.
-  → `sources/kinetic-typography-timing.md`
+  → `timing-sources/kinetic-typography-timing.md`
 
 ## 3. Reading-time rules for on-screen text
 
 - **Netflix Timed Text Style Guide** — 20 cps max (adult), 17 cps (children); minimum duration
   20 frames / 5/6 s; maximum 7 s; minimum 2-frame gap between subtitles (3–11 frame gaps at 24fps
   must be closed to exactly 2 frames).
-  → `sources/netflix-subtitle-timing.md`
+  → `timing-sources/netflix-subtitle-timing.md`
 - **BBC subtitle guidelines** — 160–180 wpm (≈0.33–0.375 s/word); floor of ~0.3 s/word. Notably
   more generous (slower) than Netflix's cps ceiling — BBC is tuned for a broad broadcast
   audience, Netflix per-language and skewed faster for adult/non-children content.
-  → `sources/bbc-subtitle-guidelines.md`
+  → `timing-sources/bbc-subtitle-guidelines.md`
 - **"Read it aloud twice" rule** — hold a title long enough for a 200-wpm slow reader to read it
   twice; a floor/sanity-check, not a formula to apply blindly.
-  → `sources/read-aloud-twice-rule.md`
+  → `timing-sources/read-aloud-twice-rule.md`
 - **Social caption practice (TikTok etc.)** — 2–3 s minimum per short caption; platform-native
   tools trend toward per-word reveal rather than one static block. No official Meta/YouTube
   numeric spec found — flagged lower-confidence.
-  → `sources/social-caption-duration.md`
+  → `timing-sources/social-caption-duration.md`
 
 ## 4. Film/trailer editing rhythm
 
@@ -59,14 +70,14 @@ the note flags it as lower-confidence.
   would; his Rule of Six weights what makes a cut work (Emotion 51%, Story 23%, Rhythm 10%,
   Eye-trace 7%, 2D plane 5%, 3D space 4%) — rhythm/timing matters but is subordinate to emotion
   and story.
-  → `sources/walter-murch-blink-of-an-eye.md`
+  → `timing-sources/walter-murch-blink-of-an-eye.md`
 - **Cinemetrics average shot length data** — Classical Hollywood averaged 8–11 s/shot; modern
   mainstream film averages 4–6 s; extremes run from *2001*'s ~13 s to *Bourne Supremacy*'s ~2.4 s.
-  → `sources/cinemetrics-average-shot-length.md`
+  → `timing-sources/cinemetrics-average-shot-length.md`
 - **Trailer/commercial editing practice** — let an action finish before cutting to a static
   shot; "decompressions" (deliberately held beats) buy the audience a breath at high-emotion
   moments, but trailers have far less room for them than a feature.
-  → `sources/trailer-editing-breathing-room.md`
+  → `timing-sources/trailer-editing-breathing-room.md`
 
 ## 5. UI motion duration tokens and research
 
@@ -74,23 +85,23 @@ the note flags it as lower-confidence.
   changes (modal); general range 100–500 ms scaled to distance/complexity; 400 ms = very slow,
   reserved for big movements; 500 ms = starts to feel like a drag. Entering elements get a
   subtly longer duration than exiting ones (e.g. 300 ms in / 200–250 ms out).
-  → `sources/nngroup-animation-duration.md`
+  → `timing-sources/nngroup-animation-duration.md`
 - **Material 3** — named tokens from 50 ms (short1) to 800 ms (extra-long2); short = small
   utility transitions, medium = elements crossing a medium screen area, long = large expressive
   transitions (paired with the "Emphasized" curve), extra-long = rare ambient transitions with no
   user input.
-  → `sources/material3-motion-duration-tokens.md`
+  → `timing-sources/material3-motion-duration-tokens.md`
 - **Apple HIG** — qualitative rather than tabular; developer/WWDC practice clusters at under
   ~200 ms for light in-page interactions, ~300–500 ms for full-screen transitions, and
   spring animations tuned to settle in 0.4–0.7 s. Must collapse toward none under Reduce Motion.
-  → `sources/apple-hig-motion.md`
+  → `timing-sources/apple-hig-motion.md`
 - **IBM Carbon** — Productive (fast, efficient) vs. Expressive (slower, more visible) modes over
   a shared token scale (`fast-01/02`, `moderate-01/02`, `slow-01/02`), most landing 100–300 ms;
   duration is explicitly calculated from the size/distance of the moving element.
-  → `sources/carbon-design-motion.md`
+  → `timing-sources/carbon-design-motion.md`
 - **Microsoft Fluent** — named constants: 83 ms (faster), 167 ms (fast), 250 ms (normal); same
   size/importance-scales-duration rule as Material and Carbon.
-  → `sources/fluent2-motion.md`
+  → `timing-sources/fluent2-motion.md`
 
 Every one of these systems agrees on the same shape: **~100 ms is the floor for anything to
 register as intentional; ~500 ms is the ceiling before "quick" becomes "slow"; and duration
@@ -106,18 +117,18 @@ transition.
   sourced area in this collection; the spec table below triangulates a duration from the App
   Store pacing data (§7) and the UI "large movement, longer duration" scaling rule (§5) rather
   than a camera-specific citation.
-  → `sources/blender-camera-easing.md`
+  → `timing-sources/blender-camera-easing.md`
 
 ## 7. Promo/App Store preview pacing advice
 
 - **Apple App Preview specs** — 15–30 s length, up to 3 previews per app/locale; poster frame
   defaults to the 5-second mark, so the opening seconds carry outsized weight.
-  → `sources/apple-app-preview-specs.md`
+  → `timing-sources/apple-app-preview-specs.md`
 - **Agency pacing practice** — homepage demos run 45–120 s (60–90 s recommended for a full
   outcome-led overview); social micro-demos run 10–30 s on one feature; shot pacing inside a
   demo averages 3–4 s/shot; even a 60 s commercial may show actual app UI for only 8–10 s total;
   the first 3 seconds are treated as the make-or-break retention window.
-  → `sources/app-promo-pacing-agencies.md`
+  → `timing-sources/app-promo-pacing-agencies.md`
 
 ---
 

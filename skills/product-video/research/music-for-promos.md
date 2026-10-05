@@ -4,7 +4,7 @@ Why Mixkit's "Hazy After Hours" (clanky minimal-techno drums) and the cheerful-u
 
 Sample reel (for listening on a phone): `<refs>/audio/samples/music-candidates-2.m4a` — 15 spoken-numbered 20‑second excerpts, ~5:43 total.
 
-Files: `~/Shared/inspo/product-video-promo/audio/files/pixabay-<slug>-<id>.mp3`. Library entries added to `~/Shared/inspo/product-video-promo/audio/LIBRARY.md`.
+Files: `<library>/audio/files/pixabay-<slug>-<id>.mp3`. Library entries added to `<library>/audio/LIBRARY.md`.
 
 ## Part 1 — what real product promos use
 
@@ -26,7 +26,7 @@ None of these publish composer or track credits in a way general web search surf
 
 Per FILMPAC and GMP Music's own explanations of the stock-music market: open-submission libraries mix polished cues with rough demos at the same star rating, so low-effort, generic tracks sit next to good ones; certain genre patterns (the EDM build → drop, the "inspirational" corporate strum, the four-on-the-floor tech-house kick) get reused so often across ads that they read as cliché the moment they're recognized, and standard tracks are never tuned to the specific edit the way a commissioned score is. ([GMP Music: Stock vs production music](https://www.gmpmusic.com/resources/stock-music-vs-production-music), [FILMPAC: What is stock music?](https://filmpac.com/what-is-stock-music/))
 
-Concretely, in the tracks the owner already rejected (Mixkit's tech-house/techno catalogue, `~/Shared/inspo/product-video-promo/audio/LIBRARY.md`), the "clanky minimal-techno drums" complaint maps to a measurable trait: **the sub-90 Hz band sits within 2–4 dB of the full-band RMS** — i.e. the kick/sub-bass is nearly as loud as the entire mix. That is the technical signature of a four-on-the-floor techno/house kick pattern, and it is what reads as "gym playlist" rather than "product film."
+Concretely, in the tracks the owner already rejected (Mixkit's tech-house/techno catalogue, `<library>/audio/LIBRARY.md`), the "clanky minimal-techno drums" complaint maps to a measurable trait: **the sub-90 Hz band sits within 2–4 dB of the full-band RMS** — i.e. the kick/sub-bass is nearly as loud as the entire mix. That is the technical signature of a four-on-the-floor techno/house kick pattern, and it is what reads as "gym playlist" rather than "product film."
 
 ### Distilled traits for a calm, premium app promo bed
 
@@ -75,7 +75,7 @@ The reel (`music-candidates-2.m4a`) plays the 15 tracks in the table's numeric o
 
 ## Library
 
-New rows added to `~/Shared/inspo/product-video-promo/audio/LIBRARY.md` under Music, following its existing table format.
+New rows added to `<library>/audio/LIBRARY.md` under Music, following its existing table format.
 
 ## Owner verdict (2026-09-24)
 
