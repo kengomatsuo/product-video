@@ -17,7 +17,7 @@ cp -R skills/product-video "$stage/"
 bun -e '
 const f = process.argv[1], t = await Bun.file(f).text();
 const [, head, body] = t.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-const get = (k) => head.match(new RegExp(`^${k}: (.*)$`, "m"))?.[1].replace(/^"|"$/g, "");
+const fm = Bun.YAML.parse(head), get = (k) => fm[k];
 const description = `${get("description")} ${get("when_to_use") ?? ""}`.trim();
 if (description.length > 1024) throw new Error(`description is ${description.length} chars, over 1024`);
 await Bun.write(f, `---\nname: ${get("name")}\ndescription: ${JSON.stringify(description)}\n---\n${body}`);
