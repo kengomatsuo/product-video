@@ -37,6 +37,7 @@ Pipeline progress:
       Go back to 2 if a direction or a caption cites no reference file.
 - [ ] 4 Propose the storyboard to the owner  GATE
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
+      Approved: `touch storyboard.approved` in the project root (the render tools wait for it).
 - [ ] 5 Wireframe: stills and an animatic on the real music, the screen box on the 3D device  GATE
       Pacing or composition rejected: return to 3 and change the table; never patch the wireframe.
 - [ ] 6 Build: capture each take, replace each wire: box, stills after every scene

@@ -58,4 +58,6 @@ const pops = ys.map((y, i) => ({ frame: i + 1, y })).filter((x) => x.y > Math.ma
 if (pops.length) problems.push(`possible pops at frames ${pops.slice(0, 12).map((x) => `${x.frame} (${x.y.toFixed(1)})`).join(', ')}; look at a dense sheet around each`);
 
 console.log(problems.length ? `\n${problems.length} problem(s):\n- ${problems.join('\n- ')}` : '\nNo problems found. Still open out/sheet.png and watch it once.');
+/* a pass marker newer than the film lets the house hook send it */
+if (!problems.length) await Bun.write(`${file}.checked`, new Date().toISOString());
 process.exit(problems.length ? 1 : 0);

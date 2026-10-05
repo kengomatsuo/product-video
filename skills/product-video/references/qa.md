@@ -63,7 +63,7 @@ and the track's kick was the problem. Say which it is with the numbers.
 
 The owner watches on a phone, through the app's file card:
 - The inline player starts muted: say "unmute" in the caption, every time.
-- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k). A 7.4 MB file timed
+- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k), named `<master>.phone.mp4` beside the master so the house hook finds the master's check.ts pass. A 7.4 MB file timed
   out after 30 s and never reached the phone; the master stays in `out/` for upload.
 - Music choices go as one audio reel (m4a), a spoken number before each 15-20 s sample
   (`say -v Samantha "<n>. <title>"`), cut from the track's main section, never its intro.
