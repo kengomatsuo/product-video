@@ -8,6 +8,7 @@
  */
 import { mkdirSync, readdirSync, statSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { homedir } from 'node:os';
 
 const [refsArg, ...rest] = process.argv.slice(2);
 if (!refsArg) { console.error('usage: bun refs-copy.ts <refs-dir> [--tiers tiers.json]'); process.exit(2); }
@@ -19,8 +20,13 @@ const images: string[] = [];
 const walk = (d: string) => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) { if (!/skills|audio|node_modules/.test(f)) walk(p); } else if (/\.(png|jpe?g|webp)$/i.test(f)) images.push(p); } };
 walk(refs);
 
-const bin = join(import.meta.dir, '.refs-ocr');
-if (!existsSync(bin)) Bun.spawnSync(['swiftc', '-O', join(import.meta.dir, 'refs-ocr.swift'), '-o', bin], { stdout: 'inherit', stderr: 'inherit' });
+// compiled outside the skill: a binary in it cannot be read or scanned
+const swift = join(import.meta.dir, 'refs-ocr.swift');
+const bin = join(homedir(), '.cache', 'product-video', 'refs-ocr');
+if (!existsSync(bin) || statSync(bin).mtimeMs < statSync(swift).mtimeMs) {
+  mkdirSync(join(homedir(), '.cache', 'product-video'), { recursive: true });
+  Bun.spawnSync(['swiftc', '-O', swift, '-o', bin], { stdout: 'inherit', stderr: 'inherit' });
+}
 
 const TELLS = /\b(seamless(ly)?|effortless(ly)?|unlock|elevate|supercharge|reimagine|revolutioni[sz]e|empower|streamline|all-in-one|at your fingertips|game[- ]changer|next[- ]level)\b|\bnot just\b.*\bbut\b|^no \w+\. no \w+/i;
 const rows: { src: string; tier: string; size: number; text: string; words: number; tell: boolean }[] = [];
