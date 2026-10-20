@@ -11,6 +11,8 @@
 - Cursor (Mac and web)
 - Durations and curves when nothing above covers it
 
+These are film numbers. For motion inside the app being filmed (a toast, a sheet, a button press) the app's own code and the house `ui-patterns` skill (`buttons-and-motion.md`) set the timing; never retime real UI to fit the edit.
+
 Every number here is implemented in `template/src/motion.ts`. Change the number there and
 here together.
 
