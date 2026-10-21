@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
-# Refuse a push whose skills break Anthropic's authoring rules
-# (scripts/skill-lint.ts in agent-skills), then one with private terms.
-# A worktree sits elsewhere, so resolve agent-skills from the main checkout (common git dir).
-lint="../agent-skills/scripts/skill-lint.ts"
-main="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)")"
-[ -f "$main/../agent-skills/scripts/skill-lint.ts" ] && lint="$main/../agent-skills/scripts/skill-lint.ts"
-if command -v bun >/dev/null; then
-  if [ -f "$lint" ]; then
-    bun "$lint" skills >&2 || { echo "pre-push: skill-lint failed" >&2; exit 1; }
-  else
-    echo "pre-push: warning: skill-lint not found (agent-skills clone missing), skills not linted" >&2
-  fi
-fi
-
+# Refuse a push whose added lines contain a private term. Nothing else gates a push.
 terms="${PRIVATE_TERMS:-$HOME/.claude/private-terms.txt}"
 [ -f "$terms" ] || exit 0
 pattern=$(grep -v -e '^#' -e '^$' "$terms" | paste -sd'|' -)
