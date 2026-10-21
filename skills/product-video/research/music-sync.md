@@ -99,8 +99,8 @@ the raw time.
   step below. It also treats hand-picked timecodes as a structural bug: every cut time
   should be *computed* from the declared beat grid, never typed in by feel, so a tempo
   change never desyncs only part of the edit.
-- **`@remotion/media-utils`, official Remotion docs** (local copy:
-  `~/.claude/skills/remotion-best-practices/remotion-markup/audio-visualization.md`).
+- **`@remotion/media-utils`, official Remotion docs** (distilled in
+  [audio.md](../references/remotion/audio.md), "Audio-reactive visuals").
   `useWindowedAudioData` + `visualizeAudio`/`visualizeAudioWaveform` are for **rendering**
   audio-reactive visuals (spectrum bars, waveforms, bass-driven scale/opacity) inside a
   Remotion composition in real time — a different job from `beats.ts`'s offline

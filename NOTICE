@@ -8,3 +8,4 @@ This repository contains no code copied from other projects. Its motion rules re
 - product-launch-motion, https://github.com/AbubakrChan/product-launch-motion, MIT.
 - Design-token values published by Material Design 3, IBM Carbon (Apache-2.0) and
   Microsoft Fluent UI (MIT), and Apple's SwiftUI Spring documentation.
+- Remotion agent skill, https://github.com/remotion-dev/skills at commit 9682e994989f951c75912fbc49aa10332a512685. The repository ships no licence file and declares none, so `skills/product-video/references/remotion/` takes only its API names, props and rules, in new wording, and copies no text or code.

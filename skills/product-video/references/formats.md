@@ -55,6 +55,9 @@ a segment re-times all of it and showed the segment's first frame.
 
 ## Uploading previews
 
+Other App Store Connect work (builds, metadata, TestFlight) belongs to the house
+`app-store-connect` skill, and store listing copy to `app-store-aso`.
+
 `scripts/asc-upload-preview.rb <video> <PREVIEW_TYPE> <bundle-id> <version> [poster-frame]` (run from the app's `fastlane/`, which
 holds `asc_api_key.json`) opens the next version if none is editable, then uploads into the
 primary locale: `IPHONE_67` (886 x 1920) and `IPAD_PRO_3GEN_129` (1200 x 1600, the same 3:4

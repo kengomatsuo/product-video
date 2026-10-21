@@ -8,7 +8,7 @@ user-invocable: true
 
 The screen is always the real product, recorded moving. Everything else (frame, type,
 camera, transitions) is a layer on top, in the product's own brand. Remotion API details
-live in Remotion's official skill (`remotion-dev/skills`, `remotion-best-practices`);
+live in `references/remotion/` (start at [index.md](references/remotion/index.md));
 this skill decides what to make and how it should move.
 
 ## The pipeline, in order. No phase is skipped
@@ -78,7 +78,7 @@ before phase 1; check with `command -v <tool>`.
 | yt-dlp | downloading reference films for `refs-frames.sh` | `brew install yt-dlp` |
 | Remotion 4.0.527, three.js, p5.brush | rendering; pinned in `template/package.json` | `bun install` in the generated project (`new-project.ts` runs it) |
 | Xcode command line tools (`xcrun simctl`, `swift`, `swiftc`) | `capture-ios.sh`, `capture-mac.sh`, compiling `refs-ocr.swift` | `xcode-select --install` |
-| RocketSim CLI (optional) | 60 fps Simulator capture and `rocketsim do` flows | see the `rocketsim` skill; `capture-ios.sh` falls back to `simctl` |
+| RocketSim CLI (optional) | 60 fps Simulator capture and `rocketsim do` flows | see the `apple-native` skill, `references/rocketsim.md`; `capture-ios.sh` falls back to `simctl` |
 | goldie and argent (optional) | replayable Simulator flows | `kacperkapusciak/goldie`, `software-mansion/argent` on GitHub |
 | Ruby gem `spaceship` | `asc-upload-preview.rb` | `gem install spaceship` |
 
@@ -177,6 +177,7 @@ easing, copy, YouTube transcripts). Its location on this machine is in
 | `references/copy.md` | writing any caption |
 | `references/capture.md` | recording takes |
 | `references/motion.md` | touching any timing, curve or camera move |
+| `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |
 | `references/devices-and-backgrounds.md` | changing the 3D devices or the background |
 | `references/formats.md` | presets, App Store rules, encoder settings, upload |
 | `references/qa.md` | checking and handing over |

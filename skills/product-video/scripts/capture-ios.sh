@@ -4,7 +4,8 @@
 # With more than one Simulator booted, pass the UDID: "booted" picks one of them.
 # Records with RocketSim when its CLI answers, at 60 fps; otherwise, or with
 # CAPTURE_BACKEND=simctl, with `simctl io recordVideo`. Drive the app while it records:
-# `rocketsim do --step ...` flows (see references/capture.md), goldie/argent, or by hand.
+# `rocketsim do --step ...` flows (see references/capture.md and the `apple-native` skill's
+# references/rocketsim.md), goldie/argent, or by hand.
 # The status bar is set to 9:41, full signal and battery first, like Apple's own shots.
 set -euo pipefail
 out="$1"; secs="${2:-15}"; dev="${3:-booted}"

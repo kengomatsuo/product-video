@@ -108,7 +108,7 @@ owner had already rejected (2026-10-03).
 
 ## Repeatable flows
 
-Drive with RocketSim when it is installed: `rocketsim do --step "interact tap --label
+Drive with RocketSim when it is installed (the house `apple-native` skill, `references/rocketsim.md`, covers the `rocketsim` CLI): `rocketsim do --step "interact tap --label
 'Undirect' --screen latest" --step "wait element --label 'Allowed' --timeout 2"`. A
 step names the control by its accessibility label, so one flow runs on iPhone and iPad
 and survives a layout change; hand-measured coordinates put Undirect's menu row
