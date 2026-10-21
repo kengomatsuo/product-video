@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Refuse a commit whose skills break Anthropic's authoring rules
+# Refuse a push whose skills break Anthropic's authoring rules
 # (scripts/skill-lint.ts in agent-skills), then one with private terms.
 # A worktree sits elsewhere, so resolve agent-skills from the main checkout (common git dir).
 lint="../agent-skills/scripts/skill-lint.ts"
@@ -7,9 +7,9 @@ main="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/
 [ -f "$main/../agent-skills/scripts/skill-lint.ts" ] && lint="$main/../agent-skills/scripts/skill-lint.ts"
 if command -v bun >/dev/null; then
   if [ -f "$lint" ]; then
-    bun "$lint" skills >&2 || { echo "pre-commit: skill-lint failed" >&2; exit 1; }
+    bun "$lint" skills >&2 || { echo "pre-push: skill-lint failed" >&2; exit 1; }
   else
-    echo "pre-commit: warning: skill-lint not found (agent-skills clone missing), skills not linted" >&2
+    echo "pre-push: warning: skill-lint not found (agent-skills clone missing), skills not linted" >&2
   fi
 fi
 
@@ -17,9 +17,10 @@ terms="${PRIVATE_TERMS:-$HOME/.claude/private-terms.txt}"
 [ -f "$terms" ] || exit 0
 pattern=$(grep -v -e '^#' -e '^$' "$terms" | paste -sd'|' -)
 [ -n "$pattern" ] || exit 0
-hits=$(git diff --cached -U0 --no-color | grep -E '^\+' | grep -v -E '^\+\+\+' | grep -i -n -E "(^|[^[:alnum:]])($pattern)([^[:alnum:]]|$)")
+base=$(git rev-parse -q --verify '@{u}' || git rev-parse -q --verify origin/main || git hash-object -t tree /dev/null)
+hits=$(git diff "$base" HEAD -U0 --no-color | grep -E '^\+' | grep -v -E '^\+\+\+' | grep -i -n -E "(^|[^[:alnum:]])($pattern)([^[:alnum:]]|$)")
 if [ -n "$hits" ]; then
-  echo "pre-commit: private terms in staged lines:" >&2
+  echo "pre-push: private terms in pushed lines:" >&2
   echo "$hits" | cut -c1-160 >&2
   exit 1
 fi
