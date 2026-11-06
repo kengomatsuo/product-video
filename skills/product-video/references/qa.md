@@ -20,6 +20,9 @@ before calling it a false alarm.
 ## Look at these every time
 
 - Every still, opened, before a full render.
+- No device or card reaches the frame edge in any cut: render with a transparent background and measure the
+  content box per frame (stya hero `tools/edges.ts`, 3% margin, each cut placed on its own). A phone-width cut
+  shipped with a card and a device clipped at the edge (stya hero, 2026-11-06).
 - The contact sheet `out/sheet.png` of the delivered file, not the source.
 - Any frame where a capture meets its frame: nothing of the UI cropped, no halo.
 - The first and last frame of every beat: nothing still arriving when it cuts (PLM law 7).

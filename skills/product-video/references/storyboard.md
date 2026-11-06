@@ -5,6 +5,10 @@ change is cheapest here: a line in a table, a box moved in a still.
 
 ## Plan the storyboard
 
+Each scene is a moment in the product's story, with its own device line-up, and each table row says why every
+device moves (it shows a screen, takes a tap, or carries the cut). A reference's choreography copied onto devices
+with no reason to move, and the same three devices in every scene, were rejected (stya hero, 2026-11-06).
+
 Start from the study notes, not from the scaffold's placeholder beats. Write
 `storyboard.md` in the film's folder:
 
