@@ -177,6 +177,7 @@ easing, copy, YouTube transcripts). Its location on this machine is in
 | `references/copy.md` | writing any caption |
 | `references/capture.md` | recording takes |
 | `references/motion.md` | touching any timing, curve or camera move |
+| `~/Repositories/claude-house-rules/skills/expressive-motion/SKILL.md` (skill **expressive-motion**) | animating the app screens and cards: the springs, press, bounce, count-ups, check, confetti, dwell and loop seam of the stya hero film |
 | `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |
 | `references/devices-and-backgrounds.md` | changing the 3D devices or the background |
 | `references/formats.md` | presets, App Store rules, encoder settings, upload |
