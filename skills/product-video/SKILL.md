@@ -132,6 +132,12 @@ wrong, re-run, open them again.
 entrance, seam, spin and exit, looked at in full. A handful of sampled moments missed a
 MacBook whose lid popped in after its keyboard and whose screen floated off the display
 (2026-10-01). Fix each defect, re-render, rebuild the sheet.
+The sheet covers the whole film, every beat and every language, before any render is sent;
+sheets over a few chosen beats let clipping layers and z-fights through on the Undirect
+explainer (2026-11-07). In a layered three.js scene every transparent plane gets
+`depthWrite: false` and an explicit `renderOrder` back to front, and coplanar labels get
+`polygonOffset`, so no layer can cut through another mid-move. Any 3D animatic is built
+by an Opus agent at high effort; give it this loop as its done-when.
 
 **7c Motion plot.** Sheets cannot show motion: plot each device's on-screen size and
 position over time (or difference consecutive frames) and check every move has a target
