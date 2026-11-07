@@ -31,12 +31,14 @@ file as a pointer, not legal advice. Buying is at `https://www.remotion.pro/lice
 
 ## What it means for this skill
 
-- Films here render with `bunx remotion render` and `still` (via `tools/render.ts`,
-  `tools/stills.ts`). The FAQ's literal list of automation commands includes those two, while
-  its Creators description is "produce videos without setting up an automation". Which one
-  fits a company that renders its own films by hand is not settled by the pages read; ask
-  Remotion (hi@remotion.dev) before the first commercial release when the company has 4 or
-  more people.
+- The owner works alone, so the Free licence covers every film this skill makes, commercial
+  ones included. The FAQ says a Free-licence holder may also run an automation, and that the
+  Automators plan "only applies to the Company License" (remotion.pro/faq, read 2026-11-07).
+  Nothing is billed and nothing needs buying.
+- Only if three more people join the work does the Company licence apply. Then
+  `bunx remotion render` and `still` (`tools/render.ts`, `tools/stills.ts`) appear in the
+  FAQ's list of automation commands, and which Company plan fits is a question for
+  Remotion (hi@remotion.dev).
 - A film delivered as a video file to a client does not count the client's headcount. Handing
   over the project code does, and then both headcounts add up.
 - Not allowed under any licence: selling Remotion itself, or letting users upload their own
