@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (compositions, calculate-metadata, parameters, multi-scene-video), remotion-create -> product-video references/remotion/compositions.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (compositions, calculate-metadata, parameters, multi-scene-video), remotion-create -> product-video references/remotion/compositions.md -->
 # Compositions
 
 A `<Composition>` names one renderable video: component, `width`, `height`, `fps` and
@@ -10,15 +10,20 @@ A `<Composition>` names one renderable video: component, `width`, `height`, `fps
   durationInFrames={600} defaultProps={{ title: 'Hello' }} />
 ```
 
+- Give each composition its own `<Composition>` node with a literal `id` and inline
+  `defaultProps`. Generating several from a loop is fine for a fixed set, as in the template.
 - `defaultProps` must be JSON-serialisable (`Date`, `Map`, `Set` and `staticFile()`
   results also work). Declare a component's props with `type`, not `interface`, so the
-  default values are type-checked.
+  default values are type-checked. From 4.0.516 Studio infers basic prop controls from the
+  values in `defaultProps`; a `schema` is optional.
 - `<Folder name="Social">` groups compositions in the Studio sidebar and nests. A folder
   name takes letters, digits and hyphens only.
 - `<Still id width height component />` is a one-frame composition. It needs no `fps` or
   `durationInFrames`. Poster frames and store panels use it.
 - A composition inside another: wrap it in `<Sequence width height durationInFrames>`. The
   inner component then sees those sizes from `useVideoConfig()`.
+- Timing for a scene (`from`, `durationInFrames`, `trimBefore`, `playbackRate`) is in
+  [timing-props.md](timing-props.md).
 
 ## Dynamic duration, size and props
 

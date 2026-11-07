@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (effects, html-in-canvas, 3d, light-leaks) -> product-video references/remotion/effects-and-3d.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (effects, html-in-canvas, 3d, light-leaks) -> product-video references/remotion/effects-and-3d.md -->
 # Effects and 3D
 
 ## Contents
@@ -18,8 +18,11 @@ then a custom effect. Whether the effect belongs in the film is a motion decisio
 
 ## The effects array
 
-`bunx remotion add @remotion/effects`. Canvas-based components take `effects={[...]}`:
-`Video` (from `@remotion/media`), `Solid`, `CanvasImage`, `HtmlInCanvas`.
+`bunx remotion add @remotion/effects`. These take `effects={[...]}`: `Video` (from
+`@remotion/media`), `Img`, `CanvasImage`, `AnimatedImage`, `Solid`, `HtmlInCanvas`, `Gif`,
+`RemotionRiveCanvas` and the `@remotion/shapes` components (4.0.474 and newer). Plain HTML
+elements, `AbsoluteFill` and `Sequence` do not: wrap their content in `HtmlInCanvas` and put
+`effects` on the wrapper. Effects run in array order.
 
 ```tsx
 import { blur } from '@remotion/effects/blur';
@@ -27,19 +30,30 @@ import { blur } from '@remotion/effects/blur';
 ```
 
 Imports are `@remotion/effects/<slug>`; `uvTranslate()` and `xyTranslate()` come from
-`@remotion/effects/translate`. Available: `brightness`, `contrast`, `colorKey`, `duotone`,
-`grayscale`, `hue`, `invert`, `saturation`, `tint`, `linearGradient`, `linearGradientTint`,
-`thermalVision`, `blur`, `linearProgressiveBlur`, `radialProgressiveBlur`, `zoomBlur`,
-`dropShadow`, `glow`, `lightTrail`, `evolve`, `venetianBlinds`, `mirror`, `scale`,
-`uvTranslate`, `xyTranslate`, `barrelDistortion`, `chromaticAberration`, `fisheye`,
-`cornerPin`, `wave`, `burlap`, `emboss`, `dotGrid`, `halftone`, `noise`,
-`noiseDisplacement`, `paper`, `roughenEdges`, `pattern`, `pixelate`, `pixelDissolve`,
-`scanlines`, `speckle`, `shine`, `shrinkwrap`, `vignette`, `contourLines`,
-`checkerboard`, `halftoneLinearGradient`, `gridlines`, `whiteNoise`, `tvSignalOff`,
-`lines`, `rings`, `waves`, `zigzag`, `lightLeak`, `starburst`. Fetch
-`https://www.remotion.dev/docs/effects.md` for the props of one.
+`@remotion/effects/translate`. Available, by kind:
 
-Effects use WebGL2. Renders need `Config.setChromiumOpenGlRenderer('angle')` (the
+- Colour and tone: `brightness`, `colorCorrection`, `colorKey`, `contrast`, `curves`,
+  `duotone`, `exposure`, `grayscale`, `hue`, `invert`, `levels`, `linearGradient`,
+  `linearGradientTint`, `lut`, `saturation`, `shadowsHighlights`, `thermalVision`, `tint`,
+  `vibrance`, `whiteBalance`. Guidance in [color-correction.md](color-correction.md).
+- Blur and trails: `blur`, `lightTrail`, `linearProgressiveBlur`, `radialProgressiveBlur`,
+  `regionBlur`, `zoomBlur`.
+- Light: `dropShadow`, `longShadows`, `glow`, `lightLeak`, `shine`, `starburst`, `vignette`.
+- Distortion and transform: `barrelDistortion`, `chromaticAberration`, `cornerPin`,
+  `fisheye`, `mirror`, `noiseDisplacement`, `scale`, `skew`, `tile`, `uvTranslate`, `wave`,
+  `xyTranslate`.
+- Texture and pattern: `burlap`, `checkerboard`, `contourLines`, `dotGrid`, `emboss`,
+  `flannel`, `gridlines`, `halftone`, `halftoneLinearGradient`, `lines`, `liquidContours`,
+  `noise`, `paper`, `pattern`, `rings`, `scanlines`, `speckle`, `tvSignalOff`, `waves`,
+  `whiteNoise`, `zigzag`.
+- Edges: `outline`, `roughenEdges`, `shrinkwrap`, `tear`.
+- Pixelate and dissolve: `evolve`, `linearProgressivePixelate`, `pixelate`, `pixelDissolve`,
+  `radialProgressivePixelate`, `venetianBlinds`.
+
+Fetch `https://www.remotion.dev/docs/effects.md` for the props of one. Some arrived after
+the template's pin (4.0.527): `curves` and `longShadows` need 4.0.537.
+
+Most effects use WebGL2. Renders need `Config.setChromiumOpenGlRenderer('angle')` (the
 template's `remotion.config.ts` sets it) or `--gl=angle` on the CLI. Effects do not
 animate on their own; interpolate their numeric props from `useCurrentFrame()`.
 
@@ -62,11 +76,12 @@ Keep project effects in `src/effects/`.
 `<HtmlInCanvas width height onPaint onInit>` draws its children into a canvas so
 Canvas 2D or WebGL can post-process them. It needs Chrome 149 or newer with
 `chrome://flags/#canvas-draw-element` on; tell the owner when a film depends on it, and
-check that the render browser has it. Do not nest two. `onPaint({ canvas, element,
-elementImage })` draws with `ctx.drawElementImage(elementImage, 0, 0)` and sets
-`element.style.transform` to the returned transform; for WebGL, set up in `onInit` (return a
-cleanup function) and upload with `gl.texElementImage2D`. `onPaint` may be async; the
-frame waits for it.
+check that the render uses Remotion's own Chrome ([rendering.md](rendering.md)), which has the
+flag on. Nest two only when `HtmlInCanvas.isNestingSupported()` is true (Chrome
+157.0.8080.0 or newer). `onPaint({ canvas, elementImage })` draws with
+`ctx.drawElementImage(elementImage, 0, 0)`; for WebGL, set up in `onInit` (return a cleanup
+function) and upload with `gl.texElementImage2D`. `onPaint` may be async; the frame waits
+for it. A blur on moving content is `HtmlInCanvasMotionBlur` ([motion-blur.md](motion-blur.md)).
 
 ## Three.js
 

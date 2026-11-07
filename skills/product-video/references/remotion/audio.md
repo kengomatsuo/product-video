@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (audio, sfx, audio-visualization, silence-detection, voiceover) -> product-video references/remotion/audio.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (audio, sfx, audio-visualization, silence-detection, voiceover) -> product-video references/remotion/audio.md -->
 # Audio in Remotion
 
 ## Contents
@@ -24,16 +24,21 @@ import { Audio } from '@remotion/media';
 
 ## Delay, trim, volume
 
-- `trimBefore` / `trimAfter` are frames of the source. The sound still starts at the
-  start of its parent sequence; only the played slice changes. Wrapping in
-  `<Sequence from={n}>` delays the start.
-- `volume` is a number from 0 to 1 or a function `(f) => number`, where `f` counts from
-  the first frame the audio plays, not from the composition start. The house fade is an
-  `interpolate` over `f` (see `template/src/Promo.tsx`).
+- `trimBefore` skips frames at the start and `durationInFrames` ends the sound early, both
+  in frames of the source: `trimBefore={2 * fps} durationInFrames={8 * fps}` plays seconds 2
+  to 10. (`trimAfter` is deprecated in the docs; it still works.) The sound starts at the
+  start of its parent unless `from={n}` on the `Audio` (or a `<Sequence from={n}>` around it)
+  delays it. The shared props are in [timing-props.md](timing-props.md).
+- `volume` is a number from 0 to 1. A fade is `volume={interpolate(frame, [...], [...],
+  { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })}` with `frame` from
+  `useCurrentFrame()` inside the component. The older `(f) => number` callback, where `f`
+  counts from the first frame the audio plays, still works and is what
+  `template/src/Promo.tsx` uses; the docs no longer recommend it.
 - `muted` can switch on a frame range: `muted={frame >= 2 * fps && frame <= 4 * fps}`.
-- `playbackRate` (no reverse), `loop`, `loopVolumeCurveBehavior` and `toneFrequency`
-  work as on `Video` ([video-and-images.md](video-and-images.md)). Pitch shift applies only
-  to a server render, so Studio preview sounds different.
+- `playbackRate` (no reverse), `loop` and `toneFrequency` work as on `Video`
+  ([video-and-images.md](video-and-images.md)). `preservePitch` (4.0.538) keeps the pitch at
+  another speed. Pitch shift from `toneFrequency` applies only to a server render, so Studio
+  preview sounds different.
 
 ## Sound effects
 
@@ -74,7 +79,7 @@ ffmpeg -i in.mov -map 0:a -af "silencedetect=noise=${THRESH}dB:d=0.5" -f null /d
 Take `input_thresh` from the first command as `THRESH`. Output lists `silence_start` and
 `silence_end`. A first start above 0.5 s means no leading silence; silences closer than
 0.2 s count as one block. Turn the edges into `trimBefore={Math.floor(leadingEnd * fps)}`
-and `trimAfter={Math.ceil(trailingStart * fps)}`.
+and `durationInFrames={Math.ceil(trailingStart * fps) - Math.floor(leadingEnd * fps)}`.
 
 ## Voiceover
 

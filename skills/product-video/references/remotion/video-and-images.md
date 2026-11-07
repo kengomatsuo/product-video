@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (REFERENCE "Media components", embedding-videos, images, gifs, lottie, cropping, ffmpeg), remotion-multimedia -> product-video references/remotion/video-and-images.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (REFERENCE "Media components", embedding-videos, images, gifs, lottie, cropping, ffmpeg), remotion-multimedia -> product-video references/remotion/video-and-images.md -->
 # Video, images and animated assets
 
 ## Contents
@@ -18,20 +18,24 @@ in sync under a 3D device (see `../devices-and-backgrounds.md`).
 
 ```tsx
 import { Video } from '@remotion/media';
-<Video src={staticFile('rec/home.mp4')} trimBefore={2 * fps} trimAfter={10 * fps}
+<Video src={staticFile('rec/home.mp4')} trimBefore={2 * fps} durationInFrames={8 * fps}
   playbackRate={1} muted objectFit="cover" style={{ width: '100%', height: '100%' }} />
 ```
 
 - `src` is `staticFile(...)` or a remote URL.
-- `trimBefore` and `trimAfter` count **frames** of the source. (One upstream page says
-  seconds in its prose while its code multiplies by `fps`; the code is right, and
-  `template/src/components.tsx` passes frames.) Trimming this way is non-destructive.
-- To start later in the film, wrap in `<Sequence from>`. The video appears when the
-  sequence starts.
-- `volume` is 0 to 1 or a function of the frame the clip has played. `muted` silences it.
-- `playbackRate` speeds or slows it. Reverse playback is not supported.
-- `loop` repeats; `loopVolumeCurveBehavior` is `"repeat"` (frame count restarts) or
-  `"extend"` (it keeps counting, for one fade across loops).
+- `trimBefore` skips frames at the start and `durationInFrames` ends the clip early, both in
+  **frames** of the source, so `trimBefore={2 * fps}` with `durationInFrames={8 * fps}` plays
+  seconds 2 to 10. Trimming this way is non-destructive. `trimAfter` still works but the
+  Remotion docs mark it deprecated in favour of `durationInFrames`, so new code uses the latter.
+- `from={1 * fps}` on the `Video` makes it appear one second into its parent. A `Sequence`
+  around it does the same; the shared props are in [timing-props.md](timing-props.md).
+- `volume` is 0 to 1. For a fade, compute a number with `interpolate(useCurrentFrame(), ...)`.
+  A `(frame) => number` callback is still accepted, but the docs no longer recommend it
+  (the template uses it). `muted` silences the clip.
+- `playbackRate` speeds or slows it. Reverse playback is not supported. From 4.0.538
+  `preservePitch` keeps the pitch at another speed; without it a 2x clip sounds an octave up.
+- `loop` repeats the range chosen by `trimBefore` and `durationInFrames`.
+  `loopVolumeCurveBehavior` (`"repeat"` or `"extend"`) only matters for a `volume` callback.
 - `toneFrequency` (0.01 to 2) shifts pitch and only works in a server render.
 - `effects={[...]}` takes shader effects ([effects-and-3d.md](effects-and-3d.md)).
 
@@ -82,4 +86,4 @@ overview for agents is `https://mediabunny.dev/llms.txt`.
 `bunx remotion ffmpeg ...` and `bunx remotion ffprobe ...` run copies bundled with
 Remotion. This skill's scripts use the system `ffmpeg` (see Dependencies in `SKILL.md`).
 To cut a standalone file, re-encode (`-c:v libx264 -c:a aac`); a stream copy leaves frozen
-frames at the start. For a cut inside the film, use `trimBefore` / `trimAfter`.
+frames at the start. For a cut inside the film, use `trimBefore` / `durationInFrames`.

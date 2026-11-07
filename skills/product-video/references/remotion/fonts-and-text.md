@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (local-fonts, google-fonts, measuring-text, text-highlights), remotion-create (video-layout, tailwind) -> product-video references/remotion/fonts-and-text.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (local-fonts, google-fonts, measuring-text, text-highlights), remotion-create (video-layout, tailwind) -> product-video references/remotion/fonts-and-text.md -->
 # Fonts and text
 
 ## Contents
@@ -59,3 +59,12 @@ the sides and 100 px from the top and bottom; headline at least 84 px, supportin
 least 44 px; scale with the width. Decide what the viewer should notice first and build
 the frame around it. This is the floor for a plain frame. The App Store sizes and caption
 rules in `../formats.md` and `../copy.md` override it where they differ.
+
+## Right-to-left text
+
+No house product ships Arabic, Persian, Urdu or Hebrew, so there is no file for it. If one
+does: set `dir="rtl"` and `lang` on the element that holds the text, because words in
+`inline-block` spans read backwards without a base direction; animate by word, since a
+per-letter split breaks letter joining; load an Arabic font explicitly. Upstream's page is
+`https://github.com/remotion-dev/skills/blob/main/skills/remotion-markup/arabic-text.md`
+(no licence file there, so read it rather than copying it).

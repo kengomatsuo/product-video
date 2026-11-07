@@ -1,4 +1,4 @@
-<!-- remotion-dev/skills@9682e994989f951c75912fbc49aa10332a512685 remotion-markup (timing, REFERENCE "General rules", measuring-dom-nodes) -> product-video references/remotion/timing.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-markup (timing, REFERENCE "General rules", measuring-dom-nodes) -> product-video references/remotion/timing.md -->
 # Timing, easing and springs
 
 Which curve and duration to use is decided in `../motion.md` and `template/src/motion.ts`.
