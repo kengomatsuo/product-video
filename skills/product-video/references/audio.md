@@ -75,3 +75,7 @@ prints onset and peak times). A long file is trimmed with `trimBefore`, never cu
 `bash tools/master.sh <Comp> <version>` renders ProRes, measures loudness, and encodes
 with two-pass `loudnorm` to -14 LUFS, true peak -1.5 dBTP, then prints the loudness of
 the delivered file. You cannot hear it: report those numbers.
+
+## Voiceover from a text-to-speech product
+
+Before choosing, open the product's model picker and its voice suggestions for the actual script, and list every model and suggested voice it offers for each language. Generate the whole script in one request and cut it at the line boundaries (character timestamps where the API gives them); a line-by-line read loses its intonation between lines. Compare at least the top two models and two suggested voices per language, side by side, before picking.
