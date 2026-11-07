@@ -143,7 +143,7 @@ no on-screen jargon (`z-index`, `opacity`), no text under 48 px at 1080p, one id
 most three moving elements per shot, no haze or fog layers, and moves on springs, never a
 linear move sped up to fit a beat.
 
-**7c Motion plot.** Sheets cannot show motion: plot each device's on-screen size and
+**7c Motion plot.** Every action settles and holds at rest for 0.6 s or more before its beat's cut: difference the frames over each beat's last 0.4 s and require near zero, apart from a planned seam. Sheets cannot show motion: plot each device's on-screen size and
 position over time (or difference consecutive frames) and check every move has a target
 and a visible size; a 3% repeating zoom passed the sheets the same day. Fix, re-plot.
 
