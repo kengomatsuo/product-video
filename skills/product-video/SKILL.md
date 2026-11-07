@@ -1,6 +1,6 @@
 ---
 name: product-video
-description: Makes promo videos and App Store previews for your own software products, from real recordings of the app in the product's own brand. Runs a gated pipeline (references, study, storyboard, animatic, build, checks) in Remotion with a cited motion system, and checks every render for size, frame rate, App Store rules, loudness and frame pops. Use for launch videos, social cuts (Reels, Shorts, TikTok), site hero loops, App Store and Mac App Store previews, feature announcements and demo reels, whenever someone asks for a video of an app. Not for explainer lectures.
+description: "Makes promo films and App Store previews of your own app from real recordings, in Remotion, with a gated storyboard and checked renders. Use for launch videos, social cuts, site hero loops, store previews and demo reels; not explainers."
 user-invocable: true
 ---
 
