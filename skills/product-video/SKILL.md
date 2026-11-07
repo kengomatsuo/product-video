@@ -137,7 +137,11 @@ sheets over a few chosen beats let clipping layers and z-fights through on the U
 explainer (2026-11-07). In a layered three.js scene every transparent plane gets
 `depthWrite: false` and an explicit `renderOrder` back to front, and coplanar labels get
 `polygonOffset`, so no layer can cut through another mid-move. Any 3D animatic is built
-by an Opus agent at high effort; give it this loop as its done-when.
+by an Opus agent launched with `effort: "max"` (set it in the Agent call; the agent file's
+default does not count); give it this loop as its done-when. Viewers are not engineers:
+no on-screen jargon (`z-index`, `opacity`), no text under 48 px at 1080p, one idea and at
+most three moving elements per shot, no haze or fog layers, and moves on springs, never a
+linear move sped up to fit a beat.
 
 **7c Motion plot.** Sheets cannot show motion: plot each device's on-screen size and
 position over time (or difference consecutive frames) and check every move has a target
