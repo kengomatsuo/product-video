@@ -33,10 +33,10 @@ let w = Int(win.frame.width * 2), h = Int(win.frame.height * 2)
 let cfg = SCStreamConfiguration()
 cfg.width = w; cfg.height = h; cfg.minimumFrameInterval = CMTime(value: 1, timescale: 60); cfg.showsCursor = false; cfg.queueDepth = 8; cfg.pixelFormat = kCVPixelFormatType_32BGRA
 let rec = try Rec(url: URL(fileURLWithPath: out), w: w, h: h)
-// the whole app on the window's display, cropped to the window, so popovers and menus outside the window's own layer are kept
-guard let disp = c.displays.first(where: { $0.frame.intersects(win.frame) }), let app = win.owningApplication else { print("no display"); exit(1) }
+// the whole display, cropped to the window, so popovers and menus outside the window's own layer are kept
+guard let disp = c.displays.first(where: { $0.frame.intersects(win.frame) }) else { print("no display"); exit(1) }
 cfg.sourceRect = CGRect(x: win.frame.minX - disp.frame.minX, y: win.frame.minY - disp.frame.minY, width: win.frame.width, height: win.frame.height)
-let st = SCStream(filter: SCContentFilter(display: disp, including: [app], exceptingWindows: []), configuration: cfg, delegate: nil)
+let st = SCStream(filter: SCContentFilter(display: disp, excludingApplications: [], exceptingWindows: []), configuration: cfg, delegate: nil)
 try st.addStreamOutput(rec, type: .screen, sampleHandlerQueue: DispatchQueue(label: "rec"))
 try await st.startCapture()
 let primary = NSScreen.screens[0].frame.height
