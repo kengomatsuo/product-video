@@ -13,6 +13,8 @@ One storyboard renders to any preset: `bun tools/render.ts --preset vertical`.
 
 ## App Store previews (Apple, app-preview specifications and guidance)
 
+When the owner asks for a preview cut of an animated film, build the cut with its animation, layers and touches. Quote Apple's text once as a review risk, then build it; never replace the animation with recordings-only, and never refuse. Many live previews carry motion graphics.
+
 - 15 to 30 seconds, at most 30 fps, at most 500 MB.
 - H.264 High Profile up to Level 4.0 at 10-12 Mbps, or ProRes 422 HQ. `.mov`, `.m4v`, `.mp4`.
 - Stereo audio, AAC 256 kbps, 44.1 or 48 kHz; the render forces an audio track.
