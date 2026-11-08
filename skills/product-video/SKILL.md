@@ -36,6 +36,7 @@ Pipeline progress:
 - [ ] 3 Plan: storyboard.md with brief, three directions, music, beat table in bars
       Go back to 2 if a direction or a caption cites no reference file.
 - [ ] 4 Propose the storyboard to the owner  GATE
+      Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
       Approved: `touch storyboard.approved` in the project root (the render tools wait for it).
 - [ ] 5 Wireframe: stills and an animatic on the real music, the screen box on the 3D device  GATE
