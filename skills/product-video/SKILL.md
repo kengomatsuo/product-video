@@ -35,6 +35,8 @@ Pipeline progress:
       Go back to 1 if a note cannot say what to take; the item was the wrong one.
 - [ ] 3 Plan: storyboard.md with brief, three directions, music, beat table in bars
       Go back to 2 if a direction or a caption cites no reference file.
+      The film shows how the product is really turned on (its real control, recorded), or it is a false advert.
+      A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
 - [ ] 4 Propose the storyboard to the owner  GATE
       Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
