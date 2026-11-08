@@ -39,6 +39,7 @@ Pipeline progress:
       A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
       A real take is staged like the rest of the film: on its 3D device or full frame. The camera makes one move per shot, 1.2 s or longer, at most 2x, then holds; a magnifier over the held frame shows a control that is still small; the press changes something visible. Go back to 3 if a frame at delivered size does not show which control is pressed, or if the frame scales more than 2x inside 3 s.
       A logo on screen is the product's finished icon, never a redraw in code. An Icon Composer package is rendered with Apple's ictool so its glass and light stay; an exported flat PNG does not count.
+      Every shot of a platform's preview shows that platform's own recording under the overlays, and a take is sheeted end to end before any of it is ruled out.
 - [ ] 4 Propose the storyboard to the owner  GATE
       Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
