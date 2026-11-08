@@ -42,6 +42,7 @@ Pipeline progress:
       Every shot of a platform's preview shows that platform's own recording under the overlays, and a take is sheeted end to end before any of it is ruled out.
       Each platform's cut gets the flagship's full staging on that platform's own 3D device, every animation layer included, and a film for one device family shows only that family. Dead time is cut from a take before it is used, and a real domain or name is hidden before anyone is shown the clip.
       Of several attempts at a pointer move, use the straightest. Better: record with `scripts/capture-mac-clean.swift` (compile with `swiftc -parse-as-library`), which leaves the cursor out and logs its path and clicks, then draw a smooth pointer that glides to each logged click. Delete the output file first; AVAssetWriter will not overwrite.
+      Script the take before asking anyone to perform it. Inside a browser page, use Playwright with a synthetic cursor. For a real Safari window with an extension, WebDriver's windows are isolated and marked, so post native clicks (needs Accessibility) and record with the cursor left out.
 - [ ] 4 Propose the storyboard to the owner  GATE
       Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
