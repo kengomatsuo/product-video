@@ -22,6 +22,7 @@ Traps found while building it, all fixed in the file:
 - A second WebGL2 context fails in headless Chrome: one shared canvas for painting.
 - `Config.setChromiumOpenGlRenderer('angle')` or WebGL2 is missing entirely.
 - Touch dots in white vanish on a white UI; the grey of iOS "show touches" reads.
+- A turned 3D object over a page needs its centre further off the page than its turned corner and body reach back, or the page's props slice it. Enter it with scale and opacity instead of crossing a stencil edge.
 - A dot 0.03 mm over the glass z-fights with it: draw it with `depthTest={false}` and a
   higher `renderOrder`.
 

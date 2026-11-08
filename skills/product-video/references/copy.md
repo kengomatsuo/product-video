@@ -4,6 +4,10 @@ Captions are prose a person reads, so the `human-prose` skill applies to every o
 Nothing is copied from the product's store metadata or README without that check: store
 copy is often AI-written too.
 
+## When the owner supplied the script
+
+Cut each caption from the owner's own sentences, keeping the verb and the object. Read the caption alone, muted, as a buyer who has never seen the product; a label only the voiceover explains ("Swapped mid-press") fails and gets rewritten.
+
 ## What trusted human copy looks like
 
 `<library>/copy/README.md` holds the text read (OCR) from about
