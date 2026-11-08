@@ -79,3 +79,5 @@ the delivered file. You cannot hear it: report those numbers.
 ## Voiceover from a text-to-speech product
 
 Before choosing, open the product's model picker and its voice suggestions for the actual script, and list every model and suggested voice it offers for each language. Generate the whole script in one request and cut it at the line boundaries (character timestamps where the API gives them); a line-by-line read loses its intonation between lines. Compare at least the top two models and two suggested voices per language, side by side, before picking.
+
+Audio sent to the owner for listening is MP3: an `.m4a` does not play in the remote app.
