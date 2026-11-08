@@ -37,7 +37,7 @@ Pipeline progress:
       Go back to 2 if a direction or a caption cites no reference file.
       The film shows how the product is really turned on (its real control, recorded), or it is a false advert.
       A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
-      A real take is staged like the rest of the film: on its 3D device or full frame, the camera pushed in until the pressed control is at least a fifth of the frame wide, and the press changes something visible. Go back to 3 if a frame at delivered size does not show which control is pressed.
+      A real take is staged like the rest of the film: on its 3D device or full frame. The camera makes one move per shot, 1.2 s or longer, at most 2x, then holds; a magnifier over the held frame shows a control that is still small; the press changes something visible. Go back to 3 if a frame at delivered size does not show which control is pressed, or if the frame scales more than 2x inside 3 s.
       A logo on screen is the product's own image file, drawn at its real proportions with its plate. Never redraw it in code.
 - [ ] 4 Propose the storyboard to the owner  GATE
       Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
