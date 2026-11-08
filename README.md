@@ -63,7 +63,7 @@ companies of up to three people; larger companies need a Remotion company licenc
 | Render stills, drafts and finals in six presets | `template/tools/stills.ts`, `render.ts` |
 | Verify size, fps, App Store rules and frame pops | `template/tools/check.ts` |
 
-The motion rules and their sources are in `skills/product-video/references/motion.md`.
+The motion rules are in `skills/product-video/references/motion.md` and their sources in `skills/product-video/research/motion-sources.md`.
 
 ## Credits
 

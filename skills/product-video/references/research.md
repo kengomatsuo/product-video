@@ -1,13 +1,11 @@
 # Research before the first scene
 
-The approved Cutling film came out of a reference library of 570 human-made images and
-clips, each with a note on what to take from it. The first cut, made without that
-library, was a slideshow the owner rejected. Skip this step and the film comes out the
-same way.
+Build a reference library of human-made images and clips, each with a note on what to
+take from it, before the first scene. A film made without one comes out as a slideshow.
 
 ## 1. Read what is already known
 
-`research/` holds the study notes from the 2026-09-24 sweep. Read the ones for the step
+`research/` holds the study notes. Read the ones for the step
 you are on before gathering anything new:
 
 | File | What it answers |
@@ -25,7 +23,7 @@ you are on before gathering anything new:
 Two sets, both saved before any study starts. **On the topic**: the product's competitors
 and its category. **General**: the best work in any category, for craft that no
 competitor shows. Keep them in `<refs>`, a folder outside the repo (`<product>-promo/`
-beside the shared `<library>`, or any folder the owner names), one folder per kind, each with a `notes.md` table: source URL,
+beside the shared `<library>`, or any folder the user names), one folder per kind, each with a `notes.md` table: source URL,
 file, topic or general, what to take. At least 250 items across the kinds below:
 
 | Kind | On the topic | General | How |
@@ -48,7 +46,7 @@ guessed.
 - **Read the copy.** `bun <skill>/scripts/refs-copy.ts <refs> --tiers tiers.json` reads the
   text of every image (macOS Vision) and flags lines with an LLM tell. Assign a tier by
   source: A in-house writers (launch films of known studios), B established store
-  listings (older copy is safest), C mixed (Product Hunt, 2025-26 launches), D
+  listings (older copy is safest), C mixed (Product Hunt, recent launches), D
   placeholder (Dribbble, tutorials; never an example). Only A and B lines teach captions.
 - **Time the films.** `refs-frames.sh` writes each film's cut times. Compare the shot
   lengths with `pacing.md` before choosing the film's grid.
@@ -62,8 +60,7 @@ a payoff) in `headlines.json` and this product's `copy/lines.json`. Match their 
 and grammar: a verb and a concrete object, 2 to 5 words, a fact the screen proves. Then
 put it through `human-prose`. A caption that would fit any product fails.
 
-## 5. Music is picked by the owner, by ear
+## 5. Music is picked by the user, by ear
 
 Make a sample reel: 15 to 20 s of each candidate, a spoken number before each, sent to
-the owner's phone. The owner picks. Never a synthesized bed: on 2026-09-24 the owner
-compared synthesized drums to "trash cans" in a horror film.
+the user's phone. The user picks. Never use a synthesized bed; synthesized drums sound cheap.

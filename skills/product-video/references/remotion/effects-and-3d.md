@@ -75,7 +75,7 @@ Keep project effects in `src/effects/`.
 
 `<HtmlInCanvas width height onPaint onInit>` draws its children into a canvas so
 Canvas 2D or WebGL can post-process them. It needs Chrome 149 or newer with
-`chrome://flags/#canvas-draw-element` on; tell the owner when a film depends on it, and
+`chrome://flags/#canvas-draw-element` on; tell the user when a film depends on it, and
 check that the render uses Remotion's own Chrome ([rendering.md](rendering.md)), which has the
 flag on. Nest two only when `HtmlInCanvas.isNestingSupported()` is true (Chrome
 157.0.8080.0 or newer). `onPaint({ canvas, elementImage })` draws with

@@ -15,7 +15,7 @@ thrown on an unseen wall, lit by a `RoomEnvironment` built in code (no HDR downl
 | `position`, `rotation`, `scale` | driven per frame by a rig function |
 | `taps` | `{ at, u, v }`: a touch dot and ring on the screen surface, pressing 1:2 |
 
-Traps found while building it, all fixed in the file:
+Traps already handled in the file:
 - ThreeCanvas draws on frame change. A texture or environment that arrives later needs
   `advance()` while rendering, or the frame keeps the old state (`useRedraw`).
 - A material created without a map never shows one added later: remount it (`key`).
@@ -39,14 +39,14 @@ MacBook Pro 16-inch with its screen as its own mesh (`Screen`) and a hinged lid
 (`LidPivot`, local X, 1.94 rad closed), loaded with `GLTFLoader` + `MeshoptDecoder`.
 Credits in `public/models/LICENSES.md` go in the video description. `iphone.glb` (iPhone 15 Pro)
 and `ipad.glb` (iPad Pro 13-inch M4) are CC-BY 4.0 models by polyman Studio, downloaded
-from Sketchfab through the owner's logged-in Chrome; `LibraryDevice kind="iphone" | "ipad"`
+from Sketchfab; `LibraryDevice kind="iphone" | "ipad"`
 plays recordings and taps on them. `Phone3D` stays as the fallback when no model fits.
 Before using any new model, render it from six angles with its screen material tinted
 red (the `ModelTest` pattern) to learn its units, facing and texture flip.
 
 The front of a phone or tablet is black glass to the edge; the metal band shows only at
-an angle. A clearcoat glass at full environment strength read as a silver frame in v3,
-so the glass reflects at 0.18. A camera `near` of 1 made the 0.03 mm layers of a scaled
+an angle. A clearcoat glass at full environment strength reads as a silver frame, so the glass
+reflects at 0.18. A camera `near` of 1 made the 0.03 mm layers of a scaled
 iPad z-fight; use 60.
 
 ## Backgrounds (`src/backgrounds.tsx`)

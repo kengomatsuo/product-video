@@ -1,9 +1,9 @@
-<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-license; Remotion docs /docs/license, /docs/license/faq, /docs/terms, read 2026-11-07 -> product-video references/remotion/license.md -->
+<!-- remotion-dev/skills@a2824c67f8b4585c294a8101db9f9f0ad3c643f8 remotion-license; Remotion docs /docs/license, /docs/license/faq, /docs/terms -> product-video references/remotion/license.md -->
 # Remotion licence
 
 Remotion is source-available with its own licence, not an open-source one. This summary was
-read from `https://www.remotion.dev/docs/license/faq.md` and `https://www.remotion.dev/docs/terms.md`
-on 2026-11-07. Terms and prices change; read the live pages before a decision, and treat this
+read from `https://www.remotion.dev/docs/license/faq.md` and `https://www.remotion.dev/docs/terms.md`.
+Terms and prices change; read the live pages before a decision, and treat this
 file as a pointer, not legal advice. Buying is at `https://www.remotion.pro/license`.
 
 ## Who pays
@@ -31,9 +31,9 @@ file as a pointer, not legal advice. Buying is at `https://www.remotion.pro/lice
 
 ## What it means for this skill
 
-- The owner works alone, so the Free licence covers every film this skill makes, commercial
+- When the user works alone, the Free licence covers every film this skill makes, commercial
   ones included. The FAQ says a Free-licence holder may also run an automation, and that the
-  Automators plan "only applies to the Company License" (remotion.pro/faq, read 2026-11-07).
+  Automators plan "only applies to the Company License" (remotion.pro/faq).
   Nothing is billed and nothing needs buying.
 - Only if three more people join the work does the Company licence apply. Then
   `bunx remotion render` and `still` (`tools/render.ts`, `tools/stills.ts`) appear in the

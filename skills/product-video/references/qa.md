@@ -1,6 +1,6 @@
 # Checking a video
 
-Gates catch broken, not boring (PLM law 9). Run the tools, then look.
+Gates catch broken, not boring (product-launch-motion law 9). Run the tools, then look.
 
 | Step | Command | What it proves |
 |---|---|---|
@@ -21,54 +21,49 @@ before calling it a false alarm.
 
 - Every still, opened, before a full render.
 - No device or card reaches the frame edge in any cut: render with a transparent background and measure the
-  content box per frame (stya hero `tools/edges.ts`, 3% margin, each cut placed on its own). A phone-width cut
-  shipped with a card and a device clipped at the edge (stya hero, 2026-11-06).
+  content box per frame (3% margin, each cut placed on its own, a phone-width cut included).
 - The contact sheet `out/sheet.png` of the delivered file, not the source.
 - Any frame where a capture meets its frame: nothing of the UI cropped, no halo.
-- The first and last frame of every beat: nothing still arriving when it cuts (PLM law 7).
+- The first and last frame of every beat: nothing still arriving when it cuts (product-launch-motion law 7).
 - Caption timing against the reading-speed rule in `copy.md`.
 - Every delivered file comes out of `tools/master.sh` and passes `tools/check.ts`. A
-  hand-written master passed Remotion's full-range `yuvj420p` through, and App Store
-  Connect failed 77 of 100 iOS previews with a bare `ASSET_FAILED` (Undirect, 2026-10-02).
+  hand-written master can pass Remotion's full-range `yuvj420p` through, and App Store
+  Connect then fails the previews with a bare `ASSET_FAILED`.
 - Overlays (chips, captions, routes) keep a measured gap from every device's bounding
-  box in every frame; Undirect's destination chips ran into the phone (2026-10-03).
-- Captures match what viewers see: the layout the owner names (Safari's Compact bottom
-  bar on iOS 27 for Undirect) and a key, frontmost Mac window so selections show the
-  accent colour.
+  box in every frame.
+- Captures match what viewers see: the layout the user names (for example a browser's
+  bottom-bar layout) and a key, frontmost Mac window so selections show the accent colour.
 - A device's pose is proved in the film's own full frames at every state change (closed,
-  opening, open), never only in a separate side view: Undirect's MacBook passed a
-  side-view hinge proof while its lid sat folded under the base on camera (2026-10-03).
+  opening, open), never only in a separate side view.
 - After removing or changing any camera key, step through every frame (30 fps) across
-  the edited beat: Undirect's MacBook snapped from close to wide in one frame after
-  its zoom was deleted (2026-10-03).
+  the edited beat; a deleted zoom can leave a one-frame snap.
 - Every screen shows its planned content: no browser error page, blank panel or
   development address (`localhost`, `.test`, a port). OCR each second for them, and
-  after a recapture compare every scene against the last approved cut. Undirect's
-  recapture on a live domain made the stolen tap land on "Safari can't open the page",
-  and a scan for `localhost` alone passed it (2026-10-02).
+  after a recapture compare every scene against the last approved cut; a scan for
+  `localhost` alone misses an error page.
 
 ## Sound
 
 - Loudness of the delivered file: -14 LUFS plus or minus 0.5, true peak at most -1 dBTP
-  (PLM definition of done). Measure with
+  (product-launch-motion definition of done). Measure with
   `ffmpeg -i out.mp4 -af loudnorm=print_format=summary -f null -`.
 - A sound effect must be measurably present in the delivered file, not only in the source.
-- You cannot hear the result. Say so to the owner, with the numbers.
+- You cannot hear the result. Say so to the user, with the numbers.
 
 ## Sound complaints
 
-When the owner says the music sounds wrong, measure before blaming either side: RMS per
+When the user says the music sounds wrong, measure before blaming either side: RMS per
 band (<90 Hz, 90-250, 250-2k, >2k) of the source track at the used offset against the
-delivered file. Cutling v4 matched within 0.3 dB in every band, so the render was clean
-and the track's kick was the problem. Say which it is with the numbers.
+delivered file. A match within 0.3 dB in every band means the render is clean and the
+track is the problem. Say which it is with the numbers.
 
-## Handing over (learned 2026-09-24)
+## Handing over
 
-The owner watches on a phone, through the app's file card:
+The user watches on a phone, through the app's file card:
 - The inline player starts muted: say "unmute" in the caption, every time.
-- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k), named `<master>.phone.mp4` beside the master so the house hook finds the master's check.ts pass. A 7.4 MB file timed
-  out after 30 s and never reached the phone; the master stays in `out/` for upload.
-- Music choices go as one audio reel (m4a), a spoken number before each 15-20 s sample
+- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k), named `<master>.phone.mp4` beside the master so the house hook finds the master's check.ts pass. A larger file can time
+  out and never reach the phone; the master stays in `out/` for upload.
+- Music choices go as one audio reel (MP3; an `.m4a` does not play in the remote app), a spoken number before each 15-20 s sample
   (`say -v Samantha "<n>. <title>"`), cut from the track's main section, never its intro.
 - Report the loudness and peak of the delivered file; you cannot hear it.
 

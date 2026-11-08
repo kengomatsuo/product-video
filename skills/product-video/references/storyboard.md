@@ -1,13 +1,13 @@
 # Plan, propose, wireframe
 
-Nothing is built until the owner has approved the storyboard and then the wireframe. A
+Nothing is built until the user has approved the storyboard and then the wireframe. A
 change is cheapest here: a line in a table, a box moved in a still.
 
 ## Plan the storyboard
 
 Each scene is a moment in the product's story, with its own device line-up, and each table row says why every
-device moves (it shows a screen, takes a tap, or carries the cut). A reference's choreography copied onto devices
-with no reason to move, and the same three devices in every scene, were rejected (stya hero, 2026-11-06).
+device moves (it shows a screen, takes a tap, or carries the cut). Do not copy a reference's choreography onto devices
+with no reason to move, and do not repeat the same three devices in every scene.
 
 Start from the study notes, not from the scaffold's placeholder beats. Write
 `storyboard.md` in the film's folder:
@@ -16,13 +16,13 @@ Start from the study notes, not from the scaffold's placeholder beats. Write
    thing the viewer should remember, and the approved facts with their sources.
 2. **Three directions**, a sentence each, every one naming the references it takes from
    by file. Pick one and name its signature move.
-3. **The music**: the owner's pick from the sample reel, its BPM and the drop
+3. **The music**: the user's pick from the sample reel, its BPM and the drop
    (`beats.ts`). The film is laid out in its bars.
 4. **The beat table**, one row per beat:
 
 | # | Bars (s) | On screen | Motion | Caption (words) | Sound | Reference |
 |---|---|---|---|---|---|---|
-| 1 | 1-2 (0-3.9) | keyboard list, tap Cutling | phone rises from below, settles right | Stop retyping your address (4) | pad in, tap | `launch-videos/things-02.jpg` |
+| 1 | 1-2 (0-3.9) | keyboard list, tap the app | phone rises from below, settles right | Stop retyping your address (4) | pad in, tap | `launch-videos/things-02.jpg` |
 
    Each caption is timed against `research/timing.md`: words arrive at speaking pace and
    the line holds at least as long as it takes to read twice. Each beat names the take it
@@ -30,7 +30,7 @@ Start from the study notes, not from the scaffold's placeholder beats. Write
 
 ## Propose it
 
-Send the owner the brief, the three directions with one reference frame each, the chosen
+Send the user the brief, the three directions with one reference frame each, the chosen
 direction, and the beat table. Publish it as a page when the host has artifacts or docs,
 otherwise as a file with SendUserFile. Wait for approval; apply every change to the table
 before going on.
@@ -46,7 +46,7 @@ bun tools/stills.ts                 # one still per beat, settled and mid-beat
 bun tools/render.ts --draft         # the animatic: real timing, captions and music
 ```
 
-Send the stills as one contact sheet and the animatic at phone size. The owner judges
+Send the stills as one contact sheet and the animatic at phone size. The user judges
 pacing, reading time and composition here, with no recording yet. Wait for approval.
 
 ## Then build

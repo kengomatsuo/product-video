@@ -2,7 +2,7 @@
 
 Why Mixkit's "Hazy After Hours" (clanky minimal-techno drums) and the cheerful-ukulele "happy corporate" packs keep getting rejected, what real product promos actually use instead, and 15 tracks that match — legally usable, license-checked, downloaded, measured, and assembled into one listening reel.
 
-Sample reel (for listening on a phone): `<refs>/audio/samples/music-candidates-2.m4a` — 15 spoken-numbered 20‑second excerpts, ~5:43 total.
+Sample reel (for listening on a phone): `<refs>/audio/samples/music-candidates-2.m4a` (send a copy as MP3) — 15 spoken-numbered 20‑second excerpts, ~5:43 total.
 
 Files: `<library>/audio/files/pixabay-<slug>-<id>.mp3`. Library entries added to `<library>/audio/LIBRARY.md`.
 
@@ -12,7 +12,7 @@ Files: `<library>/audio/files/pixabay-<slug>-<id>.mp3`. Library entries added to
 
 Apple's product films (iPad, MacBook Air, and the wider ad catalogue) lean on **musical minimalism in the Steve Reich sense**, not on EDM energy. The clearest documented case: Chilly Gonzales' "Never Stop" (used across multiple iPad ads) opens with a steady four-feel pulse on shakers plus layered finger-snaps, then a piano plays a 9‑note pattern that steps through only three pitches; a second piano enters against the 4/4 feel to create polyrhythmic tension; a third piano and hand-claps on 2 and 4 arrive later. Nothing "drops" — the track *accumulates*, one voice at a time. The MacBook Air spot (Mophonics) does the same trick from a single sustained piano chord that pulsates and multiplies into higher registers. ([brettworks: Apple Commercials and Musical Minimalism](https://brettworks.com/2010/11/12/apple-commercials-and-musical-minimalism/))
 
-Apple's September 2026 keynote ("Surprise and Shine") still used full vocal/indie songs for the big reveals (Genesis Owusu's "Stampede" for iPhone 18 Pro, Dylan Thom's "SAS" for the foldable iPhone Duo, Michigander's "Taxi" for the closing product film) — but those are marketing needle-drops for the live event, not the instrumental beds under app/feature b-roll, which is the closer analogue to a Cutling promo. ([Analytics Insight: Apple iPhone Launch 2026 songs](https://www.analyticsinsight.net/news/apple-iphone-launch-2026-songs-played-during-every-product-reveal))
+Apple's September 2026 keynote ("Surprise and Shine") still used full vocal/indie songs for the big reveals (Genesis Owusu's "Stampede" for iPhone 18 Pro, Dylan Thom's "SAS" for the foldable iPhone Duo, Michigander's "Taxi" for the closing product film) — but those are marketing needle-drops for the live event, not the instrumental beds under app/feature b-roll, which is the closer analogue to an app promo. ([Analytics Insight: Apple iPhone Launch 2026 songs](https://www.analyticsinsight.net/news/apple-iphone-launch-2026-songs-played-during-every-product-reveal))
 
 ### Samsung
 
@@ -26,7 +26,7 @@ None of these publish composer or track credits in a way general web search surf
 
 Per FILMPAC and GMP Music's own explanations of the stock-music market: open-submission libraries mix polished cues with rough demos at the same star rating, so low-effort, generic tracks sit next to good ones; certain genre patterns (the EDM build → drop, the "inspirational" corporate strum, the four-on-the-floor tech-house kick) get reused so often across ads that they read as cliché the moment they're recognized, and standard tracks are never tuned to the specific edit the way a commissioned score is. ([GMP Music: Stock vs production music](https://www.gmpmusic.com/resources/stock-music-vs-production-music), [FILMPAC: What is stock music?](https://filmpac.com/what-is-stock-music/))
 
-Concretely, in the tracks the owner already rejected (Mixkit's tech-house/techno catalogue, `<library>/audio/LIBRARY.md`), the "clanky minimal-techno drums" complaint maps to a measurable trait: **the sub-90 Hz band sits within 2–4 dB of the full-band RMS** — i.e. the kick/sub-bass is nearly as loud as the entire mix. That is the technical signature of a four-on-the-floor techno/house kick pattern, and it is what reads as "gym playlist" rather than "product film."
+Concretely, in the rejected tracks (Mixkit's tech-house/techno catalogue, `<library>/audio/LIBRARY.md`), the "clanky minimal-techno drums" complaint maps to a measurable trait: **the sub-90 Hz band sits within 2–4 dB of the full-band RMS** — i.e. the kick/sub-bass is nearly as loud as the entire mix. That is the technical signature of a four-on-the-floor techno/house kick pattern, and it is what reads as "gym playlist" rather than "product film."
 
 ### Distilled traits for a calm, premium app promo bed
 
@@ -43,7 +43,7 @@ Concretely, in the tracks the owner already rejected (Mixkit's tech-house/techno
 
 All sourced from **Pixabay Music**. Per Pixabay's own license page, everything on the site is released under the Pixabay Content License: free for commercial use, modification and distribution, **no attribution required** (crediting the artist is welcome but optional), with the sole restriction that the track itself can't be resold as stock media or registered for content-ID/royalty claims. ([Pixabay: License Summary](https://pixabay.com/service/license-summary/), confirmed again on each track's own page, which shows "Free for use under the Pixabay Content License.")
 
-Uppbeat's free tier was checked and set aside: its own commercial-license FAQ scopes free/Pro downloads to "publishing on your own channels" and reserves broader ad/commercial use for paid Business plans, which is a worse fit for a public product promo than Pixabay's unconditional commercial grant. ([Uppbeat: Commercial License FAQs](https://uppbeat.io/commercial-licenses)) Free Music Archive and Incompetech were checked but nothing in their calm/ambient catalogues beat the Pixabay picks below on instrumentation or low-end cleanliness, so no tracks from those two are included this round. No new Mixkit tracks were added — everything in Mixkit's tech/electronica tag set failed the low-end test the same way the already-rejected tracks did (see the "rejected" note below); "See Line Funk" (Mixkit #105, previously rated "slightly better" by the owner) remains the one Mixkit track worth keeping in mind, but a fresh pull of that catalogue for this round didn't turn up anything better than what's already in the library.
+Uppbeat's free tier was checked and set aside: its own commercial-license FAQ scopes free/Pro downloads to "publishing on your own channels" and reserves broader ad/commercial use for paid Business plans, which is a worse fit for a public product promo than Pixabay's unconditional commercial grant. ([Uppbeat: Commercial License FAQs](https://uppbeat.io/commercial-licenses)) Free Music Archive and Incompetech were checked but nothing in their calm/ambient catalogues beat the Pixabay picks below on instrumentation or low-end cleanliness, so no tracks from those two are included this round. No new Mixkit tracks were added — everything in Mixkit's tech/electronica tag set failed the low-end test the same way the already-rejected tracks did (see the "rejected" note below); "See Line Funk" (Mixkit #105) remains the one Mixkit track worth keeping in mind, but a fresh pull of that catalogue for this round didn't turn up anything better than what's already in the library.
 
 **Selection method**: pulled ~25 candidates from Pixabay searches for felt piano, minimal ambient technology, plucked/soft synth "corporate tech," and confident minimal builds; downloaded all 25; measured every one with `ffprobe` (duration), `beats.ts` (BPM/sections/energy), and `ffmpeg astats` (full-band RMS vs. a 90 Hz-lowpassed band). Any track whose low end sat within ~5 dB of its full-band RMS — the same signature as the rejected Mixkit techno — was cut. That removed roughly 10 of the 25 (mostly ones tagged "tech house"/"corporate" that were in fact sub-heavy). The 15 below all cleared the bar; three (marked *) sit close to the 5 dB line but were kept because their instrumentation (soft plucks, piano) is audibly not techno-kick-driven.
 
@@ -77,6 +77,6 @@ The reel (`music-candidates-2.m4a`) plays the 15 tracks in the table's numeric o
 
 New rows added to `<library>/audio/LIBRARY.md` under Music, following its existing table format.
 
-## Owner verdict (2026-09-24)
+## Which tracks fit a promo
 
-Chosen: 1 Revival. Acceptable: 9 Chase the Sparks, 14 Confident Background. The piano tracks (4, 5, 6, 8, 10, 11, 12) do not fit a promo; keep them for tutorials.
+First choice: 1 Revival. Acceptable: 9 Chase the Sparks, 14 Confident Background. The piano tracks (4, 5, 6, 8, 10, 11, 12) do not fit a promo; keep them for tutorials.

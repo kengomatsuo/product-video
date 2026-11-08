@@ -13,7 +13,7 @@ One storyboard renders to any preset: `bun tools/render.ts --preset vertical`.
 
 ## App Store previews (Apple, app-preview specifications and guidance)
 
-When the owner asks for a preview cut of an animated film, build the cut with its animation, layers and touches. Quote Apple's text once as a review risk, then build it; never replace the animation with recordings-only, and never refuse. Many live previews carry motion graphics.
+When the user asks for a preview cut of an animated film, build the cut with its animation, layers and touches. Quote Apple's text once as a review risk, then build it; never replace the animation with recordings-only, and never refuse. Many live previews carry motion graphics.
 
 - 15 to 30 seconds, at most 30 fps, at most 500 MB.
 - H.264 High Profile up to Level 4.0 at 10-12 Mbps, or ProRes 422 HQ. `.mov`, `.m4v`, `.mp4`.
@@ -40,8 +40,7 @@ Every render is a new file: rename the last one before rendering over it.
 
 ## The promo film is not an App Store preview
 
-Checked against Apple on 2026-09-24 (developer.apple.com app preview specifications and
-App Review Guideline 2.3.4): a preview is 15-30 s, at most 30 fps, 886 x 1920 or 1920 x 886
+Apple's app preview specifications and App Review Guideline 2.3.4 say a preview is 15-30 s, at most 30 fps, 886 x 1920 or 1920 x 886
 for the 6.9-inch iPhone, H.264 10-12 Mbps with 256 kbps stereo AAC, and "may only use
 video screen captures of the app itself", with narration and text overlays allowed. A 3D
 device, other devices and a 45 s 60 fps landscape cut all fail it. Make the App Store cut
@@ -51,7 +50,7 @@ as its own composition, designed for portrait: `template/src/AppStorePreview.tsx
 at the capture's own aspect (700 x 1521 inside 886 x 1920), so it never reads as a crop of
 the landscape film. Render with `bash tools/master.sh AppStorePreview v1 --appstore`.
 No zoom into the recording (it crops the app) and no device frame: Apple's App Preview
-page says previews "must show only content within the app itself" (checked 2026-09-24).
+page says previews "must show only content within the app itself".
 A still hold is its own segment with a constant `playbackRate`: changing the rate inside
 a segment re-times all of it and showed the segment's first frame.
 
@@ -64,5 +63,7 @@ Other App Store Connect work (builds, metadata, TestFlight) belongs to the house
 holds `asc_api_key.json`) opens the next version if none is editable, then uploads into the
 primary locale: `IPHONE_67` (886 x 1920) and `IPAD_PRO_3GEN_129` (1200 x 1600, the same 3:4
 as an iPad Pro 13-inch capture, so the recording fits whole). Previews only attach to an
-editable version, and a new version stays unsubmitted until the owner submits it.
-iPad Simulator taps are in points: screenshot pixels / 1.4535 on the 13-inch.
+editable version, and a new version stays unsubmitted until the user submits it.
+
+Confirm every Apple rule in this file against Apple's current App Preview page when
+uploading.

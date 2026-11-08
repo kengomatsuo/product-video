@@ -13,15 +13,12 @@ this skill decides what to make and how it should move.
 
 ## The pipeline, in order. No phase is skipped
 
-A film made without the first four phases is a slideshow; the owner rejected exactly
-that on 2026-09-24. Each gate waits for the owner's approval.
+A film made without the first four phases is a slideshow. Each gate waits for the user's approval.
 
 **"Don't ask questions" never removes a gate.** The storyboard and the animatic are
-deliverables sent to the owner, not questions. A coordinator delegating this skill passes
+deliverables sent to the user, not questions. A coordinator delegating this skill passes
 the gates through to the subagent and never writes "decide and finish"; a subagent told
-to skip them stops at phase 4 and hands the storyboard back. Undirect's film skipped all
-four phases under that instruction and came back as screenshots on Cutling's music
-(2026-10-01).
+to skip them stops at phase 4 and hands the storyboard back.
 
 Copy this checklist into the reply and tick it off. Each go-back line applies the moment
 its check fails.
@@ -46,8 +43,8 @@ Pipeline progress:
       A fictional brand in a take is name-checked (registered domain, web search) before filming. Mac takes run in full-screen Safari on its own desktop. `scripts/mac-click.swift` posts a real click: hover 0.5 s first, set the click state to 1 or a toolbar button opens its menu, and keep the pointer on the button about 2 s before moving it.
       Before every scripted click, read the front window and tab title and stop unless it names the take's page: a tab another process opens takes the click meant for the film, and a sign-in or approval page acts on it.
       Before any take, check the installed build's version against the current release and open the screen being filmed; an old copy films the wrong product.
-- [ ] 4 Propose the storyboard to the owner  GATE
-      Its first line names the film's use. A film the owner calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
+- [ ] 4 Propose the storyboard to the user  GATE
+      Its first line names the film's use. A film the user calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
       Approved: `touch storyboard.approved` in the project root (the render tools wait for it).
 - [ ] 5 Wireframe: stills and an animatic on the real music, the screen box on the 3D device  GATE
@@ -66,8 +63,8 @@ Pipeline progress:
 | 1 | **Gather** references on the topic (competitors, category) and general ones (best launch films, code, guidelines, prose, music for the mood); 250+ items, saved with sources | `<refs>/*/notes.md` | `references/research.md` |
 | 2 | **Study** them: a note per item, the copy read and tiered, the films' cut times measured | notes filled in, `copy/lines.json` | `references/research.md`, `research/` |
 | 3 | **Plan** the storyboard: brief, three directions from the references, the music picked from a sample reel, the beat table in bars | `storyboard.md` | `references/storyboard.md`, `references/audio.md`, `references/copy.md` |
-| 4 | **Propose** the storyboard to the owner. GATE | the page or file sent | `references/storyboard.md` |
-| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. The wire box is the SCREEN of the real 3D device (`template/public/models/iphone.glb`, `ipad.glb`, `macbook.glb` through `Phone3D`), moving on the planned path with its spins and seams; a flat box hides the motion the owner is approving (Undirect, 2026-10-01). GATE | contact sheet, animatic | `references/storyboard.md` |
+| 4 | **Propose** the storyboard to the user. GATE | the page or file sent | `references/storyboard.md` |
+| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. The wire box is the SCREEN of the real 3D device (`template/public/models/iphone.glb`, `ipad.glb`, `macbook.glb` through `Phone3D`), moving on the planned path with its spins and seams; a flat box hides the motion the user is approving. GATE | contact sheet, animatic | `references/storyboard.md` |
 | 6 | **Build**: capture the shot list, replace each box with its take, build scene by scene | the film | the sections below, `references/capture.md` |
 | 7 | **Check and hand over** | master, check report | `references/qa.md` |
 
@@ -106,7 +103,7 @@ with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: 
 scenes on a 121.5 BPM bar grid, timed to the pacing table in `references/motion.md`. Copy it
 into `src/`, register it in `src/Root.tsx`, and build the new film on its pieces (`Phone3D`,
 `Background`, `Words`, the `path`/`pan`/`settle` rig) rather than on the simpler `Promo`
-beats. Its timings and `rec/` takes are Cutling's: replace them all.
+beats. Its timings and `rec/` takes belong to the example: replace them all.
 See `references/devices-and-backgrounds.md`.
 
 ## Build
@@ -135,7 +132,7 @@ A brand the detector could not read (it says so in `notes`) gets `overrides` in
 
 ## Check, then hand over
 
-Every render the owner sees, animatic included, goes through these loops. Each one is
+Every render the user sees, animatic included, goes through these loops. Each one is
 check, fix, re-check; the film moves on only when the loop passes. A fix needs a new
 render (`master.sh` never overwrites a version: bump `v1` to `v2`).
 
@@ -143,12 +140,10 @@ render (`master.sh` never overwrites a version: bump `v1` to `v2`).
 wrong, re-run, open them again.
 
 **7b Frame sheet.** A contact sheet at 4 frames a second or more over every device
-entrance, seam, spin and exit, looked at in full. A handful of sampled moments missed a
-MacBook whose lid popped in after its keyboard and whose screen floated off the display
-(2026-10-01). Fix each defect, re-render, rebuild the sheet.
+entrance, seam, spin and exit, looked at in full. Sample densely; a few chosen moments
+miss one-frame entrance errors. Fix each defect, re-render, rebuild the sheet.
 The sheet covers the whole film, every beat and every language, before any render is sent;
-sheets over a few chosen beats let clipping layers and z-fights through on the Undirect
-explainer (2026-11-07). In a layered three.js scene every transparent plane gets
+a sheet over a few chosen beats lets clipping layers and z-fights through. In a layered three.js scene every transparent plane gets
 `depthWrite: false` and an explicit `renderOrder` back to front, and coplanar labels get
 `polygonOffset`, so no layer can cut through another mid-move. Any 3D animatic is built
 by an Opus agent launched with `effort: "max"` (set it in the Agent call; the agent file's
@@ -159,7 +154,7 @@ linear move sped up to fit a beat.
 
 **7c Motion plot.** Every action settles and holds at rest for 0.6 s or more before its beat's cut: difference the frames over each beat's last 0.4 s and require near zero, apart from a planned seam. Sheets cannot show motion: plot each device's on-screen size and
 position over time (or difference consecutive frames) and check every move has a target
-and a visible size; a 3% repeating zoom passed the sheets the same day. Fix, re-plot.
+and a visible size; a small repeating zoom passes a sheet. Fix, re-plot.
 
 **7d Render and `check.ts`.** `bun tools/render.ts --draft` for timing, then the final
 master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.264 at
@@ -177,7 +172,7 @@ version and measure again.
 
 Then hand over: `references/qa.md` lists what to look at by eye and "Handing over". Send
 a phone-sized copy with SendUserFile, say what was checked and what was not (you cannot
-hear the audio), and tell the owner to unmute.
+hear the audio), and tell the user to unmute.
 
 For the App Store, make separate cuts (`AppStorePreview` and `AppStorePreviewIPad`: iPhone
 886 x 1920, iPad 1200 x 1600, recordings only, no zoom, no device frame). Fill the takes,
@@ -189,9 +184,8 @@ finished one), render with `--appstore` and run loops 7a to 7e on it, then uploa
 
 Read the one that matches the step; each is linked here so none is nested.
 
-`<library>` below is the shared promo research library built while making this skill (music,
-easing, copy, YouTube transcripts). Its location on this machine is in
-`~/.claude/skill-notes/product-video.md`; without that note, ask where it is.
+`<library>` below is an optional local research library (music, easing, copy, YouTube
+transcripts) that the user may name. The skill works without it.
 
 | File | Read when |
 |---|---|
@@ -201,7 +195,7 @@ easing, copy, YouTube transcripts). Its location on this machine is in
 | `references/copy.md` | writing any caption |
 | `references/capture.md` | recording takes |
 | `references/motion.md` | touching any timing, curve or camera move |
-| `~/Repositories/claude-house-rules/skills/expressive-motion/SKILL.md` (skill **expressive-motion**) | animating the app screens and cards: the springs, press, bounce, count-ups, check, confetti, dwell and loop seam of the stya hero film |
+| skill `expressive-motion` | animating the app screens and cards: springs, press, bounce, count-ups, check, confetti, dwell and loop seam |
 | `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |
 | `references/devices-and-backgrounds.md` | changing the 3D devices or the background |
 | `references/formats.md` | presets, App Store rules, encoder settings, upload |

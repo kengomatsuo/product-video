@@ -4,9 +4,9 @@ Captions are prose a person reads, so the `human-prose` skill applies to every o
 Nothing is copied from the product's store metadata or README without that check: store
 copy is often AI-written too.
 
-## When the owner supplied the script
+## When the user supplied the script
 
-Cut each caption from the owner's own sentences, keeping the verb and the object. Read the caption alone, muted, as a buyer who has never seen the product; a label only the voiceover explains ("Swapped mid-press") fails and gets rewritten.
+Cut each caption from the user's own sentences, keeping the verb and the object. Read the caption alone, muted, as a buyer who has never seen the product; a label only the voiceover explains ("Swapped mid-press") fails and gets rewritten.
 
 ## What trusted human copy looks like
 
@@ -29,7 +29,7 @@ visuals only.
 - One headline per beat, 2 to 5 words. A subline is optional and says a fact the screen
   cannot show.
 - Every claim is true of the product today and every number comes from a source you can
-  name (README, code, store listing). Write down the approved numbers first (PLM law 1).
+  name (README, code, store listing). Write down the approved numbers first (product-launch-motion law 1).
 - The caption says what the screen proves. If the screen already says it, cut the caption.
 - No antithesis, no "No X. No Y.", no triads for rhythm, none of the inflated words in
   `human-prose` Part 1.

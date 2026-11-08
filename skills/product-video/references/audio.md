@@ -5,24 +5,22 @@ a storyboard written first gets cut against the music and never lands.
 
 ## 1. Pick and measure the track
 
-The owner's verdicts on 2026-09-24, from three reels of 49 stock tracks:
+| Kind | Use |
+|---|---|
+| Warm pads with a lift, no hard drop | first choice |
+| A patient atmospheric build, or a confident build to a late payoff | acceptable |
+| Minimal techno, tech house | reject: the kick and bass clank on a phone speaker |
+| Cheerful stock pop, ukulele, "happy corporate", upbeat drops in the style of NCS (the free EDM label) | reject: reads as DIY |
+| Solo or felt piano | reject for promos; it fits a tutorial |
 
-| Kind | Verdict | Examples |
-|---|---|---|
-| Minimal techno, tech house | rejected: the kick and bass read as clanky on a phone speaker | Mixkit "Hazy After Hours" |
-| Cheerful stock pop, ukulele, "happy corporate", upbeat drops in the style of NCS (the free EDM label) | rejected as DIY | Mixkit "Smile", "Pop 05" |
-| Solo or felt piano | wrong for promos; fits a tutorial | Pixabay "Minimal Piano", "Soft Felt Piano" |
-| Warm pads with a lift, no hard drop | chosen | Pixabay "Revival" (Diamond_Tunes) |
-| A patient atmospheric build, or a confident build to a late payoff | acceptable | Pixabay "Chase the Sparks", "Confident Background" |
+Reject a track whose band below 90 Hz sits within 5 dB of its full-band level: that is
+the bass-heavy sound. The user listens on a phone, so always send a sample reel with a
+spoken number before each track, and never pick the music alone.
 
-Start from `<library>/music-for-promos/README.md` (what Apple,
-Samsung and app launch films use, and the traits). Reject a track whose band below 90 Hz
-sits within 5 dB of its full-band level: that is the bass-heavy sound the owner rejected.
-The owner listens on a phone, so always send a sample reel with a spoken number before
-each track, and never pick the music alone.
-
-Library: `<library>/audio/LIBRARY.md` (34 tracks, 119 effects,
-each with its licence and the exact attribution line when one is required).
+With the optional `<library>` (see SKILL.md), `<library>/music-for-promos/README.md` lists
+what Apple, Samsung and app launch films use, and `<library>/audio/LIBRARY.md` lists
+tracks and effects with their licence and the exact attribution line when one is required.
+Without it, use `research/music-for-promos.md` and `research/audio-library.md`.
 
 ```bash
 bun <skill>/scripts/beats.ts <track.mp3> > beats.json          # bpm, beats, downbeats, bars, sections, drops
@@ -33,12 +31,11 @@ bun <skill>/scripts/beats.ts <track.mp3> --plan 6 --near 10    # 6 cuts on downb
 `beats.ts` decodes with ffmpeg, builds a mel onset envelope, estimates tempo by
 autocorrelation with sub-lag precision, tracks beats by dynamic programming (Ellis 2007),
 picks downbeats by bass energy, and finds sections and drops with a checkerboard
-novelty kernel (Foote 2000). On the four Mixkit tracks it tested, every tempo came
-within 1.5 BPM of an independent librosa run.
+novelty kernel (Foote 2000). Its tempo matched an independent librosa
+run within 1.5 BPM on the tracks tested.
 
-Choose a start point on a downbeat so the track's drop lands on the film's payoff.
-Cutling: "Revival" from 24.10 s puts its 33.94 s lift on bar 5, the frame where the pasted
-address appears, and its 65.41 s section change on "On the App Store" at bar 21.
+Choose a start point on a downbeat so the track's drop lands on the film's payoff, and
+its next section change on the end-card line.
 
 ## 2. Build the timeline on bars
 
@@ -47,14 +44,16 @@ const BAR = 60 / bpm * 4 * FPS;         // frames per bar
 const B = (n: number) => Math.round(n * BAR);
 ```
 
-| Event | Where | Lead | Source |
-|---|---|---|---|
-| Scene cut | a downbeat | the outgoing move peaks on it | `music-sync/README.md` |
-| Payoff (the thing the video is for) | the drop | 0 | Cutling film |
-| A word of a headline | a beat, one word per beat (half-beat for long lines) | 2 frames early, so the eye meets it on the beat | `music-sync/README.md` |
-| Build-up card | the bars before the drop, with a riser ending on the drop | 0 | Cutling film |
-| Logo | a downbeat near the end, with an impact | impact peak on the frame | Cutling film |
-| Call to action | the next downbeat after a held beat of stillness | 0 | HyperFrames |
+| Event | Where | Lead |
+|---|---|---|
+| Scene cut | a downbeat | the outgoing move peaks on it |
+| Payoff (the thing the video is for) | the drop | 0 |
+| A word of a headline | a beat, one word per beat (half-beat for long lines) | 2 frames early, so the eye meets it on the beat |
+| Build-up card | the bars before the drop, with a riser ending on the drop | 0 |
+| Logo | a downbeat near the end, with an impact | impact peak on the frame |
+| Call to action | the next downbeat after a held beat of stillness | 0 |
+
+The reasoning for the leads is in `research/music-sync.md`.
 
 ## 3. Effects
 
@@ -67,8 +66,7 @@ const B = (n: number) => Math.round(n * BAR);
 | The payoff | pop 2357 | 0.60 | on the drop |
 | Logo landing | movie impact 2902 | 0.45 | peak (1.30 s in) on the landing |
 
-Measure an effect's peak before placing it (the scratch script in the Cutling project
-prints onset and peak times). A long file is trimmed with `trimBefore`, never cut by ear.
+Measure an effect's onset and peak time before placing it. A long file is trimmed with `trimBefore`, never cut by ear.
 
 ## 4. Master
 
@@ -80,4 +78,4 @@ the delivered file. You cannot hear it: report those numbers.
 
 Before choosing, open the product's model picker and its voice suggestions for the actual script, and list every model and suggested voice it offers for each language. Generate the whole script in one request and cut it at the line boundaries (character timestamps where the API gives them); a line-by-line read loses its intonation between lines. Compare at least the top two models and two suggested voices per language, side by side, before picking.
 
-Audio sent to the owner for listening is MP3: an `.m4a` does not play in the remote app.
+Audio sent to the user for listening is MP3: an `.m4a` does not play in the remote app.

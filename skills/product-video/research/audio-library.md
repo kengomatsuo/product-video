@@ -1,15 +1,14 @@
-# Cutling promo audio — research and candidates
+# Promo audio — research and candidates
 
 ## Contents
 
 1. Craft: what the primary sources actually say
-2. Sourcing: licence comparison (verified on each provider's own page, 2026-09-24)
+2. Sourcing: licence comparison (verified on each provider's own page)
 3. Candidates
 4. Recommendation
 
-25s App Store preview + promo for Cutling (iOS clipboard manager, custom keyboard). Research is
-read-only: nothing below has been downloaded yet. All page loads were verified live on
-2026-09-24.
+Audio for a 25 s App Store preview and promo of an iOS app. Nothing below is downloaded;
+all page loads were verified live.
 
 ## 1. Craft: what the primary sources actually say
 
@@ -45,7 +44,7 @@ Confirmed on the platforms' own pages:
 Read in full at `<refs>/skills/AbubakrChan-product-launch-motion--root/references/07-sound-and-master.md`.
 Key rules, verbatim numbers:
 
-- **Three layers**: narration (loudest, N/A here — Cutling's promo has no VO), **music bed at
+- **Three layers**: narration (loudest, N/A when the promo has no VO), **music bed at
   ~0.1 of full scale** ("if you notice it, it is too loud"), **SFX individually placed and
   measured**.
 - **Volume-arithmetic law**: a cue's gain cannot rescue a quiet source file — summing a −38 dB
@@ -92,7 +91,7 @@ docs):
   `muted`. Default output is capped at volume 1 in Remotion Studio (browser can't amplify);
   `useWebAudioApi: true` (+ `crossOrigin="anonymous"` + CORS-enabled source) removes that cap for
   rendering.
-- Practical mapping for Cutling: music bed volume curve stays near the skill's ~0.1 floor, dips
+- Practical mapping: music bed volume curve stays near the skill's ~0.1 floor, dips
   further (duck) under any transition whoosh/riser, and the two SFX layers (taps/clicks vs.
   whoosh/riser/hit) get separate `<Audio>` tracks so their gains can be tuned independently
   without touching the bed.
@@ -114,12 +113,12 @@ re-cut moves seconds but not beats), one cue per visible event (not one per elem
 landing get one staggered pop, not six), nothing repeating more than twice in 25s, and a
 deliberate ~0.3s near-silence before the final riser + hit on the logo reveal.
 
-## 2. Sourcing: licence comparison (verified on each provider's own page, 2026-09-24)
+## 2. Sourcing: licence comparison (verified on each provider's own page)
 
 | Provider | Commercial use | Attribution | Account needed | App Store preview / social ads | Source checked |
 |---|---|---|---|---|---|
 | **Mixkit** (Envato) | Yes — "commercial and non-commercial projects for free" | **Not required** (appreciated, not mandatory) | **No** — direct download, no login | Music: Podcasts, Social Media, **Online marketing ads**, Educational, YouTube (not TV/radio/CD/DVD/games). SFX: broader — also games, film, CD/DVD, TV/radio. Both cover an App Store preview and social ad cut. | Live "View License" modal on [mixkit.co/license](https://mixkit.co/license/) |
-| **Pixabay** | Yes, "for commercial or non-commercial purposes" | **Not required** (appreciated) | **No** — confirmed live: clicked Download on a track page while logged out, download started immediately | Not itemised by use-case; general grant covers marketing/promo video. Cannot be sold standalone/unmodified, and can't use content with recognisable trademarks in ads for goods/services (not relevant to Cutling — it's user-uploaded generic music). | [pixabay.com/service/license-summary](https://pixabay.com/service/license-summary/) |
+| **Pixabay** | Yes, "for commercial or non-commercial purposes" | **Not required** (appreciated) | **No** — confirmed live: clicked Download on a track page while logged out, download started immediately | Not itemised by use-case; general grant covers marketing/promo video. Cannot be sold standalone/unmodified, and can't use content with recognisable trademarks in ads for goods/services. | [pixabay.com/service/license-summary](https://pixabay.com/service/license-summary/) |
 | **Freesound — CC0 only** | Yes, "you could even sell the sound" | **Not required for CC0** ("zero" license) | **Yes — account required to download**, even for CC0 sounds ("To download a sound, first make sure you are logged into your registered account"). Free to create, but this fails a strict "no account" bar. | CC0 has no restriction, but every non-CC0 sound on the site (CC-BY, CC-BY-NC) does require attribution/excludes commercial use — must filter to CC0 specifically, which the search URL below does. | [freesound.org/help/faq](https://freesound.org/help/faq/) |
 | **Uppbeat** | Free plan: yes, but conditional | Free plan **requires** a per-video attribution code pasted into the description; only paid plans remove it | Account required for the free credit system | Excluded — attribution requirement fails the "no attribution" bar for a polished App Store preview | Uppbeat's own commercial-license FAQ |
 | **YouTube Audio Library** | Standard-licence tracks are **YouTube-only** (can't be reused in an App Store preview or on other socials); only the CC-BY subset is portable, and that subset requires attribution | Depends on track (mixed) | **Requires a Google account** | Excluded — fails "no account" bar outright, and most tracks fail "usable anywhere" for an App Store preview | YouTube Studio's own Audio Library terms |
@@ -132,7 +131,7 @@ flagged wherever it's used below — decide per-asset whether that's acceptable.
 
 ## 3. Candidates
 
-All links verified loading live on 2026-09-24. Mixkit direct MP3 URLs were read straight out of
+All links verified loading live. Mixkit direct MP3 URLs were read straight out of
 the page's audio-player data attributes (`data-audio-player-preview-url-value`) — these are the
 actual preview/stream files Mixkit serves, not scraped guesses. Pixabay and Freesound don't
 expose a static download URL in the page markup (Pixabay generates it on click; Freesound
@@ -197,6 +196,6 @@ have lead-in room tone or fade.
 - **Master** the final render with the two-pass `loudnorm` command in section 1, target
   `I=-14:TP=-1.0`, verify with `ebur128` on the delivered file before calling it done.
 
-Nothing has been downloaded — this file is the shortlist. Say the word and I'll pull the actual
-files (Mixkit direct MP3s can be fetched without a login prompt; Pixabay needs the on-page
-Download click; Freesound CC0 picks need a free Freesound account first).
+Nothing is downloaded — this file is the shortlist. Mixkit direct MP3s can be fetched without
+a login prompt; Pixabay needs the on-page Download click; Freesound CC0 picks need a free
+Freesound account first.

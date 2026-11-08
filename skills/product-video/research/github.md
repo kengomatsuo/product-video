@@ -1,6 +1,6 @@
 # GitHub prior-art — promo video / device-preview references
 
-Source: GitHub, fetched 2026-09-24 with `gh`, media downloaded via `curl`, frames extracted with `ffmpeg`. All repos verified with `gh api repos/<o>/<r>`.
+Source: GitHub, fetched with `gh`, media downloaded via `curl`, frames extracted with `ffmpeg`. All repos verified with `gh api repos/<o>/<r>`.
 
 ## Media table
 
@@ -11,7 +11,7 @@ Source: GitHub, fetched 2026-09-24 with `gh`, media downloaded via `curl`, frame
 | 3 | kacperkapusciak/goldie | assets/pixel-10-pro.webp | goldie-07-device-bezel-pixel.jpg | Bundled Pixel 10 Pro bezel (Android emulator skin) |
 | 4 | software-mansion/argent (2885★, Apache-2.0) | assets/showcase.gif | argent-01-showcase-source.gif, 02/03-frames | Full showcase reel of the toolkit driving simulators |
 | 5 | software-mansion/argent | user-attachments/…6cec01d5… | argent-04-readme-flow-device.png | README hero: terminal + live iPhone 17 Pro frame side by side, on a skyline background |
-| 6 | software-mansion/argent | docs/static/video/flow.mp4 | argent-05/06-flow-*.jpg | Agent replaying a recorded flow against a live device frame (exact "coding agent + phone" composition the owner wants) |
+| 6 | software-mansion/argent | docs/static/video/flow.mp4 | argent-05/06-flow-*.jpg | Agent replaying a recorded flow against a live device frame (exact "coding agent + phone" composition) |
 | 7 | software-mansion/argent | docs/static/video/interact.mp4 | argent-07/08-interact-*.jpg | Tap/gesture interaction on device |
 | 8 | software-mansion/argent | docs/static/video/lens.mp4 | argent-09/10-lens-*.jpg | Element inspector overlay on live device |
 | 9 | software-mansion/argent | docs/static/video/ios-android-web.mp4 | argent-11/12-multi-platform*.jpg | Same flow across iOS/Android/web frames in a row |
@@ -46,7 +46,7 @@ Total images delivered: **72** (target was 60+).
 
 **software-mansion/argent** (Apache-2.0) — an agentic simulator/emulator driver (record a flow once, replay it against a live device to (re)capture it), with a device-provider abstraction (`packages/device-providers`) that generalizes physical + virtual iOS/Android/web/tvOS targets. This is the missing "go get a fresh, real screen recording" half of a promo pipeline; our skill assumes footage already exists.
 
-**aariz51/promo-video-skill** (MIT) — the closest sibling skill to what the owner is building: reverse-engineers a *reference* promo video's timing/motion language and rebuilds it around the user's product. Its `PhoneFrame.tsx` + `S6_DeviceOrbit.tsx` show a full 3D-ish orbiting device-ring scene (six real app screens circling a headline, camera push-in via `pushIn()`, spring text entrance) — a camera-move pattern our skill's scene library likely lacks.
+**aariz51/promo-video-skill** (MIT) — the closest sibling skill: reverse-engineers a *reference* promo video's timing/motion language and rebuilds it around the user's product. Its `PhoneFrame.tsx` + `S6_DeviceOrbit.tsx` show a full 3D-ish orbiting device-ring scene (six real app screens circling a headline, camera push-in via `pushIn()`, spring text entrance) — a camera-move pattern our skill's scene library likely lacks.
 
 **haidrrrry/claude-remotion-skill** (MIT) — general Remotion motion-graphics skill (captions, sound design, B-roll) with a small reusable animation-primitives file (`Motion.tsx`: `Entrance` spring fade+rise+scale, `WordReveal` word-by-word text reveal) — simple, copy-pasteable transition primitives.
 
@@ -67,7 +67,7 @@ Copied verbatim, with a header comment citing the exact commit-SHA permalink, on
 2. **Bezel art needs its own measured screen-cutout geometry**, not just "put content in a rectangle" — goldie's `FRAME`/`ANDROID_FRAME` constants (`code/goldie-frame.ts`) carry x/y/width/height/screenRadius per device, because the cutout's corner radius differs from the phone's outer corner radius.
 3. **Template families, not one hardcoded layout** — goldie's `editorial`, `showcase`, `magazine`, `storyboard`, `dynamic` templates (visible in `goldie-01/03-studio-*.jpg`) are each a named sequence of atomic layouts (`hero`, `duo`, `tilt`, `panorama`, `minimal`), so a promo tool should expose a layout vocabulary, not one fixed grid.
 4. **Camera orbit around real screens, not static tiles** — aariz51's `S6_DeviceOrbit.tsx` rotates six real app screenshots on an elliptical ring with an easing push-in, driven purely by `frame * constant` for rotation and `interpolate`/spring for scale — cheap to build, reads as expensive motion.
-5. **Radial/contextual overlay UI recorded on a real desktop**, wallpaper and all, sells better than an isolated component render — Loop's `loop-03/04-radial-menu-*.jpg` and `loop-05/06-snap-preview-*.jpg` show the actual macOS desktop behind the overlay, which is exactly the "real screen recording" approach the owner's skill targets.
-6. **Multi-platform-in-a-row composition** — argent's `argent-11/12-multi-platform*.jpg` lines up iOS/Android/web frames of the same flow side by side to sell cross-platform reach in a single frame, useful if any of Cutling/Undirect/solute ever needs a multi-surface shot.
+5. **Radial/contextual overlay UI recorded on a real desktop**, wallpaper and all, sells better than an isolated component render — Loop's `loop-03/04-radial-menu-*.jpg` and `loop-05/06-snap-preview-*.jpg` show the actual macOS desktop behind the overlay, which is exactly the "real screen recording" approach this skill targets.
+6. **Multi-platform-in-a-row composition** — argent's `argent-11/12-multi-platform*.jpg` lines up iOS/Android/web frames of the same flow side by side to sell cross-platform reach in a single frame, useful when a film needs a multi-surface shot.
 7. **Consistent crop/aspect across a feature set** sells a "system," not a grab-bag — Plane's five-panel set (`plane-01..05`) and Twenty's dark/light cover pairs (`twenty-01..03`, `hoppscotch-01/02`) all keep identical framing and only swap content, which reads as more deliberate than one-off screenshots.
 8. **Simple spring-based entrance + word-reveal beats a lone fade** — haidrrrry's `Motion.tsx` (`code/haidrrrry-Motion.tsx`) explicitly comments "never a lone fade": it pairs opacity with a translateY rise and a scale-up via one `spring()` call, which is a one-line upgrade over a plain `opacity` interpolate.

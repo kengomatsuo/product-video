@@ -7,7 +7,7 @@ The pipeline's render steps run through `tools/render.ts`, `tools/stills.ts` and
 ## Studio
 
 Start Studio as soon as the project runs, before building the composition, and keep it open
-so the owner can watch. `bunx remotion studio --no-open` starts the preview and prints its
+so the user can watch. `bunx remotion studio --no-open` starts the preview and prints its
 address; if one is running it prints that address and exits. With `--no-open`, open the
 printed address in a browser and check that the composition's preview loads. Open a composition at `/<composition-id>`.
 Flags: `--port=<n>`, `--log=<error|warn|info|verbose>`, `--force-new` (start a second
