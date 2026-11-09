@@ -6,7 +6,7 @@ import { speechOnsets } from './words';
 
 /*
  * App Store previews: 15-30 s, <= 30 fps, screen captures of the app only, text overlays
- * allowed (developer.apple.com app preview specifications + Guideline 2.3.4, 2026-09-24).
+ * allowed (developer.apple.com app preview specifications + Guideline 2.3.4).
  * Designed for portrait: a caption band on top, the real recording below in a rounded
  * screen at the capture's own aspect, never cropped, never zoomed, no device frame.
  * iPhone 6.9-inch 886 x 1920; iPad 13-inch 1200 x 1600.

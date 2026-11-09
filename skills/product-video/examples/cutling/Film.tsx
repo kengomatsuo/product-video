@@ -16,7 +16,7 @@ import { LibraryDevice, MacBook } from './Devices';
  * scenes while it travels (the recording swaps while its back faces the camera),
  * and settles into the device line-up. Nothing appears out of nowhere.
  *
- * Timing (inspo/product-video-promo/pacing + timing, 2026-09-24):
+ * Timing (inspo/product-video-promo/pacing + timing):
  *   words start at speaking pace, 6.19 syllables/s (Pellegrino et al. 2011, English)
  *   caption on screen >= max(1.6 s, chars / 8), held >= 1.5 s after its last word
  *   camera moves 1.2-2 s, eased cubic, drifting holds between them
@@ -83,8 +83,8 @@ const seg = (src: string, from: number, frames: number, start: number, rate = 1)
 const tapAt = (s: Segment, sec: number) => s.from + ((sec - s.start) / (s.rate ?? 1)) * FPS; // stage frame
 
 /*
- * Takes recorded after a full warm-up run, so first-use hitches happen off camera
- * (2026-09-24). Every action plays at speed; only the tool's dead waits between
+ * Takes recorded after a full warm-up run, so first-use hitches happen off camera.
+ * Every action plays at speed; only the tool's dead waits between
  * actions are cut, where the screen is identical on both sides of the cut.
  */
 /* paste take: keyboard list 4.8, Cutling keyboard 9.0, Home Address inserted 13.0 */
