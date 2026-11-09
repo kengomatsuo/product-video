@@ -73,7 +73,7 @@ phase 5: it reads the brand (`detect-brand.ts`), copies the icon, fonts, screens
 clips into `public/`. Its starter storyboard is a placeholder; the phase 3 table replaces it.
 
 Captions are written in phase 3 from the trusted examples (`research/headlines.json`,
-the product's own `copy/lines.json`), 2 to 5 words, verb and object, a fact the screen
+the product's own `copy/lines.json`), a complete thought with its actor, at most 8 words, a fact the screen
 proves, through `human-prose`. See `references/copy.md`. Capture rules are in
 `references/capture.md`; screenshots are only for a screen that genuinely holds still.
 

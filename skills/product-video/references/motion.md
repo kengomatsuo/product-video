@@ -89,7 +89,7 @@ fast. Record takes at a person's pace, and cut the tool's dead waits with segmen
 | Curve | power4.out |
 | Subline | arrives after the headline settles |
 | Reading time | see Pacing: promo captions read at ~7 chars/s, a third of the subtitle ceiling |
-| Headline length | 2 to 5 words, median 3, in the trusted store copy |
+| Caption length | a complete thought, at most 8 words |
 
 ## Camera
 

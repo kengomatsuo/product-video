@@ -57,7 +57,7 @@ guessed.
 
 Write each caption after reading the trusted lines for the same job (a hook, a feature,
 a payoff) in `headlines.json` and this product's `copy/lines.json`. Match their length
-and grammar: a verb and a concrete object, 2 to 5 words, a fact the screen proves. Then
+and grammar: a complete thought with its actor, at most 8 words, a fact the screen proves. Then
 put it through `human-prose`. A caption that would fit any product fails.
 
 ## 5. Music is picked by the user, by ear
