@@ -44,7 +44,7 @@ Pipeline progress:
       Before every scripted click, read the front window and tab title and stop unless it names the take's page: a tab another process opens takes the click meant for the film, and a sign-in or approval page acts on it.
       Before any take, check the installed build's version against the current release and open the screen being filmed; an old copy films the wrong product.
 - [ ] 4 Propose the storyboard to the user  GATE
-      Its first line names the film's use. A film the user calls a "preview" is checked against the App Store preview rules (at most 30 s, footage captured in the app only); a storyboard that breaks them says so in its first line, before any drafting.
+      Its first line names the film's use. A film the user calls a "preview" is checked against the App Store preview rules in `references/formats.md` (at most 30 s, at most 30 fps, the accepted size); a storyboard that breaks them says so in its first line, before any drafting.
       Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
       Approved: `touch storyboard.approved` in the project root (the render tools wait for it).
 - [ ] 5 Wireframe: stills and an animatic on the real music, the screen box on the 3D device  GATE
@@ -176,7 +176,7 @@ a phone-sized copy with SendUserFile, say what was checked and what was not (you
 hear the audio), and tell the user to unmute.
 
 For the App Store, make separate cuts (`AppStorePreview` and `AppStorePreviewIPad`: iPhone
-886 x 1920, iPad 1200 x 1600, recordings only, no zoom, no device frame). Fill the takes,
+886 x 1920, iPad 1200 x 1600, Mac 1920 x 1080, about 29.5 s, real recordings under the film's overlays). Fill the takes,
 taps, captions and music in `src/appstore.json` (`examples/cutling/AppStorePreview.tsx` is a
 finished one), render with `--appstore` and run loops 7a to 7e on it, then upload with
 `scripts/asc-upload-preview.rb`. See `references/formats.md`.

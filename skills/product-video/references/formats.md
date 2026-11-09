@@ -15,13 +15,12 @@ One storyboard renders to any preset: `bun tools/render.ts --preset vertical`.
 
 When the user asks for a preview cut of an animated film, build the cut with its animation, layers and touches. Quote Apple's text once as a review risk, then build it; never replace the animation with recordings-only, and never refuse. Many live previews carry motion graphics.
 
-- 15 to 30 seconds, at most 30 fps, at most 500 MB.
+- 15 to 30 seconds, at most 30 fps, at most 500 MB. Aim for 29.5 s, ending on a bar line of the music plus its ring-out.
 - H.264 High Profile up to Level 4.0 at 10-12 Mbps, or ProRes 422 HQ. `.mov`, `.m4v`, `.mp4`.
 - Stereo audio, AAC 256 kbps, 44.1 or 48 kHz; the render forces an audio track.
 - Portrait or landscape on iPhone; Mac previews are landscape only.
 - Up to three previews per device size.
-- Show only content from inside the app. So the App Store presets play captures full-bleed
-  with no device frame and no invented UI.
+- Apple's text says a preview shows only content from inside the app and films no fingers on a device. Report that once as a review risk; the cut stays a hybrid.
 - Apple asks for straightforward transitions such as dissolves and fades, and text that
   stays on screen long enough to read.
 
@@ -38,21 +37,30 @@ bit-rate rule.
 
 Every render is a new file: rename the last one before rendering over it.
 
-## The promo film is not an App Store preview
+## The App Store preview is a short hybrid cut
 
-Apple's app preview specifications and App Review Guideline 2.3.4 say a preview is 15-30 s, at most 30 fps, 886 x 1920 or 1920 x 886
-for the 6.9-inch iPhone, H.264 10-12 Mbps with 256 kbps stereo AAC, and "may only use
-video screen captures of the app itself", with narration and text overlays allowed. A 3D
-device, other devices and a 45 s 60 fps landscape cut all fail it. Make the App Store cut
-as its own composition, designed for portrait: `template/src/AppStorePreview.tsx`, fed by
-`src/appstore.json`, puts a
-360 px caption band on the moving background and the recording below in a rounded screen
-at the capture's own aspect (700 x 1521 inside 886 x 1920), so it never reads as a crop of
-the landscape film. Render with `bash tools/master.sh AppStorePreview v1 --appstore`.
-No zoom into the recording (it crops the app) and no device frame: Apple's App Preview
-page says previews "must show only content within the app itself".
-A still hold is its own segment with a constant `playbackRate`: changing the rate inside
-a segment re-times all of it and showed the segment's first frame.
+Make it a separate composition for each device, about 29.5 s, 30 fps. Real recordings from that platform carry every shot, with the explainer's overlays, cards, touches and visualisations on top (`references/explainer.md`). A longer or 60 fps film stays a promotional film and is delivered as one.
+
+| Device | Size | Upload type |
+|---|---|---|
+| iPhone | 886 x 1920 portrait, accepted for the 6.9" class and scaled for smaller ones | `IPHONE_69` (the API calls it `IPHONE_67`) |
+| iPad | 1200 x 1600 portrait | `IPAD_PRO_3GEN_129` |
+| Mac | 1920 x 1080, landscape only | `DESKTOP` |
+
+Shot plan that fits 30 s, on the music's bars:
+
+| Share of the cut | Shots |
+|---|---|
+| First 45% | the problem, one shot per way it happens, 3 to 4 shots of 2 to 3 s |
+| On the music's lift | the real control pressed, recorded on that platform, about 4 s |
+| Next 30% | the same problems failing, in the same framing |
+| Last 25% | the real result list or settings, then the end card |
+
+The default poster frame is at 5 s, so set one showing the product working. Up to three previews per device and language; a language without its own uses the next best language's. Read each upload back, and retry a poster frame that fails with a server error.
+
+A still hold is its own segment with a constant `playbackRate`: changing the rate inside a segment re-times all of it and showed the segment's first frame.
+
+`template/src/AppStorePreview.tsx` is the plain starting point (a caption band over the recording). Render with `bash tools/master.sh AppStorePreview v1 --appstore`.
 
 ## Uploading previews
 
