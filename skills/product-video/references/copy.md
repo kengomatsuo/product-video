@@ -22,7 +22,7 @@ Compose each language from the meaning, with the words its speakers say aloud, E
 
 ## Captions
 
-A caption is a complete thought with its actor, at most 8 words, read alone and muted by a buyer who has never seen the product. Cut it from the script line under it, keeping the verb and the object. A noun-phrase label only the voiceover explains fails and gets rewritten:
+A caption is a complete thought with its actor, readable in the time it holds, read alone and muted by a buyer who has never seen the product. Cut it from the script line under it, keeping the verb and the object. A noun-phrase label only the voiceover explains fails and gets rewritten:
 
 | Fails | Reads alone |
 |---|---|
