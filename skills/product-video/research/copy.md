@@ -20,7 +20,7 @@ A line is "flagged" when it matches an AI tell: not just X but Y; seamless, effo
 
 ## What the trusted copy does
 
-- Headline length (large type, tiers A+B): median 3, p25 2, p75 5, n=319.
+- Line length (large type, tiers A+B): median 3, p25 2, p75 5, n=319. OCR counts each wrapped line separately, and the set mixes store panels, app UI text and preview frames, so this is no measure of caption or headline length.
 - Verb + concrete object: "Accept any payment type", "Sync clipboard history", "Analyse sales trend", "Sell in-store and online".
 - Lists are literal and specific, not triads: Wipr's panel lists fifteen blocked things one per line ("× cookie warnings", "× anti-blocker nags").
 - The product UI carries most of the words; Linear, Notion and Things show real task text and chats, with almost no overlaid headline.

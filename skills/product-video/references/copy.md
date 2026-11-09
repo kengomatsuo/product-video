@@ -38,7 +38,6 @@ A caption is a complete thought with its actor, at most 8 words, read alone and 
 
 | Measured on the trusted tier | Value |
 |---|---|
-| Headline length on a store panel, where the screen beside it carries the meaning | 2 to 5 words, median 3 (319 lines) |
 | Shape | verb + concrete object: "Accept any payment type", "Sync clipboard history", "Sell in-store and online" |
 | Lists | literal, one item per line, as many as there really are (Wipr lists fifteen blocked things) |
 | Where the words are | mostly in the product UI itself; the overlay headline is short or absent |
