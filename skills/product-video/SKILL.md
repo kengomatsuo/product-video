@@ -1,12 +1,12 @@
 ---
 name: product-video
-description: "Makes promo films and App Store previews of your own app from real recordings, in Remotion, with a gated storyboard and checked renders. Use for launch videos, social cuts, site hero loops, store previews and demo reels; not explainers."
+description: "Makes promo films and App Store previews of your own app from real recordings, in Remotion, with a gated storyboard and checked renders. Use for launch videos, social cuts, site hero loops, store previews, demo reels and explainers."
 user-invocable: true
 ---
 
 # Product promo videos
 
-The screen is always the real product, recorded moving. Everything else (frame, type,
+A shot of the product always shows the real product, recorded moving. Everything else (frame, type,
 camera, transitions) is a layer on top, in the product's own brand. Remotion API details
 live in `references/remotion/` (start at [index.md](references/remotion/index.md));
 this skill decides what to make and how it should move.
@@ -105,6 +105,7 @@ into `src/`, register it in `src/Root.tsx`, and build the new film on its pieces
 `Background`, `Words`, the `path`/`pan`/`settle` rig) rather than on the simpler `Promo`
 beats. Its timings and `rec/` takes belong to the example: replace them all.
 See `references/devices-and-backgrounds.md`.
+An explainer or hybrid film also follows `references/explainer.md`.
 
 ## Build
 
@@ -194,6 +195,7 @@ transcripts) that the user may name. The skill works without it.
 | `references/audio.md` | picking music and placing cuts and effects on the bars |
 | `references/copy.md` | writing any caption |
 | `references/capture.md` | recording takes |
+| `references/explainer.md` | an explainer or a hybrid film: ideas as objects, feeling, joining animation to real recordings |
 | `references/motion.md` | touching any timing, curve or camera move |
 | skill `expressive-motion` | animating the app screens and cards: springs, press, bounce, count-ups, check, confetti, dwell and loop seam |
 | `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |
