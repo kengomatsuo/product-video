@@ -165,3 +165,7 @@ this on the real take, since a screen recording plays at the app's speed.
 
 Remotion's bare `spring()` default (mass 1, stiffness 100, damping 10) equals Apple's
 default spring, which Apple's own conversion puts at bounce 0.5. Never use it bare.
+
+## Pace of a recording
+
+A recording plays at 1x and is never sped up, because a sheet at 2x or more reads as a flash. The film gets its time back by cutting still frames between moves, holding a result about 0.5 s, showing the finger about 0.35 s before it lands, dissolving past repeated actions such as the middle of a typed word, and landing each word that waits on the music's half beat.
