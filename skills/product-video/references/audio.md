@@ -78,4 +78,6 @@ the delivered file. You cannot hear it: report those numbers.
 
 Before choosing, open the product's model picker and its voice suggestions for the actual script, and list every model and suggested voice it offers for each language. Generate the whole script in one request and cut it at the line boundaries (character timestamps where the API gives them); a line-by-line read loses its intonation between lines. Compare at least the top two models and two suggested voices per language, side by side, before picking.
 
+Every voice read goes through ElevenLabs' voice isolator (`POST /v1/audio-isolation`, multipart field `audio`, returns MP3, one request at a time on Starter, refuses audio under 4.6 s), generated speech included. Isolate the whole read once, find its shift against the original by cross-correlation, and cut each line at its span in the original. Lower every pause of 100 ms or more lying 35 dB under the line's loud frames by 40 dB, then bring every line to one integrated loudness with transients limited under -1 dBFS.
+
 Audio sent to the user for listening is MP3: an `.m4a` does not play in the remote app.
