@@ -16,7 +16,7 @@ product doing something is a recording of the product doing it.
 
 | Platform | How | Script |
 |---|---|---|
-| iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | `scripts/capture-ios.sh <out.mp4> <seconds> [udid]` |
+| iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | `scripts/film-device.sh up iphone\|ipad` prints the UDID, then `scripts/capture-ios.sh <out.mp4> <seconds> <udid>`; `film-device.sh down` after the final render |
 | macOS app | Record the app's own window at Retina size | `scripts/capture-mac.sh "<App Name>" <out.mov> <seconds>` |
 | Web app | Open the app in a browser window at 1440 x 900, record that window | `capture-mac.sh "Google Chrome" ...` |
 
