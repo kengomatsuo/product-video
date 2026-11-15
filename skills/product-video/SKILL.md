@@ -109,6 +109,12 @@ beats. Its timings and `rec/` takes belong to the example: replace them all.
 See `references/devices-and-backgrounds.md`.
 An explainer or hybrid film also follows `references/explainer.md`.
 
+A how-to guide is made in the same grammar, because a viewer leaves a recording that waits for them: one task per
+video, under a minute; a headline of two to four words per task, never a caption per press held for its reading time;
+the still frames between presses cut, so presses come every 1.3 to 2 s at the product's own speed; the camera follows
+the finger; detail goes in subtitles. A take is captured with the product's animations whole (slowed through the
+DevTools Animation domain, or virtual time), since a screencast at 10-15 fps turns every sheet into a jump cut.
+
 ## Build
 
 Edit `src/storyboard.json`. A beat is one of:
