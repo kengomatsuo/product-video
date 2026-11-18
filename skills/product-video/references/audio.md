@@ -17,6 +17,8 @@ Reject a track whose band below 90 Hz sits within 5 dB of its full-band level: t
 the bass-heavy sound. The user listens on a phone, so always send a sample reel with a
 spoken number before each track, and never pick the music alone.
 
+Music comes from Mixkit, whose licence forbids registering its tracks with Content ID or any rights-management service; Pixabay tracks can be registered by their distributors and get claimed (research/audio-library.md).
+
 With the optional `<library>` (see SKILL.md), `<library>/music-for-promos/README.md` lists
 what Apple, Samsung and app launch films use, and `<library>/audio/LIBRARY.md` lists
 tracks and effects with their licence and the exact attribution line when one is required.

@@ -124,6 +124,8 @@ deliberate ~0.3s near-silence before the final riser + hit on the logo reveal.
 | **YouTube Audio Library** | Standard-licence tracks are **YouTube-only** (can't be reused in an App Store preview or on other socials); only the CC-BY subset is portable, and that subset requires attribution | Depends on track (mixed) | **Requires a Google account** | Excluded — fails "no account" bar outright, and most tracks fail "usable anywhere" for an App Store preview | YouTube Studio's own Audio Library terms |
 | **Apple** | N/A | — | — | Apple doesn't provide a royalty-free music/SFX library for developers to use in App Previews | — |
 
+**Pixabay music is out (2026-11-18):** its distributors may register a track with Content ID; Pixabay's "Revival" was registered by Elite Alliance Music, which blocked two Cutling Shorts worldwide and claimed every Cutling film. Mixkit's licence forbids registering its music with any rights-management service (mixkit.co/license), so music comes from Mixkit.
+
 **Conclusion: Mixkit and Pixabay are the only two sources that clear every bar** (no attribution,
 no account, commercial use, safe for an App Store preview and social ads) with zero conditions.
 Freesound CC0 is added as a third source for SFX variety, with the account-for-download caveat
