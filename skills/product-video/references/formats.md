@@ -75,3 +75,15 @@ editable version, and a new version stays unsubmitted until the user submits it.
 
 Confirm every Apple rule in this file against Apple's current App Preview page when
 uploading.
+
+## Vertical safe zone (Shorts, Reels, TikTok)
+
+Measured 2026-11-18 from each platform's own files, on a 1080 x 1920 frame:
+
+| Platform | Source | Clear area |
+|---|---|---|
+| YouTube Shorts | Google's vertical overlay, services.google.com/fh/files/misc/youtubesafezoneoverlay_vertical_final.png (linked from universalsafezones-youtube.pdf) | x 48-887, y 288-1247 |
+| TikTok In-Feed | "In-Feed-Standard Version LTR.zip" on ads.tiktok.com/help/article/video-ads-specifications (Feed.png, 720 x 1280 labels scaled 1.5x) | x 120-960, y 240-1259; x 120-779 below y 840 (the button column) |
+| Instagram / Facebook Reels | facebook.com/business/help/980593475366490 gives no numbers: keep the top, bottom and side edges free; with a disclaimer keep the bottom 40 % free | use the box below |
+
+The box all three leave clear: x 120-887 from y 288 to 840, x 120-780 from y 840 to 1247. Captions, any button and the key action sit inside it; the device and background may run under the overlays. `scripts/safe-zone-sheet.py` draws it on a film's frames. YouTube's 16:9 overlay (youtubesafezoneoverlay_horizontal_final.png) leaves y 937-1080 unsafe, where the player's controls sit: subtitles in a long-form film end above y 937.
