@@ -63,6 +63,7 @@ Pipeline progress:
       Any failure: fix the cause, bump the version, re-render, repeat from 7a.
 - [ ] 7f Hand over: phone copy, "unmute" in the caption, what was and was not checked
       Every format the storyboard plans (16:9, 9:16 portrait, square) is rendered and checked before hand-over; a planned cut left unbuilt is a failed 7f.
+      A vertical social cut is checked for its whole length under each platform's real UI (TikTok, Reels, Shorts, Stories: top bar, right rail, caption, and the top and bottom shadow gradients) on a 2 fps frame sheet; any word or key UI in a covered or faded band at any frame fails, not only the end card.
       Text on a 3D label is read on a frame zoomed to 100%: a seam, flap edge or border crossing a letter fails.
       After the last render is handed over, `scripts/film-device.sh down` deletes the film simulators.
 ```
