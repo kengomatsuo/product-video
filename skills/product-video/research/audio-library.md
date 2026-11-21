@@ -128,9 +128,9 @@ without the provider's paid no-credit licence.
 |---|---|---|---|---|---|---|
 | **Mixkit** (Envato), Stock Music Free License | Yes: "Online marketing ads"; "commercial and non-commercial projects for free" | Yes: "Social Media video posts", "YouTube videos*"; "download, copy, modify, distribute and publicly perform the Music Items on any web or social media platform, including internet-based video on demand services, podcasts and advertisements" | Not named. A preview is a video on a web platform, so the grant reads as covering it. Not allowed: "CDs & DVDs", "TV & Radio Broadcasts", "Video Games" | None asked | Users may not "register them on any rights management service". "* If you receive a claim, please forward the details to team@mixkit.co" | The "View License" window on https://mixkit.co/license/#musicFree, read in Chrome |
 | **Unminus** | Yes: "Commercial and non-commercial purposes"; "an irrevocable, nonexclusive, worldwide copyright license to download, copy, modify, perform and use music from Unminus for free, including for commercial purposes, without permission from or attributing the creator or Unminus" | Yes: "incorporate the music in your own work like Videos, Podcasts, Apps, Intros, Outros, Background music" | Covered by the same sentence ("Videos", "Apps") | None | "Don't add music without modification to Content ID Networks. This will block other users from using it on YouTube, Facebook etc." A claim form is at unminus.com/claim | https://www.unminus.com/license |
-| **DOVA-SYNDROME** (Japan) | Yes: commercial and non-commercial, person or company; its own examples list TV programmes and commercials ("テレビ番組、CMにおける利用") | Yes: "YouTube、TikTok、Twitch、IRIAM、Podcast、その他のオンライン映像・コンテンツ配信での利用" | Not named. Background music in a work is the licence's whole scope, and its examples include paid and free apps and web services ("有償・無償のアプリ（iPhone・android等）・WEBサービス等での利用") | None: "著作権表示・提供等の表示は不要です" | Forbidden to register a track with JASRAC or with any fingerprint service ("YouTubeにおいてはContent ID") | https://dova-s.jp/contents/license (each composer may add conditions on the track's own page: read it) |
+| **OpenTracks** (Japan; DOVA-SYNDROME until its rename on 2026-09-15, dova-s.jp redirects) | Yes: commercial and non-commercial, person or company; its own examples list TV programmes and commercials ("テレビ番組、CMにおける利用") | Yes: "YouTube、TikTok、Twitch、IRIAM、Podcast、その他のオンライン映像・コンテンツ配信での利用" | Not named. Background music in a work is the licence's whole scope, and its examples include paid and free apps and web services ("有償・無償のアプリ（iPhone・android等）・WEBサービス等での利用") | None: "著作権表示・提供等の表示は不要です" | Forbidden to register a track with JASRAC or with any fingerprint service ("YouTubeにおいてはContent ID") | https://opentracks.com/help/articles/license/ (each composer may add conditions, shown as 利用条件有 on the profile: read it). A track page plays a preview with downloading switched off; the file itself comes from the page's own download step |
 | **魔王魂 Maou Damashii** (Japan) | Yes: "商用利用 YouTube収益化・企業案件・TV・ゲーム販売・CD収録。ぜんぶOK。もちろん無料。" | Yes: "YouTube・TikTok・ニコニコ・Twitch・インスタ。どのプラットフォームでも。" | Not named; "ぜんぶOK" with three exceptions (claiming authorship, redistributing the track itself, AI arrangement or training) | Optional: "必須ではありません" (the line 音楽：魔王魂 is welcome) | "Content IDで著作権侵害と誤検知された場合は、魔王魂側で対応します" | https://maou.audio/rule/ |
-| **Free Music Archive, CC0 tracks only** (for example HoliznaCC0) | Yes, CC0 has no conditions | Yes | Yes | None | Nothing stops a third party registering a CC0 track; check the track before each film | https://freemusicarchive.org/License_Guide ; the licence is per track, so read the track's page |
+| **Free Music Archive, CC0 tracks only**: HoliznaCC0 (79 albums, hip-hop beats, lo-fi, chiptune) | Yes, CC0 has no conditions; each track page reads "is licensed under a CC0 1.0 Universal License" | Yes | Yes | None | Nothing stops a third party registering a CC0 track; check the track before each film | https://freemusicarchive.org/music/holiznacc0/ and each track's page (read 2026-11-22); https://freemusicarchive.org/License_Guide |
 
 ### Travels to every platform, credit required
 
@@ -165,7 +165,7 @@ These are added inside the platform when posting, or downloaded for that platfor
 | **FreePD** | "permanently closed" (2008-2025) | https://freepd.com/ |
 | **Uppbeat**, **Bensound** | Not read this time: Uppbeat's pages did not load without a browser session and Bensound's sat behind its cookie dialog. The earlier reading (free plans require a credit) stands unconfirmed | uppbeat.io, bensound.com |
 
-**Order of choice:** Mixkit first, since its licence names ads and social posts, asks for no credit and forbids registration; Unminus second on the same grounds; a Japanese post may take DOVA-SYNDROME or 魔王魂. A CC BY track is for a post whose caption has room for the credit and never for a store preview. TikTok's and Meta's libraries are for a platform's own version of a film.
+**Order of choice:** Mixkit first, since its licence names ads and social posts, asks for no credit and forbids registration; Unminus second on the same grounds; a Japanese post may take OpenTracks or 魔王魂, though neither holds dark, bass-led music (reel 2 below); HoliznaCC0 adds CC0 hip-hop beats. A CC BY track is for a post whose caption has room for the credit and never for a store preview. TikTok's and Meta's libraries are for a platform's own version of a film.
 
 ## 3. Music shortlist for the Black stage films (measured 2026-11-21)
 
@@ -188,6 +188,36 @@ film beat in seconds. K-weighted (as a phone speaker hears it) the lift in "Thun
 
 The reel, the excerpts, the measurements and the tools are in the Undirect repo, `docs/research/pro-film-refs/music/`.
 Track 1 is the placeholder under the first film until the owner picks by ear.
+
+**The owner's ear on reel 1 (2026-11-22):** 1 and 2 "maybe least bad", 7 kept for another film, the other five rejected.
+What 1 and 2 share and the rejected lack is the floor for anything offered next: a slow pulse (62 to 100 BPM felt), a
+build at least 11 dB under the track for four film beats, a lift of 14 dB or more that holds, and bass in the lifted
+section (the band under 90 Hz within 6 dB of the whole). Bright, bass-less or flat tracks fail by ear even when they lift.
+
+### Reel 2 (tracks 9 to 16, measured 2026-11-22)
+
+Screened against that floor with `music/tools/measure2.py`. "Phone" is the lift with everything under 150 Hz removed.
+
+| # | Track | Library | File | BPM felt | Lift at | Lift | Phone | Bass share |
+|---|---|---|---|---|---|---|---|---|
+| 9 | Torey, Arulo | Mixkit 304 | https://assets.mixkit.co/music/304/304.mp3 | 56 | 34.37 s | 20.7 dB | 10.7 | -0.5 dB |
+| 10 | Headlight Vision, Arulo | Mixkit 297 | https://assets.mixkit.co/music/297/297.mp3 | 75 | 11.15 s | 19.8 dB | 12.5 | -1.2 dB |
+| 11 | 21, Arulo | Mixkit 445 | https://assets.mixkit.co/music/445/445.mp3 | 67.6 | 14.25 s | 18.2 dB | 10.2 | -1.3 dB |
+| 12 | Lil Pump Type, Arulo | Mixkit 410 | https://assets.mixkit.co/music/410/410.mp3 | 62.5 | 15.40 s | 24.5 dB | 14.4 | -0.7 dB |
+| 13 | Chill Trap, Arulo | Mixkit 256 | https://assets.mixkit.co/music/256/256.mp3 | 67.5 | 14.26 s | 22.6 dB | 11.3 | -0.4 dB |
+| 14 | Wolf, HoliznaCC0 | FMA, CC0 1.0 | https://freemusicarchive.org/music/holiznacc0/after-dark/wolf-1/ | 74.6 | 12.03 s | 17.8 dB | 9.1 | -1.0 dB |
+| 15 | Bowers & Wilkins, JNGS | Unminus | https://feeds.soundcloud.com/stream/499010700-unminus-bowers-wilkins.mp3 | 69.7 | 5.96 s | 19.5 dB | 5.2 | -0.1 dB |
+| 16 | Electro Dreams, Arulo | Mixkit 190 | https://assets.mixkit.co/music/190/190.mp3 | 120.7 | 15.96 s | 18.2 dB | 13.7 | -3.5 dB |
+
+How wide the search went: every Mixkit waveform (1,341 ids answer at `assets.mixkit.co/music/<id>/<id>-waveform.json`),
+58 measured in full, 28 pass, 21 of the 23 named ones by Arulo; all 51 Unminus tracks, 3 pass; OpenTracks, 374 listed
+under its dark, cool, serious, cinema and hip-hop tags, the 45 most downloaded measured from their previews, none passes;
+魔王魂's categories (8-bit, fantasy, acoustic, piano, rock) were not measured; HoliznaCC0, 65 tracks from eleven beat
+albums, 4 pass. Mixkit answers HTTP 429 after about 200 listing pages in a few minutes: space them a second apart.
+Five passing Mixkit files (1355, 279, 377, 1297, 203) appear among none of the 910 titles on the listing pages read,
+and only 2 of the 194 ids above 1200 that answer on the server are listed at all: a file that answers without being
+listed may not be on offer, so none of the five is on the reel (1355 has the largest lift measured: 27 dB, 20 on a
+phone, 100 BPM). Offer a Mixkit track only when a listing page shows it.
 
 ## 4. Sound effects
 
