@@ -3,9 +3,10 @@
 ## Contents
 
 1. Craft: what the primary sources actually say
-2. Sourcing: licence comparison (verified on each provider's own page)
-3. Candidates
-4. Recommendation
+2. Licences: what each free library permits (read 2026-11-21)
+3. Music shortlist for the Black stage films (measured 2026-11-21)
+4. Sound effects
+5. Recommendation
 
 Audio for a 25 s App Store preview and promo of an iOS app. Nothing below is downloaded;
 all page loads were verified live.
@@ -113,54 +114,83 @@ re-cut moves seconds but not beats), one cue per visible event (not one per elem
 landing get one staggered pop, not six), nothing repeating more than twice in 25s, and a
 deliberate ~0.3s near-silence before the final riser + hit on the logo reveal.
 
-## 2. Sourcing: licence comparison (verified on each provider's own page)
+## 2. Licences: what each free library permits (read 2026-11-21)
 
-| Provider | Commercial use | Attribution | Account needed | App Store preview / social ads | Source checked |
+Each row was read on the provider's own page on 2026-11-21, by `curl` or in Chrome where the page needs a browser. The
+quotes are the provider's words. "Content ID" means YouTube's fingerprint system and its equivalents (Meta Rights
+Manager, TikTok MediaMatch): a track registered there claims or blocks every video that uses it, whatever the download
+page said. An App Store preview has no caption or description, so a track that must be credited cannot be used in one
+without the provider's paid no-credit licence.
+
+### Travels to every platform, no credit
+
+| Library | Commercial ads | Social posts | App Store preview | Credit | Content ID | Source |
+|---|---|---|---|---|---|---|
+| **Mixkit** (Envato), Stock Music Free License | Yes: "Online marketing ads"; "commercial and non-commercial projects for free" | Yes: "Social Media video posts", "YouTube videos*"; "download, copy, modify, distribute and publicly perform the Music Items on any web or social media platform, including internet-based video on demand services, podcasts and advertisements" | Not named. A preview is a video on a web platform, so the grant reads as covering it. Not allowed: "CDs & DVDs", "TV & Radio Broadcasts", "Video Games" | None asked | Users may not "register them on any rights management service". "* If you receive a claim, please forward the details to team@mixkit.co" | The "View License" window on https://mixkit.co/license/#musicFree, read in Chrome |
+| **Unminus** | Yes: "Commercial and non-commercial purposes"; "an irrevocable, nonexclusive, worldwide copyright license to download, copy, modify, perform and use music from Unminus for free, including for commercial purposes, without permission from or attributing the creator or Unminus" | Yes: "incorporate the music in your own work like Videos, Podcasts, Apps, Intros, Outros, Background music" | Covered by the same sentence ("Videos", "Apps") | None | "Don't add music without modification to Content ID Networks. This will block other users from using it on YouTube, Facebook etc." A claim form is at unminus.com/claim | https://www.unminus.com/license |
+| **DOVA-SYNDROME** (Japan) | Yes: commercial and non-commercial, person or company; its own examples list TV programmes and commercials ("テレビ番組、CMにおける利用") | Yes: "YouTube、TikTok、Twitch、IRIAM、Podcast、その他のオンライン映像・コンテンツ配信での利用" | Not named. Background music in a work is the licence's whole scope, and its examples include paid and free apps and web services ("有償・無償のアプリ（iPhone・android等）・WEBサービス等での利用") | None: "著作権表示・提供等の表示は不要です" | Forbidden to register a track with JASRAC or with any fingerprint service ("YouTubeにおいてはContent ID") | https://dova-s.jp/contents/license (each composer may add conditions on the track's own page: read it) |
+| **魔王魂 Maou Damashii** (Japan) | Yes: "商用利用 YouTube収益化・企業案件・TV・ゲーム販売・CD収録。ぜんぶOK。もちろん無料。" | Yes: "YouTube・TikTok・ニコニコ・Twitch・インスタ。どのプラットフォームでも。" | Not named; "ぜんぶOK" with three exceptions (claiming authorship, redistributing the track itself, AI arrangement or training) | Optional: "必須ではありません" (the line 音楽：魔王魂 is welcome) | "Content IDで著作権侵害と誤検知された場合は、魔王魂側で対応します" | https://maou.audio/rule/ |
+| **Free Music Archive, CC0 tracks only** (for example HoliznaCC0) | Yes, CC0 has no conditions | Yes | Yes | None | Nothing stops a third party registering a CC0 track; check the track before each film | https://freemusicarchive.org/License_Guide ; the licence is per track, so read the track's page |
+
+### Travels to every platform, credit required
+
+A credit goes in the post's caption or the video's description. None of these can go in an App Store preview unless the paid licence is bought.
+
+| Library | Licence | Credit line | Without credit | Content ID | Source |
 |---|---|---|---|---|---|
-| **Mixkit** (Envato) | Yes — "commercial and non-commercial projects for free" | **Not required** (appreciated, not mandatory) | **No** — direct download, no login | Music: Podcasts, Social Media, **Online marketing ads**, Educational, YouTube (not TV/radio/CD/DVD/games). SFX: broader — also games, film, CD/DVD, TV/radio. Both cover an App Store preview and social ad cut. | Live "View License" modal on [mixkit.co/license](https://mixkit.co/license/) |
-| **Pixabay** | Yes, "for commercial or non-commercial purposes" | **Not required** (appreciated) | **No** — confirmed live: clicked Download on a track page while logged out, download started immediately | Not itemised by use-case; general grant covers marketing/promo video. Cannot be sold standalone/unmodified, and can't use content with recognisable trademarks in ads for goods/services. | [pixabay.com/service/license-summary](https://pixabay.com/service/license-summary/) |
-| **Freesound — CC0 only** | Yes, "you could even sell the sound" | **Not required for CC0** ("zero" license) | **Yes — account required to download**, even for CC0 sounds ("To download a sound, first make sure you are logged into your registered account"). Free to create, but this fails a strict "no account" bar. | CC0 has no restriction, but every non-CC0 sound on the site (CC-BY, CC-BY-NC) does require attribution/excludes commercial use — must filter to CC0 specifically, which the search URL below does. | [freesound.org/help/faq](https://freesound.org/help/faq/) |
-| **Uppbeat** | Free plan: yes, but conditional | Free plan **requires** a per-video attribution code pasted into the description; only paid plans remove it | Account required for the free credit system | Excluded — attribution requirement fails the "no attribution" bar for a polished App Store preview | Uppbeat's own commercial-license FAQ |
-| **YouTube Audio Library** | Standard-licence tracks are **YouTube-only** (can't be reused in an App Store preview or on other socials); only the CC-BY subset is portable, and that subset requires attribution | Depends on track (mixed) | **Requires a Google account** | Excluded — fails "no account" bar outright, and most tracks fail "usable anywhere" for an App Store preview | YouTube Studio's own Audio Library terms |
-| **Apple** | N/A | — | — | Apple doesn't provide a royalty-free music/SFX library for developers to use in App Previews | — |
+| **Scott Buckley** | CC BY 4.0: "FREE, even for commercial use, as long as attribution is given" | "[Track Title] by Scott Buckley – released under CC-BY 4.0. www.scottbuckley.com.au"; on YouTube "Credits must be provided in the video description (not in the video itself)" | "use in advertising which doesn't permit attribution, the CC BY license does not apply": Web AUD 40, Standard AUD 75, Full AUD 300 per track | His tracks are fingerprinted: "If you don't do this, you will likely get a copyright claim on the video", released through his claims form | https://www.scottbuckley.com.au/library/using-this-music/ and /library/licensing/ |
+| **Incompetech** (Kevin MacLeod) | CC BY 4.0, free; "Yes, AND you can monetize the videos. Be sure to credit me." | "Title Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 https://creativecommons.org/licenses/by/4.0/" | Standard License, bought per title: "radio/TV ads, corporate presentations, on-hold music"; the page shows no price | Its Content ID article was not readable by `curl`; not confirmed | https://incompetech.com/music/royalty-free/faq.html and /licenses/ |
+| **Audionautix** (Jason Shaw) | CC BY 4.0: "royalty free - completely free - for you to download and use (even for commercial purposes) as long as you provide credit" | credit to audionautix.com | Not offered on the page | Not stated | https://audionautix.com/ |
+| **Silverman Sound Studios** | Creative Commons, credit required; "Both licences cover commercial and non-commercial use", listing "Advertising and marketing materials", "Video games and apps", "TikTok, Instagram, and social media content" | "Credit required for free use" | Pro License US$25 a track, or US$5 a month | "YouTube videos must include credits in description to avoid Content ID claims" | https://www.silvermansound.com/licenses |
+| **Free Music Archive, CC BY tracks** | CC BY: "You must credit the artist. You can use it for commercial purposes. You can put this song in a video" | per track | from the artist | per track | https://freemusicarchive.org/License_Guide (CC BY-ND forbids putting a song in a video; NC forbids commercial use) |
 
-**Pixabay music is out (2026-11-18):** its distributors may register a track with Content ID; Pixabay's "Revival" was registered by Elite Alliance Music, which blocked two Cutling Shorts worldwide and claimed every Cutling film. Mixkit's licence forbids registering its music with any rights-management service (mixkit.co/license), so music comes from Mixkit.
+### Stays on its own platform
 
-**Conclusion: Mixkit and Pixabay are the only two sources that clear every bar** (no attribution,
-no account, commercial use, safe for an App Store preview and social ads) with zero conditions.
-Freesound CC0 is added as a third source for SFX variety, with the account-for-download caveat
-flagged wherever it's used below — decide per-asset whether that's acceptable.
+These are added inside the platform when posting, or downloaded for that platform alone. A film cut to one of these tracks is that platform's version and goes nowhere else.
 
-## 3. Candidates
+| Library | What the terms grant | Limit | Source |
+|---|---|---|---|
+| **TikTok Commercial Music Library** | "free for businesses to use": organic content, video ads, branded content | "You may only post or share videos that include Commercial Sounds within TikTok ... Commercial Uses outside of TikTok are not permitted and no rights are granted by TikTok for such uses", naming "posting videos on third party digital platforms". From the Creative Center a sound may be used only on its listed "Usable Placements". If TikTok loses a sound it may take the video down or mute it | https://www.tiktok.com/legal/page/global/commercial-music-library-user-terms/en ; https://ads.tiktok.com/help/article/commercial-music-library |
+| **Meta Sound Collection** | "a non-exclusive, royalty-free license to use the SC Audio Content for commercial or non-commercial purposes in content you create, upload, and distribute on the Meta Company Products ... only" | "You may not perform, distribute, make available or otherwise use the SC Audio Content separately from the Meta Company Products." Tracks download as files, so they can be measured and cut to, for Facebook and Instagram posts only | https://www.facebook.com/sound/collection/terms (last modified 16 March 2022), read in Chrome signed in |
+| **YouTube Audio Library** | In Studio: "YouTube Audio Library License. You can use this audio track in any of your videos, including videos that you monetize. No attribution is required." Help: "copyright-safe"; downloaded tracks "won't be claimed by a rights holder through the Content ID system" | Neither text names any platform but YouTube, and YouTube's Terms of Service do not mention the library, so use elsewhere is not granted in writing: treat as YouTube only. Tracks marked Creative Commons need the artist credited in the description | YouTube Studio, Audio library, a track's licence icon; https://support.google.com/youtube/answer/3376882 |
 
-All links verified loading live. Mixkit direct MP3 URLs were read straight out of
-the page's audio-player data attributes (`data-audio-player-preview-url-value`) — these are the
-actual preview/stream files Mixkit serves, not scraped guesses. Pixabay and Freesound don't
-expose a static download URL in the page markup (Pixabay generates it on click; Freesound
-requires login), so only the page URL is given for those — open the page and use the on-page
-Download button.
+### Out
 
-None of Mixkit/Pixabay list BPM on the track page; where noted "BPM not listed," verify by ear
-or with a beat detector before locking the edit to it.
+| Library | Why | Source |
+|---|---|---|
+| **Pixabay Music** | The licence allows free use with no credit and says nothing about Content ID: "It is your responsibility to check whether you require the consent of a third party or a license to use Content." A distributor registered "Revival" and it blocked two Cutling Shorts worldwide (2026-11-18) | https://pixabay.com/service/license-summary/ |
+| **StreamBeats** | Free with no credit, but written for streamers: the grant is to "synchronize any StreamBeats track with video content on Twitch, YouTube, podcasts, or equivalent platforms", and the label registers its tracks itself ("We actively work to keep StreamBeats safe on YouTube via Content ID"; a false claim "happens occasionally"). Ads and store previews are not named | https://www.streambeats.com/licensing |
+| **NCS** | "Brands and businesses: Content made to promote a product, service or brand" need a paid licence | https://ncs.io/usage-policy |
+| **Free To Use** | Under the free licence "Use of the Digital Assets in Commercial Content, Broadcast Content, Digital Products, or Physical Products is strictly prohibited" | https://freetouse.com/license |
+| **FreePD** | "permanently closed" (2008-2025) | https://freepd.com/ |
+| **Uppbeat**, **Bensound** | Not read this time: Uppbeat's pages did not load without a browser session and Bensound's sat behind its cookie dialog. The earlier reading (free plans require a credit) stands unconfirmed | uppbeat.io, bensound.com |
 
-### Music (5 candidates, minimal/upbeat tech, 100–124 BPM target, avoiding corporate-cheese)
+**Order of choice:** Mixkit first, since its licence names ads and social posts, asks for no credit and forbids registration; Unminus second on the same grounds; a Japanese post may take DOVA-SYNDROME or 魔王魂. A CC BY track is for a post whose caption has room for the credit and never for a store preview. TikTok's and Meta's libraries are for a platform's own version of a film.
 
-| # | Title | Provider | Page | Direct file | Duration | BPM | Licence |
-|---|---|---|---|---|---|---|---|
-| 1 | **Minimal Techno 01** — Alejandro Magaña (A.M.) | Mixkit | [mixkit.co/free-stock-music/tag/technology](https://mixkit.co/free-stock-music/tag/technology/) | [assets.mixkit.co/music/162/162.mp3](https://assets.mixkit.co/music/162/162.mp3) | 2:04 | not listed (Tech House genre tag — genre band is 124–132, likely near top of our range) | Mixkit Stock Music Free License |
-| 2 | **Cat Walk** — Arulo | Mixkit | same tag page | [assets.mixkit.co/music/371/371.mp3](https://assets.mixkit.co/music/371/371.mp3) | 2:04 | not listed (House/EDM tags) | Mixkit Stock Music Free License |
-| 3 | **Hazy After Hours** — Alejandro Magaña (A.M.) | Mixkit | same tag page | [assets.mixkit.co/music/132/132.mp3](https://assets.mixkit.co/music/132/132.mp3) | 2:07 | not listed (Electronica) | Mixkit Stock Music Free License |
-| 4 | **Techno Fest Vibes** — Alejandro Magaña (A.M.) | Mixkit | same tag page | [assets.mixkit.co/music/124/124.mp3](https://assets.mixkit.co/music/124/124.mp3) | 2:14 | not listed (EDM/House) | Mixkit Stock Music Free License |
-| 5 | **Technology Upbeat** — The_Mountain | Pixabay | [pixabay.com/music/corporate-technology-upbeat-199140](https://pixabay.com/music/corporate-technology-upbeat-199140/) | not exposed — use on-page Download (verified: works logged-out) | 2:02 | not listed | Pixabay Content License |
+## 3. Music shortlist for the Black stage films (measured 2026-11-21)
 
-**Top pick: #1, Minimal Techno 01 (Mixkit).** It's the only one whose own genre tag ("Tech
-House") lands inside a well-documented BPM band, it's licensed with zero attribution/account
-friction, and "minimal" is literally in the title — matches the "clean electronic, avoid
-corporate-cheese" brief better than the House/EDM-tagged alternatives, which trend more festival
-than product-demo. Confirm the actual BPM by ear (or `aubio`/beat-detector) before cutting cues
-to it — Mixkit doesn't publish tempo metadata.
+Eight tracks picked by measured structure, none by ear: each has a quiet build of four bars or more and a lift of 8 to
+20 dB that a six-beat film of 15 to 20 s can land its payoff on. Found by scoring the published waveform of 449 Mixkit
+tracks for a sharp rise after a build, then running `scripts/beats.ts` on the best 30, on Unminus's 51 tracks and on 10
+of Scott Buckley's. "Lift" is the RMS level of the two units after the lift against the two before it; a unit is the
+film beat in seconds. K-weighted (as a phone speaker hears it) the lift in "Thunder" is 8 dB, not 19: the rest is bass.
 
-### SFX (15 candidates)
+| # | Track | Library | File | BPM | Film beat | Lift at | Lift | Bass share of the section |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Thunder, Arulo | Mixkit 318 | https://assets.mixkit.co/music/318/318.mp3 | 95 | 2.53 s (one bar) | 20.19 s | 19 dB | -1.2 dB |
+| 2 | Waveform, Kit Wheston | Unminus | https://feeds.soundcloud.com/stream/1038044245-unminus-waveform.mp3 | 80 (listed 160) | 3.00 s | 23.89 s | 19 dB | -3.4 dB |
+| 3 | Other World, Lily J | Mixkit 723 | https://assets.mixkit.co/music/723/723.mp3 | 140 | 2.57 s | 9.21 s | 20 dB | -1.4 dB |
+| 4 | Atoms in Peace, Alejandro Magaña | Mixkit 107 | https://assets.mixkit.co/music/107/107.mp3 | 96 | 2.50 s | 28.54 s | 12 dB | -3.5 dB |
+| 5 | Kickin' Heart, Mauro Urbina | Mixkit 771 | https://assets.mixkit.co/music/771/771.mp3 | 109 | 3.31 s | 17.81 s | 11 dB | -3.1 dB |
+| 6 | Silent Descent, Eugenio Mininni | Mixkit 614 | https://assets.mixkit.co/music/614/614.mp3 | 140 | 2.57 s | 69.66 s | 8 dB | -27.6 dB (no bass) |
+| 7 | 5 Stages of You, Kit Wheston | Unminus | https://feeds.soundcloud.com/stream/1145820199-unminus-5-stages-of-you-free-lo-fi-music.mp3 | 80 | 3.00 s | 24.04 s | 16 dB, after a bar of near silence | -3.9 dB |
+| 8 | Born of the Sky, Scott Buckley | CC BY 4.0, credit required | https://www.scottbuckley.com.au/library/wp-content/uploads/2025/08/BornOfTheSky.mp3 | 120 | 3.01 s | 32.51 s | 10 dB, a swell | -1.9 dB |
+
+The reel, the excerpts, the measurements and the tools are in the Undirect repo, `docs/research/pro-film-refs/music/`.
+Track 1 is the placeholder under the first film until the owner picks by ear.
+
+## 4. Sound effects
+
 
 | # | Title | Provider | Page / file | Duration | Licence | Use |
 |---|---|---|---|---|---|---|
@@ -184,20 +214,12 @@ Trim every SFX from its first transient (not from 0:00) before levelling, per th
 several of these (especially the CC0 Freesound ones and any "cinematic" Mixkit riser) likely
 have lead-in room tone or fade.
 
-## 4. Recommendation
+## 5. Recommendation
 
-- **Music bed: Minimal Techno 01** (Mixkit, `assets.mixkit.co/music/162/162.mp3`) — mixed near
-  0.1 gain, volume-curve-ducked under every whoosh/riser cue via `@remotion/media`'s
-  frame-function `volume` prop.
-- **SFX**: soft UI tap → *Select click*; keyboard → *Single key type* (per-key) or *Keyboard
-  typing* (typing bursts); transitions → *Fast whoosh transition* / *Fast swipe zoom*; snippet
-  save/paste pop → *Bubble pop up alert notification*; pre-logo riser → *Tech choir cinematic
-  riser* (trimmed to 1–2s, sub-bass-style low gain 0.2–0.22 per the skill's silence-then-hit
-  rule); final hit → *Movie impact intro presentation*; misc state-change tick → *Bell
-  notification*.
-- **Master** the final render with the two-pass `loudnorm` command in section 1, target
-  `I=-14:TP=-1.0`, verify with `ebur128` on the delivered file before calling it done.
-
-Nothing is downloaded — this file is the shortlist. Mixkit direct MP3s can be fetched without
-a login prompt; Pixabay needs the on-page Download click; Freesound CC0 picks need a free
-Freesound account first.
+- **Music**: from the shortlist in section 3, chosen by the owner's ear from the reel; the film's cuts are then laid on
+  that track's downbeats so its lift lands on the payoff.
+- **SFX**: soft UI tap: *Select click*; transitions: *Fast whoosh transition* / *Fast swipe zoom*; pop: *Bubble pop up
+  alert notification*; pre-logo riser: *Tech choir cinematic riser*; final hit: *Movie impact intro presentation*.
+- **Master** to -14 LUFS, true peak at most -1 dBTP, and measure the delivered file with `ebur128`. A film that is a
+  quiet build and one lift is brought up with one gain and a limiter: `loudnorm`'s dynamic mode would level the build
+  up to the lift.
