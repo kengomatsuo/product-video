@@ -34,6 +34,8 @@ Pipeline progress:
       Go back to 2 if a direction or a caption cites no reference file.
       The film shows how the product is really turned on (its real control, recorded), or it is a false advert.
       A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
+      A vertical social cut (TikTok, Reels, Shorts, X) is planned on the platforms' safe box in `references/formats.md` ("Vertical safe zone"), held in `template/src/safe.ts`: every word, badge and press sits inside it, the screen take is framed into the action area with margin around it, and only the background runs under the overlays. Go back to 3 if `scripts/safe-zone-sheet.py` shows any of them outside the box, or if a screen fills the frame edge to edge.
+      Accents, wipes and badges use the product's own brand colours (its icon and site), never a colour borrowed from the meme or reference the format came from.
       A real take is staged like the rest of the film: on its 3D device or full frame. The camera makes one move per shot, 1.2 s or longer, at most 2x, then holds; a magnifier over the held frame shows a control that is still small; the press changes something visible. Go back to 3 if a frame at delivered size does not show which control is pressed, or if the frame scales more than 2x inside 3 s.
       A logo on screen is the product's finished icon, never a redraw in code. An Icon Composer package is rendered with Apple's ictool so its glass and light stay; an exported flat PNG does not count.
       Every shot of a platform's preview shows that platform's own recording under the overlays, and a take is sheeted end to end before any of it is ruled out.
