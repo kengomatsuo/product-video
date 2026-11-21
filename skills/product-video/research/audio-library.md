@@ -253,3 +253,7 @@ have lead-in room tone or fade.
 - **Master** to -14 LUFS, true peak at most -1 dBTP, and measure the delivered file with `ebur128`. A film that is a
   quiet build and one lift is brought up with one gain and a limiter: `loudnorm`'s dynamic mode would level the build
   up to the lift.
+- **When the build sits 20 dB under the lift**, -14 LUFS integrated and the lift cannot both be had: on a 16 to 18 s
+  film the limiter then holds the lift's peaks by 6 to 11 dB and the lift shrinks to 3 or 4 dB (measured on Mixkit 256
+  and 190, 2026-11-22). Narrow the gap a little in the mix (the music scaled from its lift on), master to about -16
+  LUFS so the limiter works under about 5 dB, say so in the hand-over, and match the loudness of cuts the owner compares.
