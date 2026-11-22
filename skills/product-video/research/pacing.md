@@ -5,7 +5,7 @@
 - Per-film table
 - Caption-by-caption measurements (App Store preview set, OCR-timed)
 - Guidance from named sources (fetched, not memory)
-- Recommended timing spec for a ~30–40 s product film
+- What the measured films did, as timing references
 - Files
 
 Measured 2026-09-24 with `ffmpeg` scene-cut detection (`select='gt(scene,0.10–0.28)'` +
@@ -15,7 +15,7 @@ different thresholds), 4 fps frame extraction, and the macOS Vision OCR tool at
 straight from the brands' own CDNs (Apple's App Store HLS streams, Framer/Linear/
 Notion/Cultured Code/Screen Studio's own `.mp4`s) or `yt-dlp` for one YouTube case,
 measured, and then deleted — nothing but the derived numbers and a few evidence
-frames (`pacing/frames/`) are kept.
+frames (`<library>/pacing/frames/`) are kept.
 
 Everything below a per-film row is a direct measurement of the downloaded file, not
 an estimate. Where a film uses a continuous take with no detected cut (screen
@@ -40,7 +40,7 @@ point: real editors let a UI demo run uncut for that long.
 | 12 | Linear — "Agent runtime" feature clip | webassets.linear.app | 17.2s | 1 (0 cuts) | 17.2s single take | Continuous card-stack animation, one shot, no hard cut. |
 | 13 | Linear — "Project update" feature clip | webassets.linear.app | 19.0s | 1 (0 cuts) | 19.0s single take | Continuous UI composite, ends on a plain end card. |
 | 14 | Notion — AI hero illustration loop | videos.ctfassets.net (notion.com/product/ai) | 6.0s | 1 (0 cuts) | 6.0s single take | Short looping illustration beat, no internal cut. |
-| 15 | Apple Fitness+ — official app trailer | YouTube (Apple) | 70.3s | 72 | 0.47 / 0.31 / 0.9 / 0.16s | The one true rapid-montage trailer in the set — median shot under half a second. This is the outlier, not the template for a calm feature demo. |
+| 15 | Apple Fitness+ — official app trailer | YouTube (Apple) | 70.3s | 72 | 0.47 / 0.31 / 0.9 / 0.16s | The one true rapid-montage trailer in the set — median shot under half a second. |
 
 ## Caption-by-caption measurements (App Store preview set, OCR-timed)
 
@@ -84,9 +84,11 @@ the set (4 words). No caption in any measured film held under 1.5 s.
   from this fetch tool) — not included as a cited number here; do not treat any BBC
   cps figure elsewhere in this repo as sourced from this pass.
 
-## Recommended timing spec for a ~30–40 s product film
+## What the measured films did, as timing references
 
-Every number below is tied to a measurement above, not a guess.
+What the 15 measured films did, by kind of film (single take, caption-and-UI alternation,
+rapid montage), for a designer to place a new film among. Every number below is tied to
+a measurement above, not a guess.
 
 1. **Caption hold = max(1.6 s, characters ÷ 8).** The 7 measured real captions
    averaged 7.25 chars/sec displayed (median), well under Netflix's 20 cps ceiling —
@@ -107,25 +109,21 @@ Every number below is tied to a measurement above, not a guess.
 5. **Hold the device still afterward for 1.5–9 s of UI play** before the next cut or
    caption (Structured/Fantastical/Notion Calendar non-caption shots ran 0.53–9.0 s;
    median 1.5–2.15 s across the App Store set).
-6. **Give at least one uninterrupted UI-demo stretch of 6–19 s** somewhere in the
-   film with zero internal cuts — every screen-recording-style clip measured
-   (Screen Studio 6.3 s, Notion AI hero 6.0 s, Linear feature clips 17.2 s and
-   19.0 s, Todoist's entire 30.1 s preview) was a single continuous take. A 30–40 s
-   film that cuts every 1–2 s throughout, with no such stretch, is pacing itself
-   like Apple Fitness+'s rapid-montage trailer (0.47 s median shot) rather than a
-   calm single-app feature demo — that trailer is the outlier in this set, not the
-   template.
-7. **Shots per minute: ~16–24 cuts per 30 s film** (32–48/min), based on the
+6. **Single take: an uninterrupted UI-demo stretch of 6–19 s** with zero internal
+   cuts — every screen-recording-style clip measured (Screen Studio 6.3 s, Notion AI
+   hero 6.0 s, Linear feature clips 17.2 s and 19.0 s, Todoist's entire 30.1 s
+   preview) was a single continuous take.
+7. **Caption-and-UI alternation: ~16–24 cuts per 30 s film** (32–48/min), based on the
    App Store preview set's aggregate shot-length median of 1.5–2.2 s across
    29–30 s runtimes (Fantastical: 8 shots/29 s; Structured: 4 shots/30 s;
-   Notion Calendar: 7 shots/17.6 s ≈ 12/30 s-equivalent). Do not target Apple
-   Fitness+'s ~62 shots/min montage rate for a single-app demo — that pace belongs
-   to a multi-scene brand trailer, not a feature walkthrough.
+   Notion Calendar: 7 shots/17.6 s ≈ 12/30 s-equivalent).
+8. **Rapid montage: ~62 shots/min** (Apple Fitness+'s trailer, 0.47 s median shot),
+   the one multi-scene brand trailer in the set.
 
 ## Files
 
 - Per-film source clips were downloaded to a scratch dir, measured, and deleted —
   nothing but this README and the frames below persist.
-- `pacing/frames/` — 18 evidence frames: OCR-timed caption stills (Fantastical,
+- `<library>/pacing/frames/` — 18 evidence frames: OCR-timed caption stills (Fantastical,
   Structured, Todoist, at their measured hold timestamps) plus one representative
   frame from each of the other films.

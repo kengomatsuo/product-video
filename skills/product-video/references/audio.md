@@ -1,21 +1,15 @@
 # Sound and cutting to music
 
-Pick the track before the storyboard. The film's timeline is built on the track's bars;
-a storyboard written first gets cut against the music and never lands.
+When a film is cut to music, pick the track before the storyboard and build the timeline
+on its bars, because a storyboard cut against a track chosen later never lands; a film led
+by voice or silence sets its own grid.
 
 ## 1. Pick and measure the track
 
-| Kind | Use |
-|---|---|
-| Warm pads with a lift, no hard drop | first choice |
-| A patient atmospheric build, or a confident build to a late payoff | acceptable |
-| Minimal techno, tech house | reject: the kick and bass clank on a phone speaker |
-| Cheerful stock pop, ukulele, "happy corporate", upbeat drops in the style of NCS (the free EDM label) | reject: reads as DIY |
-| Solo or felt piano | reject for promos; it fits a tutorial |
-
-Reject a track whose band below 90 Hz sits within 5 dB of its full-band level: that is
-the bass-heavy sound. The user listens on a phone, so always send a sample reel with a
-spoken number before each track, and never pick the music alone.
+The reel offers tracks that suit this film's mood, each with its measured bass share (the
+band below 90 Hz against its full-band level), since a heavy kick and bass can clank on a
+phone speaker. The user listens on a phone and picks by ear, so always send a sample reel
+with a spoken number before each track, and never pick the music alone.
 
 Music comes from Mixkit, whose licence forbids registering its tracks with Content ID or any rights-management service; Pixabay tracks can be registered by their distributors and get claimed (research/audio-library.md).
 
@@ -41,6 +35,8 @@ its next section change on the end-card line.
 
 ## 2. Build the timeline on bars
 
+When a film is cut to music, picture events land on its bars as below.
+
 ```ts
 const BAR = 60 / bpm * 4 * FPS;         // frames per bar
 const B = (n: number) => Math.round(n * BAR);
@@ -59,10 +55,12 @@ The reasoning for the leads is in `research/music-sync.md`.
 
 ## 3. Effects
 
+These Mixkit ids are the template's stand-ins, measured for onset and peak; a film chooses
+its own sounds and measures them the same way.
+
 | Event | Effect (Mixkit id) | Level | Placement |
 |---|---|---|---|
-| Every tap | select click 1109 | 0.28 | 2 frames before the touch dot |
-| Typing | keyboard typing 1386 | 0.16 | under the typed span only |
+| A tap | select click 1109 | 0.28 | 2 frames before the touch dot |
 | Seam | fast whoosh 1490 / swipe 2627 | 0.32 | peak (0.70 s / 0.25 s in) on the cut |
 | Into the drop | space stutter riser 1144 | 0.30 | its end on the drop |
 | The payoff | pop 2357 | 0.60 | on the drop |

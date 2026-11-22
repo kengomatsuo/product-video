@@ -33,33 +33,6 @@
 
 ---
 
-## iphone.glb — NOT DOWNLOADED (blocked by mandatory login, see report)
-
-Best candidate identified, license-clear, not yet obtained:
-
-- **Model:** "Apple iPhone 15 Pro Black" by **polyman Studio** (@Polyman_3D)
-- **Source URL:** https://sketchfab.com/3d-models/apple-iphone-15-pro-black-6fd1283ec05d412d99a3f23b2e80e473
-- **License:** CC Attribution (CC-BY) — https://creativecommons.org/licenses/by/4.0/
-- **Attribution line to use:** "Apple iPhone 15 Pro Black" by polyman Studio (sketchfab.com/Polyman_3D), licensed CC-BY.
-- **Stats (from Sketchfab's own model info panel):** 61.5k triangles, 37.6k vertices. Black titanium finish, Dynamic-Island era, flat sides — matches the brief.
-- **Why not downloaded:** Sketchfab requires an authenticated account for every download regardless of license; this session's browser has no logged-in Sketchfab session, and creating an account or entering credentials is outside what I'm permitted to do. See the main report for what to do next.
-- **Secondary candidate:** "iPhone 15 Pro" by rtql8d — https://sketchfab.com/3d-models/iphone-15-pro-21a243ccceb64a4da8c0f622dcb935d3 — also CC Attribution, 14.9k triangles / 7.5k vertices (lighter weight, also worth checking for a black-glass front and separate screen mesh once downloaded).
-
-## ipad.glb — NOT DOWNLOADED (blocked by mandatory login, see report)
-
-Best candidate identified, license-clear, not yet obtained:
-
-- **Model:** "Ipad pro13in black m4" by **polyman Studio** (@Polyman_3D)
-- **Source URL:** https://sketchfab.com/3d-models/ipad-pro13in-black-m4-32e1748e3b6840108ededf4359112b2f
-- **License:** CC Attribution (CC-BY)
-- **Attribution line to use:** "Ipad pro13in black m4" by polyman Studio (sketchfab.com/Polyman_3D), licensed CC-BY.
-- **Stats:** 136.9k triangles, 87.9k vertices — flat sides, uniform bezels, space-black era iPad Pro M4. Same author/style as the iPhone candidate above, for a visually consistent pair.
-- **Why not downloaded:** same Sketchfab login wall as the iPhone model.
-- **Rejected candidate:** "Apple iPad Pro" by DatSketch — https://sketchfab.com/3d-models/apple-ipad-pro-e5ffb3c80b2d4d6690249f8ee2bdafbe — license is **CC Attribution-NonCommercial**, not usable in a commercial promo video. Do not use.
-- **Rejected source (Free3D):** "IPad Pro 12inches 2019" — free3d.com/3d-model/ipad-pro-12inches-2019-81247.html — listed under Free3D's "Personal Use License" (non-commercial). Do not use. Free3D's other free iPad/iPhone listings are older/silver-bezel devices (iPad Mini, iPad 2, iPhone 6/X/5c) and did not match the modern-black-glass brief even where license was acceptable.
-- **Rejected sources (unclear/unstated model license):** the many "JavaScript Mastery iPhone 15 Pro" tutorial clones on GitHub (adrianhajdin/iphone and its many forks) ship an `.glb` whose repo is MIT but whose model asset provenance/license is never stated (assets are just linked via a Google Drive folder) — rejected per the unclear-license rule. Likewise `repalash/threepipe-device-mockup-codrops` (MacBook + iPhone mockup, MIT repo) never documents where its `device-mockup.glb` model came from or its license — rejected for the same reason.
-- **Rejected source (GetGLB "iPhone 17 Pro"):** getglb.com/robot/iphone-17-pro/ — vague "Free Standard" license, no textures, and the whole phone is a single mesh/node (fails the "screen must be a separate mesh" requirement) — rejected.
-
 ## iphone.glb and ipad.glb: downloaded 2026-09-24 from Sketchfab (owner's logged-in account)
 
 | File | Model | Author | Licence | Attribution line |
@@ -73,3 +46,10 @@ iPad screen material `jcIAFNBmpIebNBE`; the file sets the iPad on a Magic Keyboa
 degrees, so only the slab is kept (world box x -0.193..-0.075, y 0.005..0.205) and a basis
 stands it upright in portrait; texture `flipY` on. Each device's shadow is placed 40 mm behind
 its measured back: a fixed depth put it in front of the iPad's screen. Not affiliated with or endorsed by Apple Inc.
+
+Rejected sources, so they are not tried again:
+
+- "Apple iPad Pro" by DatSketch — https://sketchfab.com/3d-models/apple-ipad-pro-e5ffb3c80b2d4d6690249f8ee2bdafbe — license is **CC Attribution-NonCommercial**, not usable in a commercial promo video. Do not use.
+- Free3D "IPad Pro 12inches 2019" — free3d.com/3d-model/ipad-pro-12inches-2019-81247.html — listed under Free3D's "Personal Use License" (non-commercial). Do not use.
+- The many "JavaScript Mastery iPhone 15 Pro" tutorial clones on GitHub (adrianhajdin/iphone and its forks) ship an `.glb` whose repo is MIT but whose model asset provenance/license is never stated; `repalash/threepipe-device-mockup-codrops` (MIT repo) likewise never documents where its `device-mockup.glb` came from.
+- GetGLB "iPhone 17 Pro" — getglb.com/robot/iphone-17-pro/ — vague "Free Standard" license, no textures, and the whole phone is a single mesh (the screen must be a separate mesh).

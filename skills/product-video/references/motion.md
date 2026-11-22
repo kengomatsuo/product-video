@@ -18,11 +18,11 @@ here together. The sources of the numbers are in `research/motion-sources.md`.
 ## Continuity between beats
 
 **Nothing appears out of nowhere, and nothing scales up to the lens and teleports.**
-One device carries the whole film on one path (`path()` in the worked example): it enters
-from outside the frame, and between scenes it spins while it travels to the next
-position, with the recording swapped while its back faces the camera. Other devices slide
-in from an edge (iPad from the left, the phone from the right, the Mac rising from below)
-and never fade in on the spot.
+Each thing on screen arrives from somewhere and leaves to somewhere, and a change of
+direction is caused by something the viewer saw. The worked example does it with one
+device on one path (`path()`): it enters from outside the frame, and between scenes it
+spins while it travels to the next position, with the recording swapped while its back
+faces the camera.
 
 | Rule | Value |
 |---|---|
@@ -32,7 +32,7 @@ and never fade in on the spot.
 | Exit / entry time | 320 ms / 380 ms (entry at least as long as exit) |
 | Fade | exit opacity gone in 200 ms; entry ignites at 0.35 opacity |
 | Overlap | none: one side on screen per frame |
-| Direction | one current per film (left); another direction must be caused by something on screen |
+| Direction | the template's default is one current (left); a change of direction is caused by something on screen |
 | Z moves | the sign of scale change matches across a cut: a push exit gets a push entry |
 | App Store previews | dissolves only, 0.33 s |
 
@@ -69,11 +69,13 @@ and practitioner guides (`research/timing.md`, 20 sources):
 | Gap between captions | 0.3-0.5 s |
 | Camera move | 1.2-2 s, eased cubic; a settle of 0.6-1.2 s |
 | Hold between moves | 1 s or more of near-stillness (a slow drift, never a dead stop) |
-| Uncut app footage | at least one 6-19 s stretch per film |
-| Scene per feature | 5-10 s in an App Store preview, 8-15 s in a promo |
 | Transition | 0.8-1 s for a camera move across the seam; a hard cut when the action has finished |
 | End card | 1.5 s minimum, ~4 s with the call to action |
-| Cuts | 16-24 per 30 s at most; slower for a calm product |
+
+These are what 15 measured promo films did (`research/pacing.md`), given as a reference to
+judge a cut against, not a shape to fill: an uncut stretch of app footage of 6-19 s, a
+scene per feature of 5-10 s in an App Store preview and 8-15 s in a promo, 16-24 cuts per
+30 s.
 
 Length follows the content: give every scene time to read; seven scenes in 25 s is too
 fast. Record takes at a person's pace, and cut the tool's dead waits with segments.

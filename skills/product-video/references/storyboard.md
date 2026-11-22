@@ -1,7 +1,9 @@
 # Plan, propose, wireframe
 
-Nothing is built until the user has approved the storyboard and then the wireframe. A
-change is cheapest here: a line in a table, a box moved in a still.
+The storyboard and then the wireframe go to the user as pictures and a clip as soon as
+they exist, and the build carries on; the work stops only for a pick that is the user's
+alone, such as music by ear. A change is cheapest here: a line in a table, a box moved in
+a still.
 
 ## Plan the storyboard
 
@@ -14,8 +16,8 @@ Start from the study notes, not from the scaffold's placeholder beats. Write
 
 1. **Brief**, one paragraph: the product, who watches, where it runs, length, the one
    thing the viewer should remember, and the approved facts with their sources.
-2. **Three directions**, a sentence each, every one naming the references it takes from
-   by file. Pick one and name its signature move.
+2. **The directions**, as many as the designer has, a sentence each, saying what it takes
+   from a reference (by file) and what is its own. Pick one and name its signature move.
 3. **The music**: the user's pick from the sample reel, its BPM and the drop
    (`beats.ts`). The film is laid out in its bars.
 4. **The beat table**, one row per beat:
@@ -30,14 +32,14 @@ Start from the study notes, not from the scaffold's placeholder beats. Write
 
 ## Propose it
 
-Send the user the brief, the three directions with one reference frame each, the chosen
-direction, and the beat table. Publish it as a page when the host has artifacts or docs,
-otherwise as a file with SendUserFile. Wait for approval; apply every change to the table
-before going on.
+Send the user the brief, the directions with a reference frame for each that takes from
+one, the chosen direction, and the beat table. Publish it as a page when the host has
+artifacts or docs, otherwise as a file with SendUserFile. Apply every change the user
+sends to the table.
 
 ## Wireframe
 
-Put the approved table into `src/storyboard.json` with every shot's `src` set to
+Put the table into `src/storyboard.json` with every shot's `src` set to
 `"wire:<what the shot shows>"`: the template draws a labelled, hatched box in its place,
 at the real size, device and position. Set `music` to the chosen track. Then:
 
@@ -47,7 +49,7 @@ bun tools/render.ts --draft         # the animatic: real timing, captions and mu
 ```
 
 Send the stills as one contact sheet and the animatic at phone size. The user judges
-pacing, reading time and composition here, with no recording yet. Wait for approval.
+pacing, reading time and composition here, with no recording yet.
 
 ## Then build
 

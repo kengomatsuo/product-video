@@ -87,5 +87,4 @@ Store one audio file per scene under `public/voiceover/`. Measure each with Medi
 ([video-and-images.md](video-and-images.md)) inside `calculateMetadata` and size the
 composition from the sum, subtracting transition overlaps. Upstream uses ElevenLabs
 (`POST https://api.elevenlabs.io/v1/text-to-speech/<voiceId>` with an `xi-api-key`
-header from `ELEVENLABS_API_KEY`); any text-to-speech source that yields a file works. A
-promo film here usually has music and no voice, so add voiceover only when the brief asks.
+header from `ELEVENLABS_API_KEY`); any text-to-speech source that yields a file works.

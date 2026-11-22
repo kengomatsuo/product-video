@@ -12,7 +12,7 @@
 - Spec for product-video
 
 This is the written doctrine and the numbers practitioners publish — not measurements from real
-promo videos (that's `../pacing/README.md`, built by measuring actual shot/caption durations).
+promo videos (that's `pacing.md`, built by measuring actual shot/caption durations).
 Every claim here traces to a source note in `timing-sources/`, fetched or searched this session
 (2026-09-24). Where a source is genuinely load-bearing for a spec-table number, the note says so;
 where a figure is a community rule of thumb rather than a named authority's published number,

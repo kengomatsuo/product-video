@@ -42,7 +42,7 @@ and `ipad.glb` (iPad Pro 13-inch M4) are CC-BY 4.0 models by polyman Studio, dow
 from Sketchfab; `LibraryDevice kind="iphone" | "ipad"`
 plays recordings and taps on them. `Phone3D` stays as the fallback when no model fits.
 Before using any new model, render it from six angles with its screen material tinted
-red (the `ModelTest` pattern) to learn its units, facing and texture flip.
+red, to learn its units, facing and texture flip.
 
 The front of a phone or tablet is black glass to the edge; the metal band shows only at
 an angle. A clearcoat glass at full environment strength reads as a silver frame, so the glass

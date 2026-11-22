@@ -20,12 +20,12 @@ before calling it a false alarm.
 ## Look at these every time
 
 - Every still, opened, before a full render.
-- No device or card reaches the frame edge in any cut: render with a transparent background and measure the
-  content box per frame (3% margin, each cut placed on its own, a phone-width cut included).
+- In a cut whose design keeps the device whole, no frame clips it by accident: render with a transparent
+  background and measure the content box per frame (3% margin, each cut placed on its own, a phone-width cut included).
 - The contact sheet `out/sheet.png` of the delivered file, not the source.
 - Any frame where a capture meets its frame: nothing of the UI cropped, no halo.
 - The first and last frame of every beat: nothing still arriving when it cuts (product-launch-motion law 7).
-- Caption timing against the reading-speed rule in `copy.md`.
+- Caption timing against the Pacing table in `motion.md`.
 - Every delivered file comes out of `tools/master.sh` and passes `tools/check.ts`. A
   hand-written master can pass Remotion's full-range `yuvj420p` through, and App Store
   Connect then fails the previews with a bare `ASSET_FAILED`.
@@ -44,8 +44,9 @@ before calling it a false alarm.
 
 ## Sound
 
-- Loudness of the delivered file: -14 LUFS plus or minus 0.5, true peak at most -1 dBTP
-  (product-launch-motion definition of done). Measure with
+- Loudness of the delivered file: -14 LUFS plus or minus 0.5 with true peak at most -1 dBTP
+  (product-launch-motion definition of done), or about -16 for a quiet build with one lift
+  (`research/audio-library.md`, "Recommendation"); the hand-over states which. Measure with
   `ffmpeg -i out.mp4 -af loudnorm=print_format=summary -f null -`.
 - A sound effect must be measurably present in the delivered file, not only in the source.
 - You cannot hear the result. Say so to the user, with the numbers.
@@ -61,7 +62,7 @@ track is the problem. Say which it is with the numbers.
 
 The user watches on a phone, through the app's file card:
 - The inline player starts muted: say "unmute" in the caption, every time.
-- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k), named `<master>.phone.mp4` beside the master so the house hook finds the master's check.ts pass. A larger file can time
+- Send a phone copy under ~4 MB (720p, 30 fps, CRF 26, AAC 160k). A larger file can time
   out and never reach the phone; the master stays in `out/` for upload.
 - Music choices go as one audio reel (MP3; an `.m4a` does not play in the remote app), a spoken number before each 15-20 s sample
   (`say -v Samantha "<n>. <title>"`), cut from the track's main section, never its intro.

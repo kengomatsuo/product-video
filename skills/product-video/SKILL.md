@@ -1,80 +1,75 @@
 ---
 name: product-video
-description: "Makes promo films and App Store previews of your own app from real recordings, in Remotion, with a gated storyboard and checked renders. Use for launch videos, social cuts, site hero loops, store previews, demo reels and explainers."
+description: "Makes promo films and App Store previews of your own app in Remotion, from real recordings and motion graphics, with a storyboard and checked renders. Use for launch videos, social cuts, site hero loops, store previews, demo reels and explainers."
 user-invocable: true
 ---
 
 # Product promo videos
 
-A shot of the product always shows the real product, recorded moving. Everything else (frame, type,
-camera, transitions) is a layer on top, in the product's own brand. Remotion API details
+A shot that claims what the product does today is a real recording, because an invented one is a
+false advert; where no recording exists the designer fills with motion graphics and the UI it
+imagines. Everything else (frame, type, camera, transitions) is a layer on top, in the product's
+own brand. Remotion API details
 live in `references/remotion/` (start at [index.md](references/remotion/index.md));
 this skill decides what to make and how it should move.
 
-## The pipeline, in order. No phase is skipped
+## The pipeline
 
-A film made without the first four phases is a slideshow. Each gate waits for the user's approval.
+A film made without the first four phases is a slideshow. The storyboard and the animatic are
+sent to the user as pictures and a clip when they exist and the build carries on; the work
+stops only for a pick that is the user's alone, such as music by ear.
 
-**"Don't ask questions" never removes a gate.** The storyboard and the animatic are
-deliverables sent to the user, not questions. A coordinator delegating this skill passes
-the gates through to the subagent and never writes "decide and finish"; a subagent told
-to skip them stops at phase 4 and hands the storyboard back.
-
-Copy this checklist into the reply and tick it off. Each go-back line applies the moment
-its check fails.
+Each go-back line applies the moment its check fails.
 
 ```
-Pipeline progress:
-- [ ] 0 Tools installed (Dependencies below); `bun <skill>/scripts/new-project.ts` ready
-- [ ] 1 Gather: 250+ references saved with sources, on the topic and general
-      Go back to 1 if the count is under 250 or a kind in references/research.md has no items.
-- [ ] 2 Study: a note per item, copy tiered, films' cut times measured
+0 Tools installed (Dependencies below); `bun <skill>/scripts/new-project.ts` ready
+1 Gather abundantly: the product's category and the best work in any category (film, animation, stills, prose, music), each saved with its source and what to take from it, because a film drawn from a few rivals comes out as their average
+2 Study: a note per item, copy tiered, films' cut times measured
       Go back to 1 if a note cannot say what to take; the item was the wrong one.
-- [ ] 3 Plan: storyboard.md with brief, three directions, music, beat table in bars
-      Go back to 2 if a direction or a caption cites no reference file.
+3 Plan: storyboard.md with brief, directions, music, beat table in bars
+      The storyboard shows as many directions as the designer has; each says what it takes from a reference and what is its own.
       The film shows how the product is really turned on (its real control, recorded), or it is a false advert.
       A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
-      A vertical social cut (TikTok, Reels, Shorts, X) is composed for the whole 1080 x 1920 frame, the way the house's finished portrait explainers and the best rival shorts are: one big hero (the device or screen, about 70-85 % of the width, centred) that may run under the platforms' overlays, a headline above it and a subtitle below. Only what must be read or seen to follow the film (words, the badge, the pressed control at its press) has to sit inside the safe box in `references/formats.md` ("Vertical safe zone"); the picture does not shrink into it. The safe box is a reference the designer judges by, not a gate: go back to 3 only if the film's key line or the end card's price or badge sits under a platform button, if a screen fills the frame edge to edge with no headroom, or if the hero is so small that a band of empty background is left.
-      The moment the product is turned on or used runs about 3 s with the camera moving through it (the owner found 4.5 s slow and 2 s too fast; rival shorts measure 1.0-2.7 s): the control shown, a quick push-in, the press made big, the pressed state, then the result. A short cut too short to hold it leaves the press out.
-      The press that turns the product on flows into its result by one continuous camera move (zoom out from the pressed control to the whole screen), never a cut or wipe between them. A montage of pages shows each as a new screen arriving (a push or card swap) with its own header and a readable title, held 0.6-0.8 s; pages swapped under a fixed crop read as glitches. No frame crops the title of the screen it shows.
-      Frame 0 of every social cut is its best still, since X, Slack and Discord use it as the thumbnail. At most two whoosh styles per film, one cue per repeated element, hits only on a touch, timed to the rendered frames. The storyboard opens on a one-line concept that differs from the app's last film.
-      Sound effects come from the product's approved film (its press and bubble sounds); typing gets no sound unless a real keyboard recording exists, since a stand-in click reads as fake. A phone or screen is shown whole or pushed in through the camera, never as a slice with a straight cut edge.
-      Each pain beat is a different real case at its true size inside the real app or browser, drawn from screenshots of real ones; a flat full-screen poster repeated per beat reads as one joke. The end screen is composed like rival shorts' (the mark 30-80 % of the width, the badge may sit under the bottom overlay), not shrunk into the safe box.
+      A vertical social cut (TikTok, Reels, Shorts, X) is composed for the whole 1080 x 1920 frame and may run under the platforms' overlays; only what must be read to follow the film stays inside the safe box in `references/formats.md` ("Vertical safe zone"), which the designer judges by.
+      The press that turns the product on or uses it is shown long enough that a first-time viewer sees which control it is and what it changed.
+      The viewer sees the press cause its result, and each page of a montage reads as a new screen with its title in frame, because pages swapped under a fixed crop read as glitches.
+      Frame 0 of every social cut is its best still, since X, Slack and Discord use it as the thumbnail. Each sound means one thing through the film, so a viewer learns it: a repeated element keeps its cue, timed to the rendered frames. The storyboard opens on a one-line concept that differs from the app's last film.
+      A product that has an approved film keeps that film's sounds for the same actions; typing gets no sound unless a real keyboard recording exists, since a stand-in click reads as fake.
+      The end card is composed for the whole frame, not shrunk into the safe box.
       Accents, wipes and badges use the product's own brand colours (its icon and site), never a colour borrowed from the meme or reference the format came from.
-      A real take is staged like the rest of the film: on its 3D device or full frame. The camera makes one move per shot, 1.2 s or longer, at most 2x, then holds; a magnifier over the held frame shows a control that is still small; the press changes something visible. Go back to 3 if a frame at delivered size does not show which control is pressed, or if the frame scales more than 2x inside 3 s.
+      A frame at delivered size shows which control is pressed and what the press changed, and no camera move is faster than a viewer can follow.
       A logo on screen is the product's finished icon, never a redraw in code. An Icon Composer package is rendered with Apple's ictool so its glass and light stay; an exported flat PNG does not count.
       Every shot of a platform's preview shows that platform's own recording under the overlays, and a take is sheeted end to end before any of it is ruled out.
-      Each platform's cut gets the flagship's full staging on that platform's own 3D device, every animation layer included, and a film for one device family shows only that family. Dead time is cut from a take before it is used, and a real domain or name is hidden before anyone is shown the clip.
+      A platform's cut is as finished as the flagship: no layer or staging is dropped because the cut is secondary, and a film for one device family shows only that family. Dead time is cut from a take before it is used, and a real domain or name is hidden before anyone is shown the clip.
       Of several attempts at a pointer move, use the straightest. Better: record with `scripts/capture-mac-clean.swift` (compile with `swiftc -parse-as-library`), which leaves the cursor out and logs its path and clicks, then draw a smooth pointer that glides to each logged click. Delete the output file first; AVAssetWriter will not overwrite.
       Script the take before asking anyone to perform it. Inside a browser page, use Playwright with a synthetic cursor. For a real Safari window with an extension, WebDriver's windows are isolated and marked, so post native clicks (needs Accessibility) and record with the cursor left out.
       A fictional brand in a take is name-checked (registered domain, web search) before filming. Mac takes run in full-screen Safari on its own desktop. `scripts/mac-click.swift` posts a real click: hover 0.5 s first, set the click state to 1 or a toolbar button opens its menu, and keep the pointer on the button about 2 s before moving it.
       Before every scripted click, read the front window and tab title and stop unless it names the take's page: a tab another process opens takes the click meant for the film, and a sign-in or approval page acts on it.
       Before any take, check the installed build's version against the current release and open the screen being filmed; an old copy films the wrong product.
-- [ ] 4 Propose the storyboard to the user  GATE
+4 Send the storyboard to the user
       Its first line names the film's use. A film the user calls a "preview" is checked against the App Store preview rules in `references/formats.md` (at most 30 s, at most 30 fps, the accepted size); a storyboard that breaks them says so in its first line, before any drafting.
-      Changes requested: edit the table, resend, wait. Never start phase 5 unapproved.
-      Approved: `touch storyboard.approved` in the project root (the render tools wait for it).
-- [ ] 5 Wireframe: stills and an animatic on the real music, the screen box on the 3D device  GATE
+      Changes requested: edit the table and resend.
+5 Wireframe: stills and an animatic on the real music, sent to the user
       Pacing or composition rejected: return to 3 and change the table; never patch the wireframe.
-- [ ] 6 Build: capture each take, replace each wire: box, stills after every scene
+6 Build: capture each take, replace each wire: box, stills after every scene
       A take misses its table row (wrong UI, short, hitches): back to capture.
       iOS takes record only on the device `scripts/film-device.sh up iphone|ipad` prints, its UDID passed to `capture-ios.sh`; never create, boot or record on another simulator.
-- [ ] 7 Check loops 7a-7e (below) pass: stills, frame sheet, motion plot, check.ts, loudness
+7 Check loops 7a-7e (below) pass: stills, frame sheet, motion plot, check.ts, loudness
       Any failure: fix the cause, bump the version, re-render, repeat from 7a.
-- [ ] 7f Hand over: phone copy, "unmute" in the caption, what was and was not checked
+7f Hand over: phone copy, "unmute" in the caption, what was and was not checked
       Every format the storyboard plans (16:9, 9:16 portrait, square) is rendered and checked before hand-over; a planned cut left unbuilt is a failed 7f.
-      A vertical social cut is checked for its whole length under each platform's real UI (TikTok, Reels, Shorts, Stories: top bar, right rail, caption, and the top and bottom shadow gradients) on a 2 fps frame sheet; any word or key UI in a covered or faded band at any frame fails, not only the end card.
+      A vertical social cut is laid under each platform's overlay sheet and the designer judges it; only the film's key line and the end card's price or badge must be clear of a platform button.
       Text on a 3D label is read on a frame zoomed to 100%: a seam, flap edge or border crossing a letter fails.
       After the last render is handed over, `scripts/film-device.sh down` deletes the film simulators.
 ```
 
 | # | Phase | Output | Read |
 |---|---|---|---|
-| 1 | **Gather** references on the topic (competitors, category) and general ones (best launch films, code, guidelines, prose, music for the mood); 250+ items, saved with sources | `<refs>/*/notes.md` | `references/research.md` |
+| 1 | **Gather** references abundantly: on the topic (competitors, category) and the best work in any category (launch films, animation, stills, code, guidelines, prose, music for the mood), each saved with its source | `<refs>/*/notes.md` | `references/research.md` |
 | 2 | **Study** them: a note per item, the copy read and tiered, the films' cut times measured | notes filled in, `copy/lines.json` | `references/research.md`, `research/` |
-| 3 | **Plan** the storyboard: brief, three directions from the references, the music picked from a sample reel, the beat table in bars | `storyboard.md` | `references/storyboard.md`, `references/audio.md`, `references/copy.md` |
-| 4 | **Propose** the storyboard to the user. GATE | the page or file sent | `references/storyboard.md` |
-| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music. The wire box is the SCREEN of the real 3D device (`template/public/models/iphone.glb`, `ipad.glb`, `macbook.glb` through `Phone3D`), moving on the planned path with its spins and seams; a flat box hides the motion the user is approving. GATE | contact sheet, animatic | `references/storyboard.md` |
+| 3 | **Plan** the storyboard: brief, the directions, the music picked from a sample reel, the beat table in bars | `storyboard.md` | `references/storyboard.md`, `references/audio.md`, `references/copy.md` |
+| 4 | **Send** the storyboard to the user | the page or file sent | `references/storyboard.md` |
+| 5 | **Wireframe**: the table in `storyboard.json` with `wire:` boxes, stills and an animatic on the real music, sent to the user. When the film stages a 3D device (`template/public/models/iphone.glb`, `ipad.glb`, `macbook.glb` through `Phone3D`), the wire box is that device's screen, moving on the planned path with its spins and seams; a flat box hides the motion the user is judging | contact sheet, animatic | `references/storyboard.md` |
 | 6 | **Build**: capture the shot list, replace each box with its take, build scene by scene | the film | the sections below, `references/capture.md` |
 | 7 | **Check and hand over** | master, check report | `references/qa.md` |
 
@@ -82,9 +77,10 @@ Pipeline progress:
 phase 5: it reads the brand (`detect-brand.ts`), copies the icon, fonts, screenshots and
 clips into `public/`. Its starter storyboard is a placeholder; the phase 3 table replaces it.
 
-Captions are written in phase 3 from the trusted examples (`research/headlines.json`,
-the product's own `copy/lines.json`), a complete thought with its actor, readable in the time it holds, a fact the screen
-proves, through `human-prose`. See `references/copy.md`. Capture rules are in
+Captions are written in phase 3 after reading the trusted examples (`research/headlines.json`,
+the product's own `copy/lines.json`) to hear what human launch copy sounds like: a complete thought with its actor,
+readable in the time it holds, a fact the screen proves, a line only this product could carry, through `human-prose`.
+See `references/copy.md`. Capture rules are in
 `references/capture.md`; screenshots are only for a screen that genuinely holds still.
 
 ## Dependencies
@@ -99,29 +95,26 @@ before phase 1; check with `command -v <tool>`.
 | yt-dlp | downloading reference films for `refs-frames.sh` | `brew install yt-dlp` |
 | Remotion 4.0.527, three.js, p5.brush | rendering; pinned in `template/package.json` | `bun install` in the generated project (`new-project.ts` runs it) |
 | Xcode command line tools (`xcrun simctl`, `swift`, `swiftc`) | `capture-ios.sh`, `capture-mac.sh`, compiling `refs-ocr.swift` | `xcode-select --install` |
-| RocketSim CLI (optional) | 60 fps Simulator capture and `rocketsim do` flows | see the `apple-native` skill, `references/rocketsim.md`; `capture-ios.sh` falls back to `simctl` |
+| RocketSim CLI (optional) | 60 fps Simulator capture and `rocketsim do` flows | `rocketsim --help`; `capture-ios.sh` falls back to `simctl` |
 | goldie and argent (optional) | replayable Simulator flows | `kacperkapusciak/goldie`, `software-mansion/argent` on GitHub |
 | Ruby gem `spaceship` | `asc-upload-preview.rb` | `gem install spaceship` |
 
 ## The film, not the slideshow
 
-A storyboard of stills in a frame is a slideshow. A film has: real recordings playing on
-a 3D device that keeps moving across cuts; touches you can see; words arriving on beats;
-seams that carry motion through (cut the curve, zoom-through, a spin); a background that
-drifts; music whose drop lands on the payoff; an effect on every action; and a master
-with no banding at -14 LUFS. `examples/cutling/Film.tsx` is the worked example: six
-scenes on a 121.5 BPM bar grid, timed to the pacing table in `references/motion.md`. Copy it
-into `src/`, register it in `src/Root.tsx`, and build the new film on its pieces (`Phone3D`,
-`Background`, `Words`, the `path`/`pan`/`settle` rig) rather than on the simpler `Promo`
-beats. Its timings and `rec/` takes belong to the example: replace them all.
+A storyboard of stills in a frame is a slideshow. A film moves: nothing on screen is a still
+in a frame, the viewer sees every touch, and picture and music arrive together, in a master
+with no banding. `examples/cutling/Film.tsx` shows one way (six scenes on a 121.5 BPM bar
+grid, recordings playing on a 3D device that keeps moving across cuts) and its pieces
+(`Phone3D`, `Background`, `Words`, the `path`/`pan`/`settle` rig) are there to take or leave:
+to use them, copy the file into `src/` and register it in `src/Root.tsx`. Its timings and
+`rec/` takes belong to the example.
 See `references/devices-and-backgrounds.md`.
 An explainer or hybrid film also follows `references/explainer.md`.
 
-A how-to guide is made in the same grammar, because a viewer leaves a recording that waits for them: one task per
-video, under a minute; a headline of two to four words per task, never a caption per press held for its reading time;
-the still frames between presses cut, so presses come every 1.3 to 2 s at the product's own speed; the camera follows
-the finger; detail goes in subtitles. A take is captured with the product's animations whole (slowed through the
-DevTools Animation domain, or virtual time), since a screencast at 10-15 fps turns every sheet into a jump cut.
+A how-to guide never makes the viewer wait: still frames between presses are cut and the product's own animations
+play whole, because a recording that waits loses its viewer. A take is captured with the product's animations whole
+(slowed through the DevTools Animation domain, or virtual time), since a screencast at 10-15 fps turns every sheet
+into a jump cut.
 
 ## Build
 
@@ -139,9 +132,9 @@ the beat. Storyboard-level: `preset`, `transition` (`cut` default, `dissolve` fo
 Store), `music`, `musicVolume`, `motionBlur`.
 
 The template already implements the motion rules in `references/motion.md`. Read that
-file before changing any timing, and change `src/motion.ts` rather than writing a
-one-off curve in a component. Beyond the four beat types, write new components against
-the same tokens: one current, the click causes the next thing. Caption timing comes from
+file before changing any timing. The template's tokens in `src/motion.ts` are its
+defaults; a film that wants another motion character changes them in one place so the
+film stays consistent with itself. Caption timing comes from
 `research/timing.md` (reading time, holds, sources).
 
 A brand the detector could not read (it says so in `notes`) gets `overrides` in
@@ -151,7 +144,9 @@ A brand the detector could not read (it says so in `notes`) gets `overrides` in
 
 Every render the user sees, animatic included, goes through these loops. Each one is
 check, fix, re-check; the film moves on only when the loop passes. A fix needs a new
-render (`master.sh` never overwrites a version: bump `v1` to `v2`).
+render (`master.sh` never overwrites a version: bump `v1` to `v2`). A still or render runs
+under a time limit, and when it ends no `chrome-headless-shell` of that project is left
+(`pgrep -f chrome-headless-shell`).
 
 **7a Stills.** `bun tools/stills.ts`, open every still. Fix what is cropped, late or
 wrong, re-run, open them again.
@@ -162,14 +157,11 @@ miss one-frame entrance errors. Fix each defect, re-render, rebuild the sheet.
 The sheet covers the whole film, every beat and every language, before any render is sent;
 a sheet over a few chosen beats lets clipping layers and z-fights through. In a layered three.js scene every transparent plane gets
 `depthWrite: false` and an explicit `renderOrder` back to front, and coplanar labels get
-`polygonOffset`, so no layer can cut through another mid-move. Any 3D animatic is built
-by an Opus agent launched with `effort: "max"` (set it in the Agent call; the agent file's
-default does not count); give it this loop as its done-when. Viewers are not engineers:
-no on-screen jargon (`z-index`, `opacity`), no text under 48 px at 1080p, one idea and at
-most three moving elements per shot, no haze or fog layers, and moves on springs, never a
-linear move sped up to fit a beat.
+`polygonOffset`, so no layer can cut through another mid-move. A viewer with no technical
+knowledge reads each shot with the sound off: words large enough for a phone, one idea,
+nothing between the eye and the subject.
 
-**7c Motion plot.** Every action settles and holds at rest for 0.6 s or more before its beat's cut: difference the frames over each beat's last 0.4 s and require near zero, apart from a planned seam. Sheets cannot show motion: plot each device's on-screen size and
+**7c Motion plot.** No action is cut off before the viewer has seen its result, unless a move is carried across the cut on purpose: difference the frames over each beat's last 0.4 s to find motion still running at the cut. Sheets cannot show motion: plot each device's on-screen size and
 position over time (or difference consecutive frames) and check every move has a target
 and a visible size; a small repeating zoom passes a sheet. Fix, re-plot.
 
@@ -184,15 +176,16 @@ sheet around the frame before it is called a false alarm. Finish when it prints
 "No problems found", then open `out/sheet.png` once.
 
 **7e Loudness.** Measure the delivered file (`references/qa.md`, "Sound"): -14 LUFS plus
-or minus 0.5, true peak at most -1 dBTP. Outside that, re-run `master.sh` as the next
-version and measure again.
+or minus 0.5 with true peak at most -1 dBTP, or about -16 for a quiet build with one lift
+(`research/audio-library.md`, "Recommendation"); the hand-over states which. Outside that,
+re-run `master.sh` as the next version and measure again.
 
 Then hand over: `references/qa.md` lists what to look at by eye and "Handing over". Send
 a phone-sized copy with SendUserFile, say what was checked and what was not (you cannot
 hear the audio), and tell the user to unmute.
 
 For the App Store, make separate cuts (`AppStorePreview` and `AppStorePreviewIPad`: iPhone
-886 x 1920, iPad 1200 x 1600, Mac 1920 x 1080, about 29.5 s, real recordings under the film's overlays). Fill the takes,
+886 x 1920, iPad 1200 x 1600, Mac 1920 x 1080, 15 to 30 s, real recordings under the film's overlays). Fill the takes,
 taps, captions and music in `src/appstore.json` (`examples/cutling/AppStorePreview.tsx` is a
 finished one), render with `--appstore` and run loops 7a to 7e on it, then upload with
 `scripts/asc-upload-preview.rb`. See `references/formats.md`.
@@ -213,7 +206,7 @@ transcripts) that the user may name. The skill works without it.
 | `references/capture.md` | recording takes |
 | `references/explainer.md` | an explainer or a hybrid film: ideas as objects, feeling, joining animation to real recordings |
 | `references/motion.md` | touching any timing, curve or camera move |
-| skill `expressive-motion` | animating the app screens and cards: springs, press, bounce, count-ups, check, confetti, dwell and loop seam |
+| skill `expressive-motion` | one worked motion language (the stya hero film's), to study when a film wants that character |
 | `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |
 | `references/devices-and-backgrounds.md` | changing the 3D devices or the background |
 | `references/formats.md` | presets, App Store rules, encoder settings, upload |
@@ -222,7 +215,7 @@ transcripts) that the user may name. The skill works without it.
 | `research/timing-sources/` | checking a claim `research/timing.md` cites; one note per source |
 | `research/pacing.md`, `research/launch-videos.md`, `research/youtube.md` | how real launch films cut, move and end |
 | `research/appstore-previews.md`, `research/posters.md` | what store previews and panels show |
-| `research/copy.md`, `research/headlines.json` | trusted headlines and the tells of AI copy |
+| `research/copy.md`, `research/headlines.json` | text read from the reference frames, tiered by source, and the tells of AI copy |
 | `research/easing.md` | curves and duration tokens with their sources |
 | `research/music-for-promos.md`, `research/music-sync.md`, `research/audio-library.md` | music choice, cutting to the bar, licensed tracks |
 | `research/dribbble-behance.md`, `research/github.md` | motion shots and promo code (low trust for copy) |

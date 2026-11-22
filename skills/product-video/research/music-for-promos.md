@@ -41,7 +41,7 @@ Concretely, in the rejected tracks (Mixkit's tech-house/techno catalogue, `<libr
 
 ## Part 2 — the 15 tracks
 
-All sourced from **Pixabay Music**. Per Pixabay's own license page, everything on the site is released under the Pixabay Content License: free for commercial use, modification and distribution, **no attribution required** (crediting the artist is welcome but optional), with the sole restriction that the track itself can't be resold as stock media or registered for content-ID/royalty claims. ([Pixabay: License Summary](https://pixabay.com/service/license-summary/), confirmed again on each track's own page, which shows "Free for use under the Pixabay Content License.")
+Part 2's tracks are from Pixabay Music, which is out (`research/audio-library.md`, "Out"): use this file for Part 1's traits only.
 
 Uppbeat's free tier was checked and set aside: its own commercial-license FAQ scopes free/Pro downloads to "publishing on your own channels" and reserves broader ad/commercial use for paid Business plans, which is a worse fit for a public product promo than Pixabay's unconditional commercial grant. ([Uppbeat: Commercial License FAQs](https://uppbeat.io/commercial-licenses)) Free Music Archive and Incompetech were checked but nothing in their calm/ambient catalogues beat the Pixabay picks below on instrumentation or low-end cleanliness, so no tracks from those two are included this round. No new Mixkit tracks were added — everything in Mixkit's tech/electronica tag set failed the low-end test the same way the already-rejected tracks did (see the "rejected" note below); "See Line Funk" (Mixkit #105) remains the one Mixkit track worth keeping in mind, but a fresh pull of that catalogue for this round didn't turn up anything better than what's already in the library.
 
@@ -77,6 +77,3 @@ The reel (`music-candidates-2.m4a`) plays the 15 tracks in the table's numeric o
 
 New rows added to `<library>/audio/LIBRARY.md` under Music, following its existing table format.
 
-## Which tracks fit a promo
-
-First choice: 1 Revival. Acceptable: 9 Chase the Sparks, 14 Confident Background. The piano tracks (4, 5, 6, 8, 10, 11, 12) do not fit a promo; keep them for tutorials.

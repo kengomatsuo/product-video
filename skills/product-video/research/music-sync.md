@@ -71,7 +71,7 @@ the raw time.
   in a certain way."* — the same rhythm logic applies to product-demo pacing: a beat
   grid is a pacing tool, not just a music-video gimmick.
 - **`beat-sync-montage` + `music-intelligence` skills, 0xsline/OpenChatCut** (AGPL-3.0,
-  1,983 ★, pushed 2026-09-21 — downloaded to `../skills/0xsline--OpenChatCut--*` for
+  1,983 ★, pushed 2026-09-21 — downloaded to `<library>/skills/0xsline--OpenChatCut--*` for
   reference; AGPL means read for the editorial rules, do not vendor its code into a
   differently-licensed project). The single best-organized, most quotable set of editing
   rules found in this research pass:
@@ -91,7 +91,7 @@ the raw time.
     opening) to be cuttable on a beat at all — footage with ambiguous, driftlike motion
     doesn't improve by forcing a beat cut onto it.
 - **`beat-sync-edit` skill, AkariLabs/akari-video** (MIT, 185 ★, pushed 2026-09-24 —
-  downloaded to `../skills/AkariLabs--akari-video--beat-sync-edit/`). Japanese-language
+  downloaded to `<library>/skills/AkariLabs--akari-video--beat-sync-edit/`). Japanese-language
   skill for a generator-driven beat-sync pipeline; its house rule worth carrying over
   even outside its own tool: **declare tempo/beat-offset by ear first and never trust an
   auto-estimate as measured ground truth** ("自動推定値を実測と偽らない" — don't pass off
@@ -169,13 +169,13 @@ Output shape:
 }
 ```
 
-### Tested on the four tracks in `../audio/files/`
+### Tested on the four tracks in `<library>/audio/files/`
 
 `beats.ts`'s tempo estimate vs. this same repo's own prior `librosa.beat.beat_track`
-measurement (recorded in `../audio/LIBRARY.md`, itself flagged there as "an estimate —
+measurement (recorded in `<library>/audio/LIBRARY.md`, itself flagged there as "an estimate —
 verify by ear"). The `music-<n>.mp3` filenames are **Mixkit's own numeric asset IDs**
 (e.g. `music-162.mp3` is `assets.mixkit.co/music/162/162.mp3`), not BPM — confirmed in
-`../audio/LIBRARY.md`, so they aren't a tempo ground truth at all; the librosa figure is
+`<library>/audio/LIBRARY.md`, so they aren't a tempo ground truth at all; the librosa figure is
 the only real cross-check available offline.
 
 | File | Track (Mixkit) | `beats.ts` BPM | Prior librosa BPM | Δ | Biggest drop(s) found |
@@ -193,7 +193,7 @@ intro → build → drop arc with the intro/outro always the lowest-energy segme
 is the sanity check that matters more than the BPM digit: it means the DP tracker didn't
 drift and the section labels are usable as-is for a storyboard.
 
-Run it yourself against any other track dropped into `../audio/files/`:
+Run it yourself against any other track dropped into `<library>/audio/files/`:
 
 ```bash
 cd <skill>/scripts

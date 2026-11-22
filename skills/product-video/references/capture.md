@@ -11,8 +11,9 @@
 - Demo data
 - Measuring
 
-A screenshot inside a moving frame still reads as a slideshow. Every shot that shows the
-product doing something is a recording of the product doing it.
+A screenshot inside a moving frame still reads as a slideshow. A shot that claims what the
+product does today is a recording of the product doing it; where no recording exists the
+designer fills with motion graphics and the UI it imagines.
 
 | Platform | How | Script |
 |---|---|---|
@@ -105,7 +106,7 @@ build two changes old shows a look that no longer ships.
 
 ## Repeatable flows
 
-Drive with RocketSim when it is installed (the `apple-native` skill, `references/rocketsim.md`, covers the `rocketsim` CLI): `rocketsim do --step "interact tap --label
+Drive with RocketSim when it is installed (`rocketsim --help` lists its CLI): `rocketsim do --step "interact tap --label
 '<control label>' --screen latest" --step "wait element --label '<result label>' --timeout 2"`. A
 step names the control by its accessibility label, so one flow runs on iPhone and iPad
 and survives a layout change; hand-measured coordinates drift off-frame. Native UI

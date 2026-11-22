@@ -12,7 +12,7 @@ you are on before gathering anything new:
 |---|---|
 | `research/launch-videos.md`, `research/youtube.md` | how real launch films open, move a device, and end |
 | `research/appstore-previews.md`, `research/posters.md` | what App Store previews and panels put on screen, headline by headline |
-| `research/copy.md`, `research/headlines.json` | how long human headlines are (median 3 words) and which words give AI copy away; 319 trusted headlines |
+| `research/copy.md`, `research/headlines.json` | text read from the reference frames, tiered by source; which words give AI copy away |
 | `research/pacing.md`, `research/timing.md`, `research/timing-sources/` | shot lengths, holds, reading time, with sources |
 | `research/easing.md` | curves and durations from Material, Carbon, Fluent, Apple |
 | `research/music-for-promos.md`, `research/music-sync.md`, `research/audio-library.md` | what launch films use for music, cutting to the bar, licensed tracks |
@@ -24,7 +24,8 @@ Two sets, both saved before any study starts. **On the topic**: the product's co
 and its category. **General**: the best work in any category, for craft that no
 competitor shows. Keep them in `<refs>`, a folder outside the repo (`<product>-promo/`
 beside the shared `<library>`, or any folder the user names), one folder per kind, each with a `notes.md` table: source URL,
-file, topic or general, what to take. At least 250 items across the kinds below:
+file, topic or general, what to take. Gather abundantly across the kinds below, because a
+film drawn from a few rivals comes out as their average:
 
 | Kind | On the topic | General | How |
 |---|---|---|---|
@@ -50,15 +51,16 @@ guessed.
   placeholder (Dribbble, tutorials; never an example). Only A and B lines teach captions.
 - **Time the films.** `refs-frames.sh` writes each film's cut times. Compare the shot
   lengths with `pacing.md` before choosing the film's grid.
-- **Write the three directions from what you saw.** Each names the references it takes
-  from, by file.
+- **Write the directions from what you saw.** Each says what it takes from a reference,
+  by file, and what is its own.
 
-## 4. Captions come from the examples
+## 4. Captions
 
-Write each caption after reading the trusted lines for the same job (a hook, a feature,
-a payoff) in `headlines.json` and this product's `copy/lines.json`. Match their length
-and grammar: a complete thought with its actor, a fact the screen proves. Then
-put it through `human-prose`. A caption that would fit any product fails.
+Read the trusted lines for the same job (a hook, a feature, a payoff) in `headlines.json`
+and this product's `copy/lines.json` to hear what human launch copy sounds like, then
+write the line only this product could carry: a complete thought with its actor, a fact
+the screen proves. Then put it through `human-prose`. A caption that would fit any
+product fails.
 
 ## 5. Music is picked by the user, by ear
 

@@ -4,14 +4,14 @@ Captions came from yt-dlp (captions only). Frames come from the first 32 s of ea
 
 | id | channel | title | views | frames | transcript |
 |---|---|---|---|---|---|
-| cpQzSKuEAkM | Bart_VFX | Learn Apple Style Motion Graphics in 20 minutes | 251,859 | frames/cpQzSKuEAkM-* | yes |
-| Jccbzpicst8 | TomsProject | Master SaaS Motion Graphics in 30 Minutes | 227,675 | frames/Jccbzpicst8-* | yes |
-| vye0_xIG5HY | Motion with Nas | SaaS Motion Graphics full tutorial, Appgen breakdown | 59,638 | frames/vye0_xIG5HY-* | yes |
-| u302hpxNDFs | Editwithtrix | How To Master SaaS Explainer | 188,680 | frames/u302hpxNDFs-* | yes |
-| hu06BPmKf2s | Motion Mirror | After Effects UI Animation Tutorial | 145,948 | frames/hu06BPmKf2s-* | yes |
-| RgYuScMIxxg | Polygon Motions | 3D Phone App Promo in After Effects | 78,068 | frames/RgYuScMIxxg-* | no captions |
-| Zfx5oL3pPmk | Zakaria HQ | How To Create Apple Style UI Ad in After Effects | n/a | frames/Zfx5oL3pPmk-* | yes |
-| P4g1_g0ESOk | Md Shahin | App UI Promo Video (23 s) | 196,074 | frames/P4g1_g0ESOk-* | n/a |
+| cpQzSKuEAkM | Bart_VFX | Learn Apple Style Motion Graphics in 20 minutes | 251,859 | <library>/youtube/frames/cpQzSKuEAkM-* | yes |
+| Jccbzpicst8 | TomsProject | Master SaaS Motion Graphics in 30 Minutes | 227,675 | <library>/youtube/frames/Jccbzpicst8-* | yes |
+| vye0_xIG5HY | Motion with Nas | SaaS Motion Graphics full tutorial, Appgen breakdown | 59,638 | <library>/youtube/frames/vye0_xIG5HY-* | yes |
+| u302hpxNDFs | Editwithtrix | How To Master SaaS Explainer | 188,680 | <library>/youtube/frames/u302hpxNDFs-* | yes |
+| hu06BPmKf2s | Motion Mirror | After Effects UI Animation Tutorial | 145,948 | <library>/youtube/frames/hu06BPmKf2s-* | yes |
+| RgYuScMIxxg | Polygon Motions | 3D Phone App Promo in After Effects | 78,068 | <library>/youtube/frames/RgYuScMIxxg-* | no captions |
+| Zfx5oL3pPmk | Zakaria HQ | How To Create Apple Style UI Ad in After Effects | n/a | <library>/youtube/frames/Zfx5oL3pPmk-* | yes |
+| P4g1_g0ESOk | Md Shahin | App UI Promo Video (23 s) | 196,074 | <library>/youtube/frames/P4g1_g0ESOk-* | n/a |
 | HpVtzOtaHlg | MotionXP | After Effects Easing like a pro | 106,561 | none | yes |
 | xM9w0SSpgtc | Elias Sarantopoulos | Speed graph vs Value graph | 152,357 | none | yes |
 | 6LV9znNGv2Q | tacticalvfx | Master Smooth Animations in Premiere Pro | 286k+ | none | yes |

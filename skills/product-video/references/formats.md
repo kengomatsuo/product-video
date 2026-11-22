@@ -15,7 +15,7 @@ One storyboard renders to any preset: `bun tools/render.ts --preset vertical`.
 
 When the user asks for a preview cut of an animated film, build the cut with its animation, layers and touches. Quote Apple's text once as a review risk, then build it; never replace the animation with recordings-only, and never refuse. Many live previews carry motion graphics.
 
-- 15 to 30 seconds, at most 30 fps, at most 500 MB. Aim for 29.5 s, ending on a bar line of the music plus its ring-out.
+- 15 to 30 seconds, at most 30 fps, at most 500 MB. A cut that runs to the limit ends under 30 s, on a bar line of the music plus its ring-out.
 - H.264 High Profile up to Level 4.0 at 10-12 Mbps, or ProRes 422 HQ. `.mov`, `.m4v`, `.mp4`.
 - Stereo audio, AAC 256 kbps, 44.1 or 48 kHz; the render forces an audio track.
 - Portrait or landscape on iPhone; Mac previews are landscape only.
@@ -39,22 +39,13 @@ Every render is a new file: rename the last one before rendering over it.
 
 ## The App Store preview is a short hybrid cut
 
-Make it a separate composition for each device, about 29.5 s, 30 fps. Real recordings from that platform carry every shot, with the explainer's overlays, cards, touches and visualisations on top (`references/explainer.md`). A longer or 60 fps film stays a promotional film and is delivered as one.
+Make it a separate composition for each device, 15 to 30 s at 30 fps. Real recordings from that platform carry every shot, with the explainer's overlays, cards, touches and visualisations on top (`references/explainer.md`). A longer or 60 fps film stays a promotional film and is delivered as one.
 
 | Device | Size | Upload type |
 |---|---|---|
 | iPhone | 886 x 1920 portrait, accepted for the 6.9" class and scaled for smaller ones | `IPHONE_69` (the API calls it `IPHONE_67`) |
 | iPad | 1200 x 1600 portrait | `IPAD_PRO_3GEN_129` |
 | Mac | 1920 x 1080, landscape only | `DESKTOP` |
-
-Shot plan that fits 30 s, on the music's bars:
-
-| Share of the cut | Shots |
-|---|---|
-| First 45% | the problem, one shot per way it happens, 3 to 4 shots of 2 to 3 s |
-| On the music's lift | the real control pressed, recorded on that platform, about 4 s |
-| Next 30% | the same problems failing, in the same framing |
-| Last 25% | the real result list or settings, then the end card |
 
 The default poster frame is at 5 s, so set one showing the product working. Up to three previews per device and language; a language without its own uses the next best language's. Read each upload back, and retry a poster frame that fails with a server error.
 
@@ -87,4 +78,4 @@ Measured 2026-11-18 from each platform's own files, on a 1080 x 1920 frame:
 | X vertical video (Immersive Media Viewer) | X's own spec diagram on business.x.com/en/products/vertical-video-ads, section "Specs" (phone drawn over a 1080 x 1920 frame, overlay outlined, labels in px; read 2026-11-21; the page says the overlay disappears after 2 s of watching) | y 155-1620 clear: 155 px at the top (back arrow, menu), 300 px at the bottom (progress bar, account and caption, then the reply, repost, like, views, share and bookmark row); inside that bottom band the Learn More button takes 155 px from the left edge and the right-hand icons 205 px from the right edge. X has no side column, so nothing is lost on the left or right |
 | Instagram / Facebook Reels | facebook.com/business/help/980593475366490 gives no numbers: keep the top, bottom and side edges free; with a disclaimer keep the bottom 40 % free | use the box below |
 
-The box all three leave clear (X's 155-1620 band contains it, so X does not shrink it): x 120-887 from y 288 to 840, x 120-780 from y 840 to 1247. Captions, any button and the key action sit inside it; the device and background may run under the overlays. `template/src/safe.ts` holds it for a composition: `SAFE` and `inSafe` (the box), `VERTICAL` (headline at its top, subtitle on its floor, the action between), `frameRegion` (a camera that fits a screen band in the action area); a vertical cut's camera is a list of screen bands, one per run of presses, and a press check projects every press at its moment and fails any outside the box, and measures every subtitle line in its real font (canvas `measureText`) against the box's width, since a nowrap line runs past it unseen: at 44 px a Japanese line holds 14 characters in the 640 px row. `scripts/safe-zone-sheet.py` draws it on a film's frames, and `references/overlays/` keeps Google's two overlay files and TikTok's In-Feed template. `scripts/platform-overlay-sheet.py <film> <prefix>` is a reference for a vertical film, not a gate: every frame at 4 a second under each platform's zones, a shadow gradient from the top and bottom edges and stand-in buttons (TikTok, Reels, Shorts, Stories), one sheet per platform. The designer lays it over the frames and judges; the frame is composed for the whole screen, as other creators' posts are. Only the line that carries the film and the price or badge on the end card must not sit under a platform button; anything else may run under the overlays. YouTube's 16:9 overlay (youtubesafezoneoverlay_horizontal_final.png) leaves y 937-1080 unsafe, where the player's controls sit: subtitles in a long-form film end above y 937.
+The box all three leave clear (X's 155-1620 band contains it, so X does not shrink it): x 120-887 from y 288 to 840, x 120-780 from y 840 to 1247. What must be read to follow the film sits inside it, by the designer's judgement; the device and background may run under the overlays. `template/src/safe.ts` holds it for a composition: `SAFE` and `inSafe` (the box), `VERTICAL` (headline at its top, subtitle on its floor, the action between), `frameRegion` (a camera that fits a screen band in the action area); a vertical cut's camera is a list of screen bands, one per run of presses, and a press check projects every press at its moment and reports any outside the box, and measures every subtitle line in its real font (canvas `measureText`) against the box's width, since a nowrap line runs past it unseen: at 44 px a Japanese line holds 14 characters in the 640 px row. `scripts/safe-zone-sheet.py` draws it on a film's frames, and `references/overlays/` keeps Google's two overlay files and TikTok's In-Feed template. `scripts/platform-overlay-sheet.py <film> <prefix>` is a reference for a vertical film, not a gate: every frame at 4 a second under each platform's zones, a shadow gradient from the top and bottom edges and stand-in buttons (TikTok, Reels, Shorts, Stories), one sheet per platform. The designer lays it over the frames and judges; the frame is composed for the whole screen, as other creators' posts are. Only the line that carries the film and the price or badge on the end card must not sit under a platform button; anything else may run under the overlays. YouTube's 16:9 overlay (youtubesafezoneoverlay_horizontal_final.png) leaves y 937-1080 unsafe, where the player's controls sit: subtitles in a long-form film end above y 937.

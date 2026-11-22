@@ -4,9 +4,8 @@
 
 1. Craft: what the primary sources actually say
 2. Licences: what each free library permits (read 2026-11-21)
-3. Music shortlist for the Black stage films (measured 2026-11-21)
-4. Sound effects
-5. Recommendation
+3. Sound effects
+4. Recommendation
 
 Audio for a 25 s App Store preview and promo of an iOS app. Nothing below is downloaded;
 all page loads were verified live.
@@ -165,61 +164,9 @@ These are added inside the platform when posting, or downloaded for that platfor
 | **FreePD** | "permanently closed" (2008-2025) | https://freepd.com/ |
 | **Uppbeat**, **Bensound** | Not read this time: Uppbeat's pages did not load without a browser session and Bensound's sat behind its cookie dialog. The earlier reading (free plans require a credit) stands unconfirmed | uppbeat.io, bensound.com |
 
-**Order of choice:** Mixkit first, since its licence names ads and social posts, asks for no credit and forbids registration; Unminus second on the same grounds; a Japanese post may take OpenTracks or 魔王魂, though neither holds dark, bass-led music (reel 2 below); HoliznaCC0 adds CC0 hip-hop beats. A CC BY track is for a post whose caption has room for the credit and never for a store preview. TikTok's and Meta's libraries are for a platform's own version of a film.
+**Order of choice:** Mixkit first, since its licence names ads and social posts, asks for no credit and forbids registration; Unminus second on the same grounds; a Japanese post may take OpenTracks or 魔王魂; HoliznaCC0 adds CC0 hip-hop beats. A CC BY track is for a post whose caption has room for the credit and never for a store preview. TikTok's and Meta's libraries are for a platform's own version of a film. Offer a Mixkit track only when a listing page shows it: files answer at `assets.mixkit.co/music/<id>/<id>.mp3` that no listing page names, and such a file may not be on offer. Mixkit answers HTTP 429 after about 200 listing pages in a few minutes: space them a second apart.
 
-## 3. Music shortlist for the Black stage films (measured 2026-11-21)
-
-Eight tracks picked by measured structure, none by ear: each has a quiet build of four bars or more and a lift of 8 to
-20 dB that a six-beat film of 15 to 20 s can land its payoff on. Found by scoring the published waveform of 449 Mixkit
-tracks for a sharp rise after a build, then running `scripts/beats.ts` on the best 30, on Unminus's 51 tracks and on 10
-of Scott Buckley's. "Lift" is the RMS level of the two units after the lift against the two before it; a unit is the
-film beat in seconds. K-weighted (as a phone speaker hears it) the lift in "Thunder" is 8 dB, not 19: the rest is bass.
-
-| # | Track | Library | File | BPM | Film beat | Lift at | Lift | Bass share of the section |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Thunder, Arulo | Mixkit 318 | https://assets.mixkit.co/music/318/318.mp3 | 95 | 2.53 s (one bar) | 20.19 s | 19 dB | -1.2 dB |
-| 2 | Waveform, Kit Wheston | Unminus | https://feeds.soundcloud.com/stream/1038044245-unminus-waveform.mp3 | 80 (listed 160) | 3.00 s | 23.89 s | 19 dB | -3.4 dB |
-| 3 | Other World, Lily J | Mixkit 723 | https://assets.mixkit.co/music/723/723.mp3 | 140 | 2.57 s | 9.21 s | 20 dB | -1.4 dB |
-| 4 | Atoms in Peace, Alejandro Magaña | Mixkit 107 | https://assets.mixkit.co/music/107/107.mp3 | 96 | 2.50 s | 28.54 s | 12 dB | -3.5 dB |
-| 5 | Kickin' Heart, Mauro Urbina | Mixkit 771 | https://assets.mixkit.co/music/771/771.mp3 | 109 | 3.31 s | 17.81 s | 11 dB | -3.1 dB |
-| 6 | Silent Descent, Eugenio Mininni | Mixkit 614 | https://assets.mixkit.co/music/614/614.mp3 | 140 | 2.57 s | 69.66 s | 8 dB | -27.6 dB (no bass) |
-| 7 | 5 Stages of You, Kit Wheston | Unminus | https://feeds.soundcloud.com/stream/1145820199-unminus-5-stages-of-you-free-lo-fi-music.mp3 | 80 | 3.00 s | 24.04 s | 16 dB, after a bar of near silence | -3.9 dB |
-| 8 | Born of the Sky, Scott Buckley | CC BY 4.0, credit required | https://www.scottbuckley.com.au/library/wp-content/uploads/2025/08/BornOfTheSky.mp3 | 120 | 3.01 s | 32.51 s | 10 dB, a swell | -1.9 dB |
-
-The reel, the excerpts, the measurements and the tools are in the Undirect repo, `docs/research/pro-film-refs/music/`.
-Track 1 is the placeholder under the first film until the owner picks by ear.
-
-**The owner's ear on reel 1 (2026-11-22):** 1 and 2 "maybe least bad", 7 kept for another film, the other five rejected.
-What 1 and 2 share and the rejected lack is the floor for anything offered next: a slow pulse (62 to 100 BPM felt), a
-build at least 11 dB under the track for four film beats, a lift of 14 dB or more that holds, and bass in the lifted
-section (the band under 90 Hz within 6 dB of the whole). Bright, bass-less or flat tracks fail by ear even when they lift.
-
-### Reel 2 (tracks 9 to 16, measured 2026-11-22)
-
-Screened against that floor with `music/tools/measure2.py`. "Phone" is the lift with everything under 150 Hz removed.
-
-| # | Track | Library | File | BPM felt | Lift at | Lift | Phone | Bass share |
-|---|---|---|---|---|---|---|---|---|
-| 9 | Torey, Arulo | Mixkit 304 | https://assets.mixkit.co/music/304/304.mp3 | 56 | 34.37 s | 20.7 dB | 10.7 | -0.5 dB |
-| 10 | Headlight Vision, Arulo | Mixkit 297 | https://assets.mixkit.co/music/297/297.mp3 | 75 | 11.15 s | 19.8 dB | 12.5 | -1.2 dB |
-| 11 | 21, Arulo | Mixkit 445 | https://assets.mixkit.co/music/445/445.mp3 | 67.6 | 14.25 s | 18.2 dB | 10.2 | -1.3 dB |
-| 12 | Lil Pump Type, Arulo | Mixkit 410 | https://assets.mixkit.co/music/410/410.mp3 | 62.5 | 15.40 s | 24.5 dB | 14.4 | -0.7 dB |
-| 13 | Chill Trap, Arulo | Mixkit 256 | https://assets.mixkit.co/music/256/256.mp3 | 67.5 | 14.26 s | 22.6 dB | 11.3 | -0.4 dB |
-| 14 | Wolf, HoliznaCC0 | FMA, CC0 1.0 | https://freemusicarchive.org/music/holiznacc0/after-dark/wolf-1/ | 74.6 | 12.03 s | 17.8 dB | 9.1 | -1.0 dB |
-| 15 | Bowers & Wilkins, JNGS | Unminus | https://feeds.soundcloud.com/stream/499010700-unminus-bowers-wilkins.mp3 | 69.7 | 5.96 s | 19.5 dB | 5.2 | -0.1 dB |
-| 16 | Electro Dreams, Arulo | Mixkit 190 | https://assets.mixkit.co/music/190/190.mp3 | 120.7 | 15.96 s | 18.2 dB | 13.7 | -3.5 dB |
-
-How wide the search went: every Mixkit waveform (1,341 ids answer at `assets.mixkit.co/music/<id>/<id>-waveform.json`),
-58 measured in full, 28 pass, 21 of the 23 named ones by Arulo; all 51 Unminus tracks, 3 pass; OpenTracks, 374 listed
-under its dark, cool, serious, cinema and hip-hop tags, the 45 most downloaded measured from their previews, none passes;
-魔王魂's categories (8-bit, fantasy, acoustic, piano, rock) were not measured; HoliznaCC0, 65 tracks from eleven beat
-albums, 4 pass. Mixkit answers HTTP 429 after about 200 listing pages in a few minutes: space them a second apart.
-Five passing Mixkit files (1355, 279, 377, 1297, 203) appear among none of the 910 titles on the listing pages read,
-and only 2 of the 194 ids above 1200 that answer on the server are listed at all: a file that answers without being
-listed may not be on offer, so none of the five is on the reel (1355 has the largest lift measured: 27 dB, 20 on a
-phone, 100 BPM). Offer a Mixkit track only when a listing page shows it.
-
-## 4. Sound effects
+## 3. Sound effects
 
 
 | # | Title | Provider | Page / file | Duration | Licence | Use |
@@ -244,10 +191,11 @@ Trim every SFX from its first transient (not from 0:00) before levelling, per th
 several of these (especially the CC0 Freesound ones and any "cinematic" Mixkit riser) likely
 have lead-in room tone or fade.
 
-## 5. Recommendation
+## 4. Recommendation
 
-- **Music**: from the shortlist in section 3, chosen by the owner's ear from the reel; the film's cuts are then laid on
-  that track's downbeats so its lift lands on the payoff.
+- **Music**: measure each candidate's build, lift and bass share (lift: the RMS level of the two film beats after it
+  against the two before; bass share: the band under 90 Hz against the whole), and the user picks by ear from the reel;
+  the film's cuts are then laid on that track's downbeats so its lift lands on the payoff.
 - **SFX**: soft UI tap: *Select click*; transitions: *Fast whoosh transition* / *Fast swipe zoom*; pop: *Bubble pop up
   alert notification*; pre-logo riser: *Tech choir cinematic riser*; final hit: *Movie impact intro presentation*.
 - **Master** to -14 LUFS, true peak at most -1 dBTP, and measure the delivered file with `ebur128`. A film that is a
