@@ -156,8 +156,8 @@ type ShotProps = { src: string; device: Device; aspect?: number; caption?: strin
   zoom?: { to: number; x: number; y: number; at?: number }; taps?: Tap[]; cursor?: CursorKey[]; trimBefore?: number };
 
 /* App Store previews may show only the app [Apple]. Text over live UI collides with the
-   status bar and titles (first Cutling test), so the caption gets its own band and the
-   whole capture sits under it, uncropped. */
+   status bar and titles, so the caption gets its own band and the whole capture sits
+   under it, uncropped. */
 const AppStoreShot: React.FC<ShotProps> = (p) => {
   const { width, height, fps } = useVideoConfig();
   const band = p.caption ? height * 0.15 : 0;
