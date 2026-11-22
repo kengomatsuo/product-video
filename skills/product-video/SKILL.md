@@ -98,6 +98,7 @@ before phase 1; check with `command -v <tool>`.
 | RocketSim CLI (optional) | 60 fps Simulator capture and `rocketsim do` flows | `rocketsim --help`; `capture-ios.sh` falls back to `simctl` |
 | goldie and argent (optional) | replayable Simulator flows | `kacperkapusciak/goldie`, `software-mansion/argent` on GitHub |
 | Ruby gem `spaceship` | `asc-upload-preview.rb` | `gem install spaceship` |
+| Listening models (CLAP, AST, Qwen2-Audio; about 7.6 GB in `~/.cache/audio-tools`) | `scripts/sfx/sfx.py`, `scripts/sfx/mix.py`: picking sound effects by description (`references/audio.md` section 3) | `zsh <skill>/scripts/sfx/setup.sh` |
 
 ## The film, not the slideshow
 

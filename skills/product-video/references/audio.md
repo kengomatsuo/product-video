@@ -55,18 +55,33 @@ The reasoning for the leads is in `research/music-sync.md`.
 
 ## 3. Effects
 
-These Mixkit ids are the template's stand-ins, measured for onset and peak; a film chooses
-its own sounds and measures them the same way.
+An effect is the recorded sound of the thing on screen (a card dealt for a page flying out,
+ice cracking for glass under a finger, a spacebar for a key landing), found and judged by
+description, because a stock whoosh, pop or impact reads as stock and you cannot hear either.
+`scripts/sfx/` does the listening (`zsh scripts/sfx/setup.sh` once; method and tests in
+`undirect/docs/research/sfx-for-claude.md`):
 
-| Event | Effect (Mixkit id) | Level | Placement |
-|---|---|---|---|
-| A tap | select click 1109 | 0.28 | 2 frames before the touch dot |
-| Seam | fast whoosh 1490 / swipe 2627 | 0.32 | peak (0.70 s / 0.25 s in) on the cut |
-| Into the drop | space stutter riser 1144 | 0.30 | its end on the drop |
-| The payoff | pop 2357 | 0.60 | on the drop |
-| Logo landing | movie impact 2902 | 0.45 | peak (1.30 s in) on the landing |
+```bash
+PY=~/.cache/audio-tools/venv/bin/python; K=<skill>/scripts/sfx
+$PY -I $K/mix.py bands <track> <start> <length>      # where the track is thin
+$PY -I $K/sfx.py batch moments.json --out picks      # or: sfx.py find "<description>" --query "<search words>" --out picks/<name>
+$PY -I $K/mix.py cues.json                           # lays the picks under the track, prints how each sits
+```
 
-Measure an effect's onset and peak time before placing it. A long file is trimmed with `trimBefore`, never cut by ear.
+1. List the moments from the storyboard and write each as the physical sound: what makes it,
+   the material, "close, dry", one hit or several, how long (`--dur`). `moments.json` holds one
+   entry per moment with its search words.
+2. Read `picks/<name>/ranked.md`. Keep a take only when the fit is clear (0.45 up, z over 3),
+   the second model's labels or the listeners' sentences name the same thing, and the measured
+   decay is as dry as asked. Among those, take the one whose energy sits where the track is
+   thin: it is heard at a level far under the music, while a take in a band the track fills
+   has to be loud to be heard at all.
+3. Freeze the kept files in the project with each source page and licence (the tool fetches
+   only CC0, public-domain and Mixkit sounds, which a commercial film may use with no credit).
+4. Place each on the frame of its event (a tap on the touch, a landing on its peak) with
+   `over`: 3 just heard, 6 plain, 9 an accent. `mix.py` keeps every cue under the music as a
+   whole and flags the ones it finds BURIED: change the take, not the level. The models
+   describe and measure but do not judge taste, so the owner hears the film before it ships.
 
 ## 4. Master
 

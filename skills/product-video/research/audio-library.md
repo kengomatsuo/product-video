@@ -168,6 +168,10 @@ These are added inside the platform when posting, or downloaded for that platfor
 
 ## 3. Sound effects
 
+This list of stock effects predates `scripts/sfx/`. Effects are now found and judged by description
+(`references/audio.md` section 3): the recorded sound of the thing on screen, since a stock whoosh, pop or
+impact from a list like this one reads as stock. The licences recorded here still hold.
+
 
 | # | Title | Provider | Page / file | Duration | Licence | Use |
 |---|---|---|---|---|---|---|
@@ -196,8 +200,8 @@ have lead-in room tone or fade.
 - **Music**: measure each candidate's build, lift and bass share (lift: the RMS level of the two film beats after it
   against the two before; bass share: the band under 90 Hz against the whole), and the user picks by ear from the reel;
   the film's cuts are then laid on that track's downbeats so its lift lands on the payoff.
-- **SFX**: soft UI tap: *Select click*; transitions: *Fast whoosh transition* / *Fast swipe zoom*; pop: *Bubble pop up
-  alert notification*; pre-logo riser: *Tech choir cinematic riser*; final hit: *Movie impact intro presentation*.
+- **SFX**: describe each moment as the physical sound of what is on screen and pick it with `scripts/sfx/sfx.py`
+  (`references/audio.md` section 3), choosing the take that lives where the track is thin.
 - **Master** to -14 LUFS, true peak at most -1 dBTP, and measure the delivered file with `ebur128`. A film that is a
   quiet build and one lift is brought up with one gain and a limiter: `loudnorm`'s dynamic mode would level the build
   up to the lift.
