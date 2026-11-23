@@ -169,6 +169,9 @@ and a visible size; a small repeating zoom passes a sheet. Fix, re-plot.
 **7d Render and `check.ts`.** `bun tools/render.ts --draft` for timing, then the final
 master with `bash tools/master.sh <Comp> <version>` (ProRes, then grain-tuned H.264 at
 -14 LUFS; add `--appstore` for Apple's limits) and `bun tools/check.ts [--preset x] <file>`.
+Both renders run in a cloud session, since a render takes the memory every session on the
+Mac shares: commit, then `bun ~/.claude/scripts/cloud-run.ts --files out -- bun tools/render.ts --draft`
+(the same for `master.sh`); the files come back under `--out`, and check.ts runs on them here.
 It checks size, frame rate and count, pixel format, colour range, the App Store rules
 (15-30 s, at most 30 fps, stereo audio, bit rate) and frame pops, and exits 1 with one
 line per problem. For each line: change the cause in the composition or the render
