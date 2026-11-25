@@ -440,6 +440,9 @@ def find_one(a, clap, ast):
 
 def caption_rows(jobs):
     """jobs: [(out_dir, rows to caption)]. One load of Qwen2-Audio for all of them."""
+    if sys.platform != 'darwin':
+        print('captions skipped: Qwen2-Audio runs on MLX, which needs Apple silicon', flush=True)
+        return
     ps, rs = [], []
     for out, rows in jobs:
         tmp = f'{out}/seg/.q'

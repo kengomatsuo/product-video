@@ -13,9 +13,12 @@ if [ "$(uname)" = Darwin ]; then
   if [ -n "$(git status --porcelain -- "$moments")" ]; then
     echo "cloud.sh: $moments is not committed; the cloud runs the pushed commit. Commit it, then run this again." >&2; exit 3
   fi
-  exec bun "$HOME/.claude/scripts/cloud-run.ts" --files "$out" -- \
-    "git clone -q --depth 1 https://github.com/kengomatsuo/product-video /tmp/pv && bash /tmp/pv/skills/product-video/scripts/sfx/cloud.sh '$moments' '$out'"
+  rel=$(git rev-parse --show-prefix); tmp=$(mktemp -d); code=0
+  bun "$HOME/.claude/scripts/cloud-run.ts" --out "$tmp" --files "$out" -- \
+    "git clone -q --depth 1 https://github.com/kengomatsuo/product-video /tmp/pv && bash /tmp/pv/skills/product-video/scripts/sfx/cloud.sh '$moments' '$out'" || code=$?
+  if [ -d "$tmp/files/$rel$out" ]; then mkdir -p "$out" && cp -R "$tmp/files/$rel$out/." "$out/" && echo "cloud.sh: picks are in $out/"; fi
+  exit $code
 fi
 here=$(cd "$(dirname "$0")" && pwd)
 bash "$here/setup.sh"
-"${SFX_HOME:-$HOME/.cache/audio-tools}/venv/bin/python" -I "$here/sfx.py" batch "$moments" --out "$out"
+"${SFX_HOME:-$HOME/.cache/audio-tools}/venv/bin/python" -I "$here/sfx.py" batch "$moments" --out "$out" --caption 0
