@@ -37,8 +37,9 @@ import argparse, hashlib, html, json, os, re, subprocess, sys, urllib.parse, url
 import numpy as np
 
 # PyTorch's MPS allocator may hold up to 1.7x the GPU's recommended working set by default, which on a 16 GB Mac is all
-# of it: a batch run grew to 9.5 GB and swapped every other session. 0.3 caps it near 3 GB (an allocation past it raises
-# instead of swapping), and the low mark must sit under the high one. Read once when torch starts, so set before import.
+# of it; 0.3 caps GPU memory near 3 GB, and the low mark must sit under the high one. Read once when torch starts, so set
+# before import. This bounds GPU memory only: a batch still jumped from 1.7 to 7.4 GB of ordinary memory on its second
+# moment (121 candidates), so a batch runs in a cloud session through cloud.sh, never on the shared Mac.
 os.environ.setdefault('PYTORCH_MPS_HIGH_WATERMARK_RATIO', '0.3')
 os.environ.setdefault('PYTORCH_MPS_LOW_WATERMARK_RATIO', '0.2')
 HOME = os.path.expanduser(os.environ.get('SFX_HOME', '~/.cache/audio-tools'))
