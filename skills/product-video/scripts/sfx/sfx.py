@@ -36,6 +36,11 @@ The models are hints, the numbers are measurements, and neither is the owner's e
 import argparse, hashlib, html, json, os, re, subprocess, sys, urllib.parse, urllib.request
 import numpy as np
 
+# PyTorch's MPS allocator may hold up to 1.7x the GPU's recommended working set by default, which on a 16 GB Mac is all
+# of it: a batch run grew to 9.5 GB and swapped every other session. 0.3 caps it near 3 GB (an allocation past it raises
+# instead of swapping), and the low mark must sit under the high one. Read once when torch starts, so set before import.
+os.environ.setdefault('PYTORCH_MPS_HIGH_WATERMARK_RATIO', '0.3')
+os.environ.setdefault('PYTORCH_MPS_LOW_WATERMARK_RATIO', '0.2')
 HOME = os.path.expanduser(os.environ.get('SFX_HOME', '~/.cache/audio-tools'))
 CLAP_DIR = os.environ.get('CLAP_MODEL', f'{HOME}/models/clap-htsat-unfused')
 AST_DIR = os.environ.get('AST_MODEL', f'{HOME}/models/ast-audioset')
@@ -249,6 +254,8 @@ class Clap:
             for i in range(0, len(segs), bs):
                 f = self.p(audio=[s[:SR * 10] for s in segs[i:i + bs]], sampling_rate=SR, return_tensors='pt')
                 out.append(self._unit(self.m.get_audio_features(**{k: v.to(self.dev) for k, v in f.items()})))
+                if self.dev == 'mps':
+                    self.t.mps.empty_cache()        # each batch has its own shapes, so cached buffers are rarely reused
         return np.concatenate(out)
 
     def text(self, prompts):
