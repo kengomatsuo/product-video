@@ -15,7 +15,11 @@ if [ ! -x "$H/venv/bin/python" ]; then
   if command -v uv >/dev/null; then uv venv -q --python 3.12 "$H/venv"; pip=(uv pip install -q --python "$H/venv/bin/python")
   else python3 -m venv "$H/venv"; pip=("$H/venv/bin/python" -m pip install -q); fi
   if [ -n "$mac" ]; then "${pip[@]}" torch 'transformers<5' numpy mlx-audio
-  else "${pip[@]}" torch --index-url https://download.pytorch.org/whl/cpu && "${pip[@]}" 'transformers<5' numpy; fi
+  else
+    # a cloud session's proxy can refuse download.pytorch.org: PyPI's torch (larger, CUDA-built, runs on CPU) then stands in
+    "${pip[@]}" torch --index-url https://download.pytorch.org/whl/cpu || "${pip[@]}" torch
+    "${pip[@]}" 'transformers<5' numpy
+  fi
 fi
 get() {  # get <repo> <dest> <file>...   a Hugging Face file in 16 ranged parts; the plain client stalls on slow links
   repo=$1; dest=$2; shift 2; mkdir -p "$dest"
