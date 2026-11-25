@@ -53,14 +53,14 @@ Each go-back line applies the moment its check fails.
       Pacing or composition rejected: return to 3 and change the table; never patch the wireframe.
 6 Build: capture each take, replace each wire: box, stills after every scene
       A take misses its table row (wrong UI, short, hitches): back to capture.
-      iOS takes record only on the device `scripts/film-device.sh up iphone|ipad` prints, its UDID passed to `capture-ios.sh`; never create, boot or record on another simulator.
+      iOS takes record only on the device queue's iPhone or iPad: lease it (`device-queue.ts lease iphone|ipad`, export DEVICE_QUEUE_TICKET), and `scripts/film-device.sh up iphone|ipad` prints its UDID for `capture-ios.sh`; never create, boot or record on another simulator.
 7 Check loops 7a-7e (below) pass: stills, frame sheet, motion plot, check.ts, loudness
       Any failure: fix the cause, bump the version, re-render, repeat from 7a.
 7f Hand over: phone copy, "unmute" in the caption, what was and was not checked
       Every format the storyboard plans (16:9, 9:16 portrait, square) is rendered and checked before hand-over; a planned cut left unbuilt is a failed 7f.
       A vertical social cut is laid under each platform's overlay sheet and the designer judges it; only the film's key line and the end card's price or badge must be clear of a platform button.
       Text on a 3D label is read on a frame zoomed to 100%: a seam, flap edge or border crossing a letter fails.
-      After the last render is handed over, `scripts/film-device.sh down` deletes the film simulators.
+      After the last take, release the lease (`device-queue.ts release "$DEVICE_QUEUE_TICKET"`).
 ```
 
 | # | Phase | Output | Read |

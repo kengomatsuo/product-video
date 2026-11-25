@@ -17,7 +17,7 @@ designer fills with motion graphics and the UI it imagines.
 
 | Platform | How | Script |
 |---|---|---|
-| iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | `scripts/film-device.sh up iphone\|ipad` prints the UDID, then `scripts/capture-ios.sh <out.mp4> <seconds> <udid>`; `film-device.sh down` after the final render |
+| iOS / iPadOS | Record the booted Simulator's screen with RocketSim at 60 fps, or `simctl` when RocketSim is missing or out of quota; drive the app with `rocketsim do` flows, goldie/argent, or by hand | lease the queue's simulator (`device-queue.ts lease iphone\|ipad`, export `DEVICE_QUEUE_TICKET`), `scripts/film-device.sh up iphone\|ipad` prints its UDID, then `scripts/capture-ios.sh <out.mp4> <seconds> <udid>`; release the lease after the last take |
 | macOS app | Record the app's own window at Retina size | `scripts/capture-mac.sh "<App Name>" <out.mov> <seconds>` |
 | Web app | Open the app in a browser window at 1440 x 900, record that window | `capture-mac.sh "Google Chrome" ...` |
 
