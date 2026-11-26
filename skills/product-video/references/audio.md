@@ -19,6 +19,16 @@ and one phrase fit, or runs a beat with a few shouted syllables; words written t
 owner hears it at once. Read the references' words before proposing any, and show the owner the words before a take
 is made.
 
+A track is also judged by how it breathes. The films worth copying dim and stop: measured with
+`<venv python> -I scripts/dyn.py <label>=<file> ...`, their sound sits 8 dB or more under its loud level for 14 to
+40 % of the film, dims five to twelve times a minute and holds pauses of 0.3 to 2 s, where a wall-of-sound track is
+quiet under 10 % of the time. Measure the owner's references before offering any track, and offer only tracks with
+that shape. Generated songs came back full from end to end, and released, produced songs mostly have the shape
+already, so a film that wants a voice starts in a licensed library: Artlist plays signed out, filters by vocals and
+BPM, lists each song's stems and lyrics, and serves the waveform each row draws, which gives the same measures
+without the audio. Sound effects come from the same kind of library (recorded packs by sound houses), never
+generated.
+
 Music comes from Mixkit, whose licence forbids registering its tracks with Content ID or any rights-management service; Pixabay tracks can be registered by their distributors and get claimed (research/audio-library.md).
 
 With the optional `<library>` (see SKILL.md), `<library>/music-for-promos/README.md` lists
