@@ -28,6 +28,7 @@ Each go-back line applies the moment its check fails.
       Go back to 1 if a note cannot say what to take; the item was the wrong one.
 3 Plan: storyboard.md with brief, directions, music, beat table in bars
       The storyboard shows as many directions as the designer has; each says what it takes from a reference and what is its own.
+      A film asked for as motion graphics takes its look and motion from the references' own language (camera, depth, morphs, type, colour world), never from the product's last film: a storyboard drawn in the last film's look gets built in it, and flat screens cropped on a ground read to the owner as cropped recordings even when every pixel is drawn.
       The film shows how the product is really turned on (its real control, recorded), or it is a false advert.
       A film for YouTube ends on a still end card of 5 s or more for end-screen elements.
       A vertical social cut (TikTok, Reels, Shorts, X) is composed for the whole 1080 x 1920 frame and may run under the platforms' overlays; only what must be read to follow the film stays inside the safe box in `references/formats.md` ("Vertical safe zone"), which the designer judges by.
