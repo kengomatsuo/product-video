@@ -1,7 +1,7 @@
 """Where a rendered film's picture changes, frame by frame, beside the level of its voice band.
 A hit that is meant to land on a sung or spoken syllable shows as the largest picture change on the frame where the
 voice level rises; a hit that leads or trails it shows the gap in frames. Run it on the delivered file.
-  python3 -I hit-sync.py <film.mp4> <from seconds> <to seconds> [--at 8.565,8.865,...]
+  ~/.cache/audio-tools/venv/bin/python -I hit-sync.py <film.mp4> <from seconds> <to seconds> [--at 8.565,8.865,...]
 --at marks the times the syllables were measured at (words.py), so each row beside one is easy to find."""
 import subprocess, sys
 import numpy as np

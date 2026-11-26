@@ -93,7 +93,7 @@ the word before it. Find the word, then measure the film.
 4. Scale each hit by its syllable's height, so a faint repeat gets a faint hit and the eye is told which ones matter.
    A hit a viewer cannot miss moves the camera, the object and the light together; a ring around a small object is not
    one.
-5. Measure the delivered file: `python3 -I <skill>/scripts/hit-sync.py <film> <from> <to> --at <the times>` prints each
+5. Measure the delivered file: `~/.cache/audio-tools/venv/bin/python -I <skill>/scripts/hit-sync.py <film> <from> <to> --at <the times>` prints each
    frame's picture change beside the voice level. Say the hits are on time only when the largest changes sit on the
    marked frames in that print.
 
