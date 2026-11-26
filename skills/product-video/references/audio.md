@@ -29,6 +29,13 @@ BPM, lists each song's stems and lyrics, and serves the waveform each row draws,
 without the audio. Sound effects come from the same kind of library (recorded packs by sound houses), never
 generated.
 
+A track is reworked as a mix engineer would. Before touching it, find the passage the owner liked and solo the
+element he names in the stems, because the hook he hears may live in a stem a mute would take out. Stems are for
+balance moves (a stem out for a phrase, a level, a broad tone), made on phrase lines and few enough that a listener
+can say why each happened; the track's own break, pause and drop are kept as released. Look for an existing skill
+or repo before writing a mixer: `bitwize-music-studio/claude-ai-music-skills` (`mix-engineer`) for the method,
+Demucs for stems, Spotify's `pedalboard` for filters and reverb.
+
 Music comes from Mixkit, whose licence forbids registering its tracks with Content ID or any rights-management service; Pixabay tracks can be registered by their distributors and get claimed (research/audio-library.md).
 
 With the optional `<library>` (see SKILL.md), `<library>/music-for-promos/README.md` lists
