@@ -11,11 +11,13 @@ band below 90 Hz against its full-band level), since a heavy kick and bass can c
 phone speaker. The user listens on a phone and picks by ear, so always send a sample reel
 with a spoken number before each track, and never pick the music alone.
 
-A song with words is judged by its words too. The launch films worth copying sing a hook of a few plain words of
-attitude, repeated (the two studied for Cutling 2.0 use 19 and 8 different words in the whole film), and never name
-the product, a feature or what is on screen: the picture carries the product, and a lyric that narrates it is a
-jingle and reads as forced. At most an everyday phrase echoes the film's idea. Read a reference's lyric word by word
-before writing one, and show the owner the words beside it before any take is made.
+No lyric is written for a product. Of fifteen Apple and Samsung product and system films heard in 2026-11, seven
+are a narrator over a released song or a bed, five have no words, and the three whose sung words carry the film use
+a released artist's song about something else (learning jazz in Apple's AirPods film) or a hook of a few words
+(17 words, 8 different, in Samsung's One UI 5 film). So a film that wants a voice licenses a real song whose mood
+and one phrase fit, or runs a beat with a few shouted syllables; words written to the brief are a jingle, and the
+owner hears it at once. Read the references' words before proposing any, and show the owner the words before a take
+is made.
 
 Music comes from Mixkit, whose licence forbids registering its tracks with Content ID or any rights-management service; Pixabay tracks can be registered by their distributors and get claimed (research/audio-library.md).
 
