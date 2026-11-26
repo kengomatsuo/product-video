@@ -206,10 +206,10 @@ transcripts) that the user may name. The skill works without it.
 |---|---|
 | `references/research.md` | gathering and studying references (phases 1-2) |
 | `references/storyboard.md` | planning, proposing, wireframing (phases 3-5) |
-| `references/audio.md` | picking music and placing cuts and effects on the bars |
+| `references/audio.md` | picking music, placing cuts and effects on the bars, landing a hit on a sung or spoken word and proving it on the render |
 | `references/copy.md` | writing any caption |
 | `references/capture.md` | recording takes |
-| `references/explainer.md` | an explainer or a hybrid film: ideas as objects, feeling, joining animation to real recordings |
+| `references/explainer.md` | an explainer, a hybrid film, or a film made wholly as motion graphics: ideas as objects, the brand's own shapes, feeling, joining animation to real recordings, languages, the portrait cut |
 | `references/motion.md` | touching any timing, curve or camera move |
 | skill `expressive-motion` | one worked motion language (the stya hero film's), to study when a film wants that character |
 | `references/remotion/` ([index](references/remotion/index.md)) | writing or fixing any Remotion code: compositions, sequencing, transitions, `interpolate`, video and image layers, audio, fonts, effects, 3D, rendering |

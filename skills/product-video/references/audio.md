@@ -78,6 +78,25 @@ const B = (n: number) => Math.round(n * BAR);
 
 The reasoning for the leads is in `research/music-sync.md`.
 
+### Landing a hit on a sung or spoken word
+
+A hit placed by ear from a waveform is often on the wrong word: a burst of energy near where the word is expected can be
+the word before it. Find the word, then measure the film.
+
+1. Read the words with their times: `~/.cache/audio-tools/venv/bin/python -I <skill>/scripts/words.py <track>`. For fast
+   repeats, slow the clip to half speed first and halve the times.
+2. Confirm each on the vocal stem (`demucs --two-stems vocals`): the stem's envelope peak is the syllable, and its height
+   is how hard that syllable is sung.
+3. Put the impact frame on the syllable. The impact frame is the one where the picture changes most (the object is in
+   place, the flash is at full); the run-up, the fall and the camera's approach all end on it. An animation that starts
+   on the syllable lands after it.
+4. Scale each hit by its syllable's height, so a faint repeat gets a faint hit and the eye is told which ones matter.
+   A hit a viewer cannot miss moves the camera, the object and the light together; a ring around a small object is not
+   one.
+5. Measure the delivered file: `python3 -I <skill>/scripts/hit-sync.py <film> <from> <to> --at <the times>` prints each
+   frame's picture change beside the voice level. Say the hits are on time only when the largest changes sit on the
+   marked frames in that print.
+
 ## 3. Effects
 
 An effect is the recorded sound of the thing on screen (a card dealt for a page flying out,

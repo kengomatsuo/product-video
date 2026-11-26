@@ -9,6 +9,17 @@ Use this for any film that shows how something works, and for a store preview th
 - Cut a second idea from a shot, however good it is. A device line-up, a knot on a back arrow and a timeline scrubber each cost the viewer the first idea.
 - Show the answer in the framing of the trick it beats. A rescue is the theft's own move run backwards at the same speed.
 
+## A film made wholly as motion graphics
+
+- Build the product from the brand's own objects: the shapes in its icon, its colours, the thing it makes or fills in. An app screen drawn in code on a plain ground reads as a cropped recording, however carefully it is drawn.
+- Take each shape from the brand's files (the icon's layer SVGs, its Icon Composer package), and take each colour from a rendered frame of the finished icon, since a wide-gamut source file read raw gives a duller colour than the one viewers see.
+- The film ends with those objects landing in the icon's exact arrangement, each layer at its own angle and place, and the finished icon fades in over them with no dip. An outline that closes into the icon uses the icon's own alpha as its mask: a rounded rectangle is not the icon's curve, and the difference shows.
+- Whatever is not the product is drawn as itself, as close to the real thing as it can be measured: a chat is the platform's bubbles, with the other person's message first; a system keyboard is the system's keys and makes the system's own sounds (iOS keeps them in the simulator runtime's `System/Library/Audio/UISounds`). The product's shapes are kept for the product, so the viewer sees the moment it arrives.
+- One camera and no cut: every change of scene is the same objects moving, turning over or being flown to.
+- An object that has been used keeps the mark of its use. A stack of sent replies still shows each reply, because blank copies read as decoration.
+- Each language is its own film: its lines written in that language, its names, its date and number forms, its keyboard (kana keys and the conversion to kanji for Japanese). The words live in one file per film, keyed by language, and the layout is measured from the words, never from the English widths.
+- Two cuts that differ only from some frame on (an end card with one more line) are rendered once to that frame and joined before the encode, so the shared part is the same frames in both.
+
 ## Build the feeling
 
 - The film makes the viewer want something before it shows the product giving it; the approved film did this by taking the thing away on a press and returning it in the opening framing.
@@ -39,4 +50,4 @@ Use this for any film that shows how something works, and for a store preview th
 - Hinge a tilting page on an edge, so no part passes through the glass or the screen. Give every layer one render order in one table.
 - When a move does not fit its beat, cut an element. A move squeezed to fit looks sped up.
 - Reserve bands for captions and subtitles, frame close-ups to keep page text out of them, and lay a dark band over any bright page beneath them.
-- Give a portrait cut its own camera table, pulled back until each subject fits the width.
+- Give a portrait cut its own camera table, pulled back until each subject fits the width. Its world is centred a little above the middle of the frame and fills the width; what ran across the wide frame is laid out again for the tall one (three rows of a marquee become five), and words that sat in a corner move to the centre line. It is composed to look right as a plain video with no buttons over it first, and only then checked under each platform's overlay (`formats.md`).
